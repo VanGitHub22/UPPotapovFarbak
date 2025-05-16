@@ -1,10 +1,23 @@
+<?php
+    include('./connection/connection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Главная</title>
+    <?php
+    if(!isset($_GET['page'])){
+    ?>
+        <title>Главная</title>
+    <?php
+    } else if($_GET['page'] == "socialScolarship"){
+    ?>
+        <title>Стипендия</title>
+    <?php
+    }
+    ?>
 </head>
 <body>
     <header>
@@ -27,24 +40,21 @@
         </div>
     </header>
     <main>
+        <?php
+        if(!isset($_GET['page'])){
+        ?>
         <h1>Студенты</h1>
+        <?php
+        } else if ($_GET['page'] == "socialScolarship") {
+        ?>
+        <h1>Стипендия</h1>
+        <?php
+        }
+        ?>
         <div class="main_inner">
-            <nav>
-                <a href="./index.php" class="nav_link active">C</a>
-                <a href="./socialScolarship.php" class="nav_link"><img src="./img/coin_white.png" alt=""></a>
-                <a href="./studentFiles.php" class="nav_link"><img src="./img/file_white.png" alt=""></a>
-                <a href="./department.php" class="nav_link"><img src="./img/department_white.png" alt=""></a>
-                <a href="./sppp.php" class="nav_link">П</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-                <a href="#" class="nav_link">C</a>
-            </nav>
+            <?php
+            include('./includes/nav.php');
+            ?>
             <div class="selection">
                 <div class="text_select">
                     <h3>Выборка</h3>
@@ -82,115 +92,13 @@
                     <p>*Фильтрация по клику колонки</p>
                 </div>
                 <div class="line"></div>
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Фио</td>
-                                <td>Дата <br>рождения</td>
-                                <td>Пол</td>
-                                <td>Телефон</td>
-                                <td>Образование</td>
-                                <td>Отделение</td>
-                                <td>Группа</td>
-                                <td>Оплата</td>
-                                <td>Даты <br>Поступления</td>
-                                <td>Даты <br>Выпуска</td>
-                                <td>Исключен</td>
-                                <td>Дата</td>
-                                <td>Родитель</td>
-                                <td>Взыскания</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="1" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="2" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="3" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="4" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
+                <?php
+                if(!isset($_GET['page'])){
+                    include('./includes/students.php');
+                } else if ($_GET['page'] == "socialScolarship"){                    
+                    include('./includes/socialScolarship.php');
+                }
+                ?>
             </div>
         </div>
     </main>

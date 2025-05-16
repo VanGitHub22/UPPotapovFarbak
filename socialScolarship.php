@@ -82,49 +82,7 @@
                     <p>*Фильтрация по клику колонки</p>
                 </div>
                 <div class="line"></div>
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td><form action=""><input type="submit" value="Id студента"></form></td>
-                                <td>Номер документа</td>
-                                <td>Дата начала</td>
-                                <td>Дата конца</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
+               
             </div>
         </div>
     </main>
