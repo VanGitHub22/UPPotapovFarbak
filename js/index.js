@@ -40,3 +40,5 @@ function off(){
     let noti = document.querySelector(".noti")
     body.removeChild(noti)
 }
+
+// еее
