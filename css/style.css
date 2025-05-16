@@ -326,6 +326,12 @@ tbody tr td:nth-child(15){
     justify-content: center;
     align-items: center;
     gap: 2px;
+    cursor: pointer;
+    transition: .1s;
+}
+
+.vert_dots:hover{
+    transform: scale(1.1);
 }
 
 .vert_dots .dot{
@@ -334,6 +340,22 @@ tbody tr td:nth-child(15){
     background: #0060AC;
     border-radius: 5px;
 }
+
+
+.noti{
+    display: flex;
+    width: 140px;
+    height:100px;
+    border: 1px solid Black;
+    text-align: left;
+    position: absolute;
+    top: calc(50vh - (/* height */100px / 2));
+    left: calc(50vw - (/* width */140px / 2)); 
+
+    flex-direction: column;
+}
+
+
 
 @media (width <= 1280px){
 

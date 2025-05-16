@@ -118,7 +118,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><div class="vert_dots">
+                                <td><div onclick="edit(this.id)" id="1" class="vert_dots">
                                     <div class="dot"></div>
                                     <div class="dot"></div>
                                     <div class="dot"></div>
@@ -195,4 +195,5 @@
         </div>
     </main>
 </body>
+<script src="./js/index.js"></script>
 </html>
