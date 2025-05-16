@@ -28,7 +28,7 @@
     </header>
     <main>
         <h1>Файлы</h1>
-        <div class="main_inner">
+        <div class="main_inner"> <!--морывывроаолаывопрлаолрывролаорлвыролаоыворларолроывалдов-->
             <nav>
                 <a href="./index.php" class="nav_link">C</a>
                 <a href="./socialScolarship.php" class="nav_link"><img src="./img/coin_white.png" alt=""></a>
