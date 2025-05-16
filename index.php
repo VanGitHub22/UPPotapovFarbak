@@ -139,7 +139,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><div class="vert_dots">
+                                <td><div onclick="edit(this.id)" id="2" class="vert_dots">
                                     <div class="dot"></div>
                                     <div class="dot"></div>
                                     <div class="dot"></div>
@@ -160,7 +160,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><div class="vert_dots">
+                                <td><div onclick="edit(this.id)" id="3" class="vert_dots">
                                     <div class="dot"></div>
                                     <div class="dot"></div>
                                     <div class="dot"></div>
@@ -181,7 +181,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><div class="vert_dots">
+                                <td><div onclick="edit(this.id)" id="4" class="vert_dots">
                                     <div class="dot"></div>
                                     <div class="dot"></div>
                                     <div class="dot"></div>
