@@ -27,14 +27,15 @@
         </div>
     </header>
     <main>
-        <h1>Студенты</h1>
+        <h1>СППП</h1>
         <div class="main_inner">
             <nav>
-                <a href="./index.php" class="nav_link active">C</a>
+                <a href="./index.php" class="nav_link">C</a>
                 <a href="./socialScolarship.php" class="nav_link"><img src="./img/coin_white.png" alt=""></a>
                 <a href="./studentFiles.php" class="nav_link"><img src="./img/file_white.png" alt=""></a>
                 <a href="./department.php" class="nav_link"><img src="./img/department_white.png" alt=""></a>
-                <a href="./sppp.php" class="nav_link">П</a>
+                <a href="./sppp.php" class="nav_link active">П</a>
+                <a href="#" class="nav_link">C</a>
                 <a href="#" class="nav_link">C</a>
                 <a href="#" class="nav_link">C</a>
                 <a href="#" class="nav_link">C</a>
@@ -86,20 +87,14 @@
                     <table>
                         <thead>
                             <tr>
-                                <td>Фио</td>
-                                <td>Дата <br>рождения</td>
-                                <td>Пол</td>
-                                <td>Телефон</td>
-                                <td>Образование</td>
-                                <td>Отделение</td>
-                                <td>Группа</td>
-                                <td>Оплата</td>
-                                <td>Даты <br>Поступления</td>
-                                <td>Даты <br>Выпуска</td>
-                                <td>Исключен</td>
+                                <td>Id студента</td>
                                 <td>Дата</td>
-                                <td>Родитель</td>
-                                <td>Взыскания</td>
+                                <td>Причина</td>
+                                <td>Название</td>
+                                <td>Присутствующие</td>
+                                <td>Репресси</td>
+                                <td>Решение</td>
+                                <td>Заметки</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -112,17 +107,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="1" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
+                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
                             </tr>
                             <tr>
                                 <td><input type="text"></td>
@@ -133,17 +118,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="2" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
+                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
                             </tr>
                             <tr>
                                 <td><input type="text"></td>
@@ -154,17 +129,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="3" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
+                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
                             </tr>
                             <tr>
                                 <td><input type="text"></td>
@@ -175,17 +140,7 @@
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
                                 <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><input type="text"></td>
-                                <td><div onclick="edit(this.id)" id="4" class="vert_dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div></td>
+                                <td><a href="#" onclick="edit(this.id)" id="1">Управление</a></td>
                             </tr>
                         </tbody>
                     </table>

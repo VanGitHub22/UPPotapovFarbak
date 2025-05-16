@@ -13,7 +13,7 @@ function edit(clId){
     block_btn.classList.add("block_btn")
 
     let backZ = document.createElement("a")
-    backZ.href = "index.php"
+    backZ.href = "#"
     backZ.onclick = off
     backZ.textContent = "Назад"
     block_btn.appendChild(backZ)
