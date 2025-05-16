@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu{
+    display: none;
+}
+
+.container{
+    margin: 0 auto;
+    width: 80%;
+}
+
+header{
+    padding: 10px 0 ;
+    box-shadow: 0px 4px 10px 0px rgba(34, 60, 80, 0.2);
+}
+
+.header_inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user{
+    display: flex;
+    gap: 5px;
+}
+
+.name_role{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name_role h3{
+    font-size: 20px;
+}
+
+.name_role p{
+    font-size: 15px;
+    color: #0060AC;
+}
+
+.user_photo{
+    background: #9EA1A2;
+    border-radius: 50%;
+    height: 58px;
+    width: 58px;
+}
+
+main{
+    margin: 70px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.main_inner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.before{
+    border: #9EA1A2 1px solid;
+    border-radius: 10px;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.after{
+    border: #9EA1A2 1px solid;
+    border-radius: 10px;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.before h3{
+    color: #9EA1A2;
+    text-align: center;
+}
+
+.after h3{
+    color: #9EA1A2;
+    text-align: center;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background: #9EA1A2;
+}
+
+.scroll_block{
+    height: 600px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.before_text{
+    border: #9EA1A2 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.scroll_block input{
+    font-size: 14px;
+    border: #9EA1A2 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+}
+
+.scroll_block form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="submit"]{
+    background: #0060AC;
+    color: #fff;
+}
