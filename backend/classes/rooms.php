@@ -20,7 +20,7 @@ class Rooms{
         $query = "SELECT * FROM `Rooms`";
         $res = $mysqli->query($query);
         while($row = mysqli_fetch_array($res)){
-            $newRoom = new Department((object)$row);
+            $newRoom = new Rooms((object)$row);
             array_push($rooms, $newRoom);
         }
         
