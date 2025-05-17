@@ -21,7 +21,8 @@ class Student{
     public Notes;
     
     public __construct($params){
-        if(isset($params->id)) this->Id = $params->id;
+        if(isset($params->id)) this->Id = $params->id 
+        else $this -> Id = NULL;
         if(isset($params->lastName)) this->LastName = $params->lastName;
         if(isset($params->firstName)) this->FirstName = $params->firstName;
         if(isset($params->middleName)) this->MiddleName = $params->middleName;
@@ -71,6 +72,6 @@ class Student{
         $query = "INSERT INTO `Students`(`lastName`, `firstName`, `middleName`, `birthDate`, `gender`, `phone`, `education`, `department_id`, `group`, `funding`, `admissionYear`, `graduationYear`, `isExpelled`, `explusionDate`, `parent_Info`, `penalties`, `notes`) VALUES('$this->LastName', '$this->FirstName', '$this->MiddleName', '$this->BirthDate', '$this->Gender', '$this->Phone', '$this->Education', '$this->department_id', '$this->Group', '$this->Funding', '$this->AdmissionYear', '$this->GraduationYear', '$this->IsExplelled', '$this->ExplusionDate', '$this->Parent_info', '$this->Penalties', '$this->Notes')";
         $mysqli->query($query);
     }
-
+}
 
 ?>
