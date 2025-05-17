@@ -48,7 +48,7 @@ Class Dormitory{
 
     public static function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `dormitory`(`student_id`,`room_id`,`checkInDate`,`checkOutDate`, `notes`) VALUES('$this->Student_Id','$this->Room_Id','$this->CheckInDate','$this->CheckOutDate','$this->Notes') WHERE `id`=$this->Id";
+        $query = "INSERT INTO `Dormitory`(`student_id`,`room_id`,`checkInDate`,`checkOutDate`, `notes`) VALUES('$this->Student_Id','$this->Room_Id','$this->CheckInDate','$this->CheckOutDate','$this->Notes') WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 }
