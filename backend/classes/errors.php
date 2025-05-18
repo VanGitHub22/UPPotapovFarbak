@@ -7,12 +7,12 @@ class Errors{
     public Details;
     
     public __construct($params){
-        if(isset($params->id)) this->Id = $params->id;
-        if(isset($params->errorMessage)) this->ErrorMessage = $params->errorMessage;
+        if(isset($params->id)) $this->Id = $params->id;
+        if(isset($params->errorMessage)) $this->ErrorMessage = $params->errorMessage;
         else $this->ErrorMessage = NULL;
-        if(isset($params->timeError)) this->TimeError = $params->timeError;
+        if(isset($params->timeError)) $this->TimeError = $params->timeError;
         else $this->TimeError = NULL;
-        if(isset($params->details)) this->Details = $params->details;
+        if(isset($params->details)) $this->Details = $params->details;
         else $this->Details = NULL;
     }
     

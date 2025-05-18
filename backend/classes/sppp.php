@@ -11,20 +11,20 @@ class SPPP{
     public Notes;
     
     public __construct($params){
-        if(isset($params->id)) this->Id = $params->id;
-        if(isset($params->student_id)) this->Student_id = $params->student_id;
+        if(isset($params->id)) $this->Id = $params->id;
+        if(isset($params->student_id)) $this->Student_id = $params->student_id;
         else $this->Student_id = NULL;
-        if(issetS($params->dateSppp)) this->DateSppp = $params->dateSppp;
+        if(issetS($params->dateSppp)) $this->DateSppp = $params->dateSppp;
         else $this->DateSppp = NULL;
-        if(isset($params->reason)) this->Reason = $params->reason;
+        if(isset($params->reason)) $this->Reason = $params->reason;
         else $this->Reason = NULL;
-        if(isset($params->attendedStaff)) this->AttendedStaff = $params->attendedStaff;
+        if(isset($params->attendedStaff)) $this->AttendedStaff = $params->attendedStaff;
         else $this->AttendedStaff = NULL;
-        if(isset($params->attendedRepres)) this->AttendedRepres = $params->attendedRepres;
+        if(isset($params->attendedRepres)) $this->AttendedRepres = $params->attendedRepres;
         else $this->AttendedRepres = NULL;
-        if(isset($params->decision)) this->Decision = $params->decision;
+        if(isset($params->decision)) $this->Decision = $params->decision;
         else $this->Decision = NULL;
-        if(isset($params->notes)) this->Notes = $params->notes;
+        if(isset($params->notes)) $this->Notes = $params->notes;
         else $this->Notes = NULL;
     }
     

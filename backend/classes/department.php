@@ -5,8 +5,8 @@ class Department{
     public Name;
     
     public __construct($params){
-        if(isset($params->id)) this->Id = $params->id;
-        if(isset($params->name)) this->Name = $params->name;
+        if(isset($params->id)) $this->Id = $params->id;
+        if(isset($params->name)) $this->Name = $params->name;
         else $this->Name = NULL;
     }
     
