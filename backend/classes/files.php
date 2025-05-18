@@ -5,7 +5,6 @@ Class Files{
     public File_Path;
     public Description;
     public Status_type;
-    public Notes;
     
     public _construct($params){
         if(isset($params->id)) this->Id = $params->id 
@@ -18,8 +17,6 @@ Class Files{
         else $this ->Description = NULL;
         if(isset($params->status_type)) this-> Status_type = $params->status_type 
         else $this ->Status_type = NULL;
-        if(isset($params->notes)) this-> Notes = $params->notes 
-        else $this ->Notes = NULL;
     }
 
     public static function Get(){
@@ -36,7 +33,7 @@ Class Files{
 
     public static function Update(){
         global $mysqli;
-        $query = "UPDATE `Files` SET `student_id`='$this->Student_Id', `file_path`='$this->File_Path', `description`='$this->Description',`status_type`='$this->Status_type', `notes`='$this->Notes'";
+        $query = "UPDATE `Files` SET `student_id`='$this->Student_Id', `file_path`='$this->File_Path', `description`='$this->Description',`status_type`='$this->Status_type'";
         $mysqli->query($query);
     }
 
@@ -48,7 +45,7 @@ Class Files{
 
     public static function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Files`(`student_id`,`file_path`,`description`,`status_type`, `notes`) VALUES('$this->Student_Id','$this->File_Path','$this->Description','$this->Status_type','$this->Notes') WHERE `id`=$this->Id";
+        $query = "INSERT INTO `Files`(`student_id`,`file_path`,`description`,`status_type`) VALUES('$this->Student_Id','$this->File_Path','$this->Description','$this->Status_type') WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 }
