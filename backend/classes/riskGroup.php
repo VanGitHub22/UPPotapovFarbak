@@ -2,6 +2,7 @@
 Class RiskGroup{
     public Id;
     public Student_Id;
+    public OrderNum;
     public Type;
     public RegistrationDate;
     public RemovalDate;
@@ -14,6 +15,8 @@ Class RiskGroup{
         else $this ->Id = NULL;
         if(isset($params->student_id)) $this->Student_Id = $params->student_id 
         else $this ->Student_Id = NULL;
+        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum 
+        else $this ->OrderNum = NULL;
         if(isset($params->type)) $this->Type = $params->type 
         else $this ->Type = NULL;
         if(isset($params->registrationDate)) $this->RegistrationDate = $params->registrationDate 
@@ -42,7 +45,7 @@ Class RiskGroup{
 
     public static function Update(){
         global $mysqli;
-        $query = "UPDATE `RiskGroup` SET `student_id`='$this->Student_Id', `type`='$this->Type', `registrationDate`='$this->RegistrationDate',`removalDate`='$this->RemovalDate',`reason`='$this->Reason', `removalReason`='$this->RemovalReason', `notes`='$this->Notes'";
+        $query = "UPDATE `RiskGroup` SET `student_id`='$this->Student_Id',`orderNum`='$this->OrderNum', `type`='$this->Type', `registrationDate`='$this->RegistrationDate',`removalDate`='$this->RemovalDate',`reason`='$this->Reason', `removalReason`='$this->RemovalReason', `notes`='$this->Notes'";
         $mysqli->query($query);
     }
 
@@ -54,7 +57,7 @@ Class RiskGroup{
 
     public static function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `RiskGroup`(`student_id`,`type`,`registrationDate`,`removalDate`,`reason`, `removalReason`,`notes`) VALUES('$this->Student_Id','$this->Type','$this->RegistrationDate','$this->RemovalDate','$this->Reason', '$this->RemovalReason', '$this->Notes') WHERE `id`=$this->Id";
+        $query = "INSERT INTO `RiskGroup`(`student_id`,`orderNum`,`type`,`registrationDate`,`removalDate`,`reason`, `removalReason`,`notes`) VALUES('$this->Student_Id','$this->OrderNum','$this->Type','$this->RegistrationDate','$this->RemovalDate','$this->Reason', '$this->RemovalReason', '$this->Notes') WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 }
