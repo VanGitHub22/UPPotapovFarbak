@@ -55,34 +55,6 @@
             <?php
             include('./includes/nav.php');
             ?>
-            <div class="selection">
-                <div class="text_select">
-                    <h3>Выборка</h3>
-                    <a href="#" class="back"><div class="back_arrow"></div></a>
-                </div>
-                <div class="student">Потапов И.А</div>
-                <div class="student">Потапов И.А</div>
-                <div class="student">Потапов И.А</div>
-                <div class="student">Потапов И.А</div>
-                <div class="student">Потапов И.А</div>
-                <div class="student">Потапов И.А</div>
-                <div class="dots">...</div>
-                <h3>Доступ к списку</h3>
-                <div class="main_user">
-                    <div class="name_role">
-                        <h3>Фарбак Д.И.</h3>
-                        <p>Администратор</p>
-                    </div>
-                    <div class="user_photo"></div>
-                </div>
-                <div class="main_user sotr">
-                    <div class="name_role">
-                        <h3>Фарбак Д.И.</h3>
-                        <p>Сотрудник</p>
-                    </div>
-                    <div class="user_photo"></div>
-                </div>
-            </div>
             <div class="main_table">
                 <div class="main_nav">
                     <div class="search">
@@ -97,6 +69,8 @@
                     include('./includes/students.php');
                 } else if ($_GET['page'] == "depa"){                    
                     include('./includes/depa.php');
+                } else if($_GET['page'] == "dorm"){
+                    include('./includes/dorm.php');
                 }
                 ?>
             </div>
