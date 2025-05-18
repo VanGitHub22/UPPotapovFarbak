@@ -1,14 +1,14 @@
 <nav>
     <a href="./index.php" class="nav_link <?php if(!isset($_GET['page'])){ ?> active <?php } ?>">C</a>
-    <a href="./index.php?page=socialScolarship" class="nav_link <?php if(isset($_GET['page']) && $_GET['page'] == "socialScolarship"){ ?> active <?php }; ?>">
+    <a href="./index.php?page=depa" class="nav_link <?php if(isset($_GET['page']) && $_GET['page'] == "depa"){ ?> active <?php }; ?>">
         <?php 
-        if(isset($_GET['page']) && $_GET['page'] == "socialScolarship"){ 
+        if(isset($_GET['page']) && $_GET['page'] == "depa"){ 
         ?>
-            <img src="./img/coin_blue.png" alt=""> 
+            <img src="./img/department_blue.png" alt=""> 
         <?php 
         } else {
         ?> 
-            <img src="./img/coin_white.png" alt="">
+            <img src="./img/department_white.png" alt="">
         <?php
         }
         ?>

@@ -6,7 +6,7 @@ class Rooms{
     public Capacity;
     
     public __construct($params){
-        if(isset($params->Id)) $this->Id = $params->Id;
+        if(isset($params->id)) $this->Id = $params->id;
         if(isset($params->Name)) $this->Name = $params->Name;
         else $this->Name = NULL;
         if(isset($params->Capacity)) $this->Capacity = $params->Capacity;

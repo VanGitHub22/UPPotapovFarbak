@@ -12,9 +12,9 @@
     ?>
         <title>Главная</title>
     <?php
-    } else if($_GET['page'] == "socialScolarship"){
+    } else if($_GET['page'] == "depa"){
     ?>
-        <title>Стипендия</title>
+        <title>Отделения</title>
     <?php
     }
     ?>
@@ -45,9 +45,9 @@
         ?>
         <h1>Студенты</h1>
         <?php
-        } else if ($_GET['page'] == "socialScolarship") {
+        } else if ($_GET['page'] == "depa") {
         ?>
-        <h1>Стипендия</h1>
+        <h1>Отделения</h1>
         <?php
         }
         ?>
@@ -95,8 +95,8 @@
                 <?php
                 if(!isset($_GET['page'])){
                     include('./includes/students.php');
-                } else if ($_GET['page'] == "socialScolarship"){                    
-                    include('./includes/socialScolarship.php');
+                } else if ($_GET['page'] == "depa"){                    
+                    include('./includes/depa.php');
                 }
                 ?>
             </div>
