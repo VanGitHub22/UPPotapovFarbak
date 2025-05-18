@@ -20,20 +20,9 @@
         </div>
     </header>
     <main>
-        <h1>Регистрация</h1>
-        <div class="block_reg">
-            <p>Процесс только для сотрудников техникума</p>
-            <div class="line"></div>
-            <input type="text" placeholder="ФИО">
-            <input type="text" placeholder="Логин">
-            <input type="text" placeholder="Пароль">
-            <div class="checkbox">
-                <input type="checkbox">
-                <p>Вы соглашаетесь на ожидание подтверждения вашей<br> учётной записи администратором</p>      
-            </div>
-            <input type="submit" value="Зарегистрироваться">
-        </div>
-        <p>Уже есть учетная запись? <a href="#">Войти</a></p>
+        <?php
+        include('./includes/auth.php');
+        ?>
     </main>
 </body>
 </html>
