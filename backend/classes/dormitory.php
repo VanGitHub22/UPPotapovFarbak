@@ -8,17 +8,17 @@ Class Dormitory{
     public Notes;
     
     public _construct($params){
-        if(isset($params->id)) this->Id = $params->id 
+        if(isset($params->id)) $this->Id = $params->id 
         else $this ->Id = NULL;
-        if(isset($params->student_id)) this->Student_Id = $params->student_id 
+        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
         else $this ->Student_Id = NULL;
-        if(isset($params->room_id)) this->Room_Id = $params->room_id 
+        if(isset($params->room_id)) $this->Room_Id = $params->room_id 
         else $this ->Room_Id = NULL;
-        if(isset($params->checkInDate)) this->CheckInDate = $params->checkInDate 
+        if(isset($params->checkInDate)) $this->CheckInDate = $params->checkInDate 
         else $this ->CheckInDate = NULL;
-        if(isset($params->checkOutDate)) this-> CheckOutDate = $params->checkOutDate 
+        if(isset($params->checkOutDate)) $this-> CheckOutDate = $params->checkOutDate 
         else $this ->CheckOutDate = NULL;
-        if(isset($params->notes)) this-> Notes = $params->notes 
+        if(isset($params->notes)) $this-> Notes = $params->notes 
         else $this ->Notes = NULL;
     }
 

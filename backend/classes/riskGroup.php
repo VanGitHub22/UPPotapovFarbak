@@ -10,21 +10,21 @@ Class RiskGroup{
     public Notes;
     
     public _construct($params){
-        if(isset($params->id)) this->Id = $params->id 
+        if(isset($params->id)) $this->Id = $params->id 
         else $this ->Id = NULL;
-        if(isset($params->student_id)) this->Student_Id = $params->student_id 
+        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
         else $this ->Student_Id = NULL;
-        if(isset($params->type)) this->Type = $params->type 
+        if(isset($params->type)) $this->Type = $params->type 
         else $this ->Type = NULL;
-        if(isset($params->registrationDate)) this->RegistrationDate = $params->registrationDate 
+        if(isset($params->registrationDate)) $this->RegistrationDate = $params->registrationDate 
         else $this ->RegistrationDate = NULL;
-        if(isset($params->removalDate)) this-> RemovalDate = $params->removalDate 
+        if(isset($params->removalDate)) $this-> RemovalDate = $params->removalDate 
         else $this ->RemovalDate = NULL;
-        if(isset($params->reason)) this-> Reason = $params->reason 
+        if(isset($params->reason)) $this-> Reason = $params->reason 
         else $this ->Reason = NULL;
-        if(isset($params->removalReason)) this-> RemovalReason = $params->removalReason 
+        if(isset($params->removalReason)) $this-> RemovalReason = $params->removalReason 
         else $this ->RemovalReason = NULL;
-        if(isset($params->notes)) this-> Notes = $params->notes 
+        if(isset($params->notes)) $this-> Notes = $params->notes 
         else $this ->Notes = NULL;
     }
 

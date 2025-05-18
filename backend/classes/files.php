@@ -9,13 +9,13 @@ Class Files{
     public _construct($params){
         if(isset($params->id)) this->Id = $params->id 
         else $this ->Id = NULL;
-        if(isset($params->student_id)) this->Student_Id = $params->student_id 
+        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
         else $this ->Student_Id = NULL;
-        if(isset($params->file_path)) this->File_Path = $params->file_path 
+        if(isset($params->file_path)) $this->File_Path = $params->file_path 
         else $this ->File_Path = NULL;
-        if(isset($params->description)) this->Description = $params->description 
+        if(isset($params->description)) $this->Description = $params->description 
         else $this ->Description = NULL;
-        if(isset($params->status_type)) this-> Status_type = $params->status_type 
+        if(isset($params->status_type)) $this-> Status_type = $params->status_type 
         else $this ->Status_type = NULL;
     }
 

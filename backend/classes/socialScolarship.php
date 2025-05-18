@@ -7,15 +7,15 @@ Class SocialScolarship{
     public EndDate;
     
     public _construct($params){
-        if(isset($params->id)) this->Id = $params->id 
+        if(isset($params->id)) $this->Id = $params->id 
         else $this ->Id = NULL;
-        if(isset($params->student_id)) this->Student_Id = $params->student_id 
+        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
         else $this ->Student_Id = NULL;
-        if(isset($params->orderNum)) this->OrderNum = $params->orderNum 
+        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum 
         else $this ->OrderNum = NULL;
-        if(isset($params->startDate)) this->StartDate = $params->startDate 
+        if(isset($params->startDate)) $this->StartDate = $params->startDate 
         else $this ->StartDate = NULL;
-        if(isset($params->endDate)) this-> EndDate = $params->endDate 
+        if(isset($params->endDate)) $this-> EndDate = $params->endDate 
         else $this ->EndDate = NULL;
     }
 
