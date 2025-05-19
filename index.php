@@ -97,6 +97,8 @@
                     include('./includes/dorm.php');
                 } else if($_GET['page'] == "addSt"){
                     include('./includes/addSt.php');
+                } else if($_GET['page'] == "addStStat"){
+                    include('./includes/statuses/addStStat.php');
                 } 
                 ?>
             </div>

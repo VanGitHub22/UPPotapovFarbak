@@ -1,20 +1,20 @@
 <div class="addStStat">
     <?php
-    include('./nav.php');
+    include('./includes/statuses/nav.php');
     if(!isset($_GET['status'])){
-        include('./svoForm.php');
+        include('./includes/statuses/svoForm.php');
     } else if ($_GET['status'] == "dormitory") {
-        include('./dormitoryForm.php');
+        include('./includes/statuses/dormitoryForm.php');
     } else if ($_GET['status'] == "ovz") {
-        include('./ovzForm.php');
+        include('./includes/statuses/ovzsForm.php');
     } else if ($_GET['status'] == "riskGroup") {
-        include('./riskGroupForm.php');
+        include('./includes/statuses/riskGroup.php');
     } else if ($_GET['status'] == "socialScolar") {
-        include('./socialScolarForm.php');
+        include('./includes/statuses/socialScolarForm.php');
     } else if ($_GET['status'] == "sppp") {
-        include('./spppForm.php');
+        include('./includes/statuses/spppForm.php');
     } else if ($_GET['status'] == "disabled") {
-        include('./disabilitiesForm.php');
+        include('./includes/statuses/disabilitiesForm.php');
     } 
     ?>
 </div>

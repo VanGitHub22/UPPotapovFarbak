@@ -191,6 +191,24 @@ main h1 {
   align-items: center;
 }
 
+.table form{
+  margin-left: 20px !important;
+}
+
+.statNav{
+  flex-direction: row !important;
+  margin-left: 20px !important;
+  width: 40% !important;
+  align-items: center !important;
+  margin-bottom: 10px !important;
+  padding: 5px 0 5px 10px !important;
+}
+
+.statNav a{
+  text-decoration: none;
+  color: #0060ac;
+}
+
 .table table {
   width: 99%;
 }

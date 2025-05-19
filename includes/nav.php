@@ -36,9 +36,9 @@
         <p>Общежитие</p>
     </div>
     <div class="nav_link_text">
-        <a href="./index.php?page=addSt" class="nav_link <?php if(isset($_GET['page']) && $_GET['page'] == "addSt"){ ?> active <?php }; ?>">
+        <a href="./index.php?page=addSt" class="nav_link <?php if(isset($_GET['page']) && ($_GET['page'] == "addSt" || $_GET['page'] == "addStStat")){ ?> active <?php }; ?>">
             <?php 
-            if(isset($_GET['page']) && $_GET['page'] == "addSt"){ 
+            if(isset($_GET['page']) && ($_GET['page'] == "addSt" || $_GET['page'] == "addStStat")){ 
             ?>
                 <img src="./img/plus_blue.png" alt=""> 
             <?php 
