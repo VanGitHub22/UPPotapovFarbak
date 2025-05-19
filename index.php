@@ -16,6 +16,18 @@
     ?>
         <title>Отделения</title>
     <?php
+    } else if($_GET['page'] == "dorm"){
+    ?>
+        <title>Общежития</title>
+    <?php
+    } else if($_GET['page'] == "addSt"){
+    ?>
+        <title>Добавить студента</title>
+    <?php
+    } else if($_GET['page'] == "addStStat"){
+    ?>
+        <title>Добавить статус студенту</title>
+    <?php
     }
     ?>
 </head>
@@ -49,6 +61,18 @@
         ?>
         <h1>Отделения</h1>
         <?php
+        }else if ($_GET['page'] == "dorm") {
+        ?>
+        <h1>Общежития</h1>
+        <?php
+        } else if ($_GET['page'] == "addSt") {
+        ?>
+        <h1>Добавить студента</h1>
+        <?php
+        } else if ($_GET['page'] == "addStStat") {
+        ?>
+        <h1>Добавить статус cтуденту</h1>
+        <?php
         }
         ?>
         <div class="main_inner">
@@ -71,6 +95,10 @@
                     include('./includes/depa.php');
                 } else if($_GET['page'] == "dorm"){
                     include('./includes/dorm.php');
+                } else if($_GET['page'] == "addSt"){
+                    include('./includes/addSt.php');
+                } else if($_GET['page'] == "addStStat"){
+                    include('./includes/addStStat.php');
                 }
                 ?>
             </div>
