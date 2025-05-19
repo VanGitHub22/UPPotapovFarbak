@@ -1,3 +1,6 @@
+<?php
+require_once('./backend/controllers/get_student.php');
+?>
 <div class="table">
     <table>
         <thead>
@@ -20,26 +23,27 @@
         </thead>
         <tbody>
         <?php
-        $query = "SELECT * FROM `Students`";
-        $res = $mysqli->query($query);
-        while($row = mysqli_fetch_array($res)){
+        
+        $studentList = (array)get_student("get");
+        foreach($studentList as $key => $value){
+            $value1 = (array)$value
         ?>
             <tr>
-                <td><input type="text" value="<?=$row['lastName']?> <?=$row['firstName']?> <?=$row['middleName']?>"></td>
-                <td><input type="text" value="<?=$row['birthDate']?>"></td>
-                <td><input type="text" value="<?=$row['gender']?>"></td>
-                <td><input type="text" value="<?=$row['phone']?>"></td>
-                <td><input type="text" value="<?=$row['education']?>"></td>
-                <td><input type="text" value="<?=$row['department_Id']?>"></td>
-                <td><input type="text" value="<?=$row['group']?>"></td>
-                <td><input type="text" value="<?=$row['funding']?>"></td>
-                <td><input type="text" value="<?=$row['admissionYear']?>"></td>
-                <td><input type="text" value="<?=$row['graduationYear']?>"></td>
-                <td><input type="text" value="<?=$row['isExpelled']?>"></td>
-                <td><input type="text" value="<?=$row['expulsionDate']?>"></td>
-                <td><input type="text" value="<?=$row['parent_Info']?>"></td>
-                <td><input type="text" value="<?=$row['penalties']?>"></td>
-                <td><div onclick="edit(this.id)" id="<?=$row['id']?>" class="vert_dots">
+                <td><input type="text" value="<?=(string)$value1['LastName']?> <?=(string)$value1['FirstName']?> <?=(string)$value1['MiddleName']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['BirthDate']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Gender']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Phone']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Education']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Department_Id']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Group']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Funding']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['AdmissionYear']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['GraduationYear']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['IsExpelled']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['ExpulsionDate']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Parent_info']?>"></td>
+                <td><input type="text" value="<?=(string)$value1['Penalties']?>"></td>
+                <td><div onclick="edit(this.id)" id="<?=(string)$value1['Id']?>" class="vert_dots">
                     <div class="dot"></div>
                     <div class="dot"></div>
                     <div class="dot"></div>

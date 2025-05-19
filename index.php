@@ -7,7 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <?php
+    /*
     if(!isset($_GET['page'])){
     ?>
         <title>Главная</title>
@@ -28,7 +30,7 @@
     ?>
         <title>Добавить статус студенту</title>
     <?php
-    }
+    }*/
     ?>
 </head>
 <body>
@@ -52,7 +54,9 @@
         </div>
     </header>
     <main>
+        <div class="h1"></div>
         <?php
+        /*
         if(!isset($_GET['page'])){
         ?>
         <h1>Студенты</h1>
@@ -73,7 +77,7 @@
         ?>
         <h1>Добавить статус cтуденту</h1>
         <?php
-        }
+        }*/
         ?>
         <div class="main_inner">
             <?php
@@ -88,8 +92,9 @@
                     <p>*Фильтрация по клику колонки</p>
                 </div>
                 <div class="line"></div>
+                <div class="data"></div>
                 <?php
-                if(!isset($_GET['page'])){
+                /*if(!isset($_GET['page'])){
                     include('./includes/students.php');
                 } else if ($_GET['page'] == "depa"){                    
                     include('./includes/depa.php');
@@ -99,11 +104,13 @@
                     include('./includes/addSt.php');
                 } else if($_GET['page'] == "addStStat"){
                     include('./includes/statuses/addStStat.php');
-                } 
+                } */
                 ?>
             </div>
         </div>
     </main>
 </body>
 <script src="./js/index.js"></script>
+<script type="module" src="./js/get_all.js"></script>
+<script type="module" src="./js/get_student.js"></script>
 </html>

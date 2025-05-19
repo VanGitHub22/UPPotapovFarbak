@@ -1,26 +1,26 @@
 <?php
 
 class Student{
-    public Id;
-    public LastName;
-    public FirstName;
-    public MiddleName;
-    public BirthDate;
-    public Gender;
-    public Phone;
-    public Education;
-    public Department_id;
-    public Group;
-    public Funding;
-    public AdmissinYear;
-    public GraduationYear;
-    public IsExpelled;
-    public ExplusionDate;
-    public Parent_info;
-    public Penalties;
-    public Notes;
+    public $Id;
+    public $LastName;
+    public $FirstName;
+    public $MiddleName;
+    public $BirthDate;
+    public $Gender;
+    public $Phone;
+    public $Education;
+    public $Department_id;
+    public $Group;
+    public $Funding;
+    public $AdmissinYear;
+    public $GraduationYear;
+    public $IsExpelled;
+    public $ExplusionDate;
+    public $Parent_info;
+    public $Penalties;
+    public $Notes;
     
-    public __construct($params){
+    function __construct($params) {
         if(isset($params->id)) $this->Id = $params->id;
         if(isset($params->lastName)) $this->LastName = $params->lastName;
         else $this->LastName = NULL;
@@ -36,8 +36,8 @@ class Student{
         else $this->Phone = NULL;
         if(isset($params->education)) $this->Education = $params->education;
         else $this->Education = NULL;
-        if(isset($params->department_id)) $this->Department_id = $params->department_id;
-        else $this->Department_id = NULL;
+        if(isset($params->department_Id)) $this->Department_Id = $params->department_Id;
+        else $this->Department_Id = NULL;
         if(isset($params->group)) $this->Group = $params->group;
         else $this->Group = NULL;
         if(isset($params->funding)) $this->Funding = $params->funding;
@@ -48,8 +48,8 @@ class Student{
         else $this->GraduationYear = NULL;
         if(isset($params->isExpelled)) $this->IsExpelled = $params->isExpelled;
         else $this->IsExpelled = NULL;
-        if(isset($params->explusionDate)) $this->ExplusionDate = $params->explusionDate;
-        else $this->ExplusionDate = NULL;
+        if(isset($params->expulsionDate)) $this->ExpulsionDate = $params->expulsionDate;
+        else $this->ExpulsionDate = NULL;
         if(isset($params->parent_info)) $this->Parent_info = $params->parent_info;
         else $this->Parent_info = NULL;
         if(isset($params->penalties)) $this->Penalties = $params->penalties;
@@ -68,6 +68,7 @@ class Student{
             $newStudent = new Student((object)$row);
             array_push($students, $newStudent);
         }
+        return $students;
         
     }
     

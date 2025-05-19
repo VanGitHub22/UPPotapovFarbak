@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>ФИО</td>
+            </tr>
+        </table>
+
+        <script>
+            LoadStudents();
+            function LoadStudents() {
+                let params = new FormData();
+                params.append("action", "get");
+
+                $.ajax({
+                    url: "./backend/controllers/get_student.php",
+                    type: "POST",
+                    data: params,
+                    cache : false,
+                    processData: false,
+                    contentType: false,
+                    success: function(_data) {
+                        let Students = JSON.parse(_data);
+                        Students.forEach((Studnet) => {
+                            $("table").append(`<tr><td>${Studnet.LastName}</td></tr>`);
+                        });
+                    },
+                    error: function(error) {
+                        console.log("Ошибка запроса");
+                    }
+
+                });
+                const urlParams = new URLSearchParams(window.location.search);
+                const paramss = {};
+                for (const [key, value] of urlParams.entries()) {
+                    paramss[key] = value;
+                }
+
+                console.log(paramss); // { name: "John", age: "25" }
+            }
+        </script>
+    </body>
+</html>
