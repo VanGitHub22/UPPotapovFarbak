@@ -14,11 +14,15 @@
         </table>
 
         <script>
-            LoadStudents();
-            function LoadStudents() {
+            function edit(){
+                let 
+            }
+
+            LoadStudents()
+            function LoadStudents(){
                 let params = new FormData();
                 params.append("action", "get");
-
+    
                 $.ajax({
                     url: "./backend/controllers/get_student.php",
                     type: "POST",
@@ -27,23 +31,64 @@
                     processData: false,
                     contentType: false,
                     success: function(_data) {
+                        document.title = "Студенты"
                         let Students = JSON.parse(_data);
+                        $(".h1").append(`
+                            <h1>Студенты</h1>    
+                        `)
+                        $(".data").append(`
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Фио</td>
+                                        <td>Дата <br>рождения</td>
+                                        <td>Пол</td>
+                                        <td>Телефон</td>
+                                        <td>Образование</td>
+                                        <td>Отделение</td>
+                                        <td>Группа</td>
+                                        <td>Оплата</td>
+                                        <td>Даты <br>Поступления</td>
+                                        <td>Даты <br>Выпуска</td>
+                                        <td>Исключен</td>
+                                        <td>Дата</td>
+                                        <td>Родитель</td>
+                                        <td>Взыскания</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                </tbody>
+                            </table>
+                        `)
                         Students.forEach((Studnet) => {
-                            $("table").append(`<tr><td>${Studnet.LastName}</td></tr>`);
+                            $("tbody").append(`
+                                <tr>
+                                    <td><input type='text' name='lastName' value='${Studnet.LastName}'></td>
+                                    <td><input type='text' name='firstName' value='${Studnet.FirstName}'></td>
+                                    <td><input type='text' name='middleName' value='${Studnet.MiddleName}'></td>
+                                    <td><input type='text' name='birthDay' value='${Studnet.BirthDate}'></td>
+                                    <td><input type="text" name='gender' value='${Studnet.Gender}'></td>
+                                    <td><input type="text" name='phone' value='${Studnet.Phone}'></td>
+                                    <td><input type="text" name='education' value='${Studnet.Education}'></td>
+                                    <td><input type="text" name='department_id' value='${Studnet.Department_Id}'></td>
+                                    <td><input type="text" name='group' value='${Studnet.Group}'></td>
+                                    <td><input type="text" name='funding' value='${Studnet.Funding}'></td>
+                                    <td><input type="text" name='admissionYear' value='${Studnet.AdmissionYear}'></td>
+                                    <td><input type="text" name='GraduationYear' value='${Studnet.GraduationYear}'></td>
+                                    <td><input type="text" name='isExpelled' value='${Studnet.IsExpelled}'></td>
+                                    <td><input type="text" name='expulsionDate' value='${Studnet.ExpulsionDate}'></td>
+                                    <td><input type="text" name='parent_info' value='${Studnet.Parent_info}'></td>
+                                    <td><input type="text" name='penalties' value='${Studnet.Penalties}'></td>
+                                    <td><input type="button" id="${Studnet.Id}" onclick="edit()" value='Изменить'></td>
+                                </tr>
+                            `);
                         });
                     },
                     error: function(error) {
                         console.log("Ошибка запроса");
                     }
-
                 });
-                const urlParams = new URLSearchParams(window.location.search);
-                const paramss = {};
-                for (const [key, value] of urlParams.entries()) {
-                    paramss[key] = value;
-                }
-
-                console.log(paramss); // { name: "John", age: "25" }
             }
         </script>
     </body>
