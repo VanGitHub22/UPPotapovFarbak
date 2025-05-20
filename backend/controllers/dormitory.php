@@ -20,7 +20,12 @@
         $result = $dorm->Insert();
     } else if ($action == "edit"){
         $id = $_POST['id'];
-        $name = $_POST['name'];
+        $student_id = $_POST['student_id'];
+        $room_id = $_POST['room_id'];
+        $orderNum = $_POST['orderNum'];
+        $checkInDate = $_POST['checkInDate'];
+        $checkOutDate = $_POST['checkOutDate'];
+        $notes = $_POST['notes'];
 
         $dorm = new Dormitory($id, $student_id, $room_id, $orderNum, $checkInDate, $checkOutDate, $notes);
 
