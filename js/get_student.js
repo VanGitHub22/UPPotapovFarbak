@@ -41,23 +41,23 @@ function LoadStudents() {
                     </tbody>
                 </table>
             `)
-            Students.forEach((Studnet) => {
+            Students.forEach((Student) => {
                 $("tbody").append(`
                     <tr>
-                        <td><input type='text' value='${Studnet.LastName} ${Studnet.FirstName} ${Studnet.MiddleName}' readonly></td>
-                        <td><input type='text' value='${Studnet.BirthDate}' readonly></td>
-                        <td><input type="text" value='${Studnet.Gender}' readonly></td>
-                        <td><input type="text" value='${Studnet.Phone}' readonly></td>
-                        <td><input type="text" value='${Studnet.Education}' readonly></td>
-                        <td><input type="text" value='${Studnet.Department_Id}' readonly></td>
-                        <td><input type="text" value='${Studnet.Group}' readonly></td>
-                        <td><input type="text" value='${Studnet.Funding}' readonly></td>
-                        <td><input type="text" value='${Studnet.AdmissionYear}' readonly></td>
-                        <td><input type="text" value='${Studnet.GraduationYear}' readonly></td>
-                        <td><input type="text" value='${Studnet.IsExpelled}' readonly></td>
-                        <td><input type="text" value='${Studnet.ExpulsionDate}' readonly></td>
-                        <td><input type="text" value='${Studnet.Parent_info}' readonly></td>
-                        <td><input type="text" value='${Studnet.Penalties}' readonly></td>
+                        <td><input type='text' value='${Student.LastName} ${Student.FirstName} ${Student.MiddleName}' readonly></td>
+                        <td><input type='text' value='${Student.BirthDate}' readonly></td>
+                        <td><input type="text" value='${Student.Gender}' readonly></td>
+                        <td><input type="text" value='${Student.Phone}' readonly></td>
+                        <td><input type="text" value='${Student.Education}' readonly></td>
+                        <td><input type="text" value='${Student.Department_Id}' readonly></td>
+                        <td><input type="text" value='${Student.Group}' readonly></td>
+                        <td><input type="text" value='${Student.Funding}' readonly></td>
+                        <td><input type="text" value='${Student.AdmissionYear}' readonly></td>
+                        <td><input type="text" value='${Student.GraduationYear}' readonly></td>
+                        <td><input type="text" value='${Student.IsExpelled}' readonly></td>
+                        <td><input type="text" value='${Student.ExpulsionDate}' readonly></td>
+                        <td><input type="text" value='${Student.Parent_info}' readonly></td>
+                        <td><input type="text" value='${Student.Penalties}' readonly></td>
                         <td><div onclick="edit(this.id)" id='${Studnet.Id}' class="vert_dots">
                             <div class="dot"></div>
                             <div class="dot"></div>

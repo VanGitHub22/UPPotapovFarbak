@@ -4,8 +4,10 @@
 
     $action = $_POST["action"];
 
+    $Response = array();
+
     if($action == "get"){
-        echo json_encode(Department::Get());
+        $Response["Departments"] = Department::Get();
     } else if ($action == "add") {
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -25,5 +27,9 @@
         $id = $_POST['id'];
         $department = new Department($id);
         $result = $department->Delete();
+    }else{
+        $response["error"] = "не указан action для контроллера";
     }
+
+    echo json_encode($Response);
 ?>
