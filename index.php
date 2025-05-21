@@ -110,7 +110,8 @@
         </div>
     </main>
 </body>
-<script src="./js/index.js"></script>
+<!-- <script src="./js/index.js"></script>
 <script type="module" src="./js/get_all.js"></script>
-<script type="module" src="./js/get_student.js"></script>
+<script type="module" src="./js/edit_student.js"></script>-->
+<script type="module" src="./js/get_student.js"></script> 
 </html>

@@ -1,24 +1,24 @@
 <?php
 
 class Student{
-    public $Id;
-    public $LastName;
-    public $FirstName;
-    public $MiddleName;
-    public $BirthDate;
-    public $Gender;
-    public $Phone;
-    public $Education;
-    public $Department_id;
-    public $Group;
-    public $Funding;
-    public $AdmissinYear;
-    public $GraduationYear;
-    public $IsExpelled;
-    public $ExplusionDate;
-    public $Parent_info;
-    public $Penalties;
-    public $Notes;
+    public static $Id;
+    public static $LastName;
+    public static $FirstName;
+    public static $MiddleName;
+    public static $BirthDate;
+    public static $Gender;
+    public static $Phone;
+    public static $Education;
+    public static $Department_id;
+    public static $Group;
+    public static $Funding;
+    public static $AdmissinYear;
+    public static $GraduationYear;
+    public static $IsExpelled;
+    public static $ExplusionDate;
+    public static $Parent_info;
+    public static $Penalties;
+    public static $Notes;
     
     function __construct($params) {
         if(isset($params->id)) $this->Id = $params->id;
@@ -58,18 +58,28 @@ class Student{
         else $this->Notes = NULL;
     }
     
-    public static function Get(){
+public static function Get() {
+    global $mysqli;
+    $students = [];
+
+    $query = "SELECT * FROM `Students`";
+    $res = $mysqli->query($query);
+    while ($row = $res->fetch_assoc()) {
+        $students[] = new Student((object)$row);
+    }
+    return $students;
+}
+
+    public static function GetById($id){
         global $mysqli;
         $students = [];
-        
-        $query = "SELECT * FROM `Students`";
+        $query = "SELECT * FROM `Students` WHERE `id`='$id'";
         $res = $mysqli->query($query);
         while($row = mysqli_fetch_array($res)){
             $newStudent = new Student((object)$row);
             array_push($students, $newStudent);
         }
-        return $students;
-        
+        return $students;  
     }
     
     public static function Update(){

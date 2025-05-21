@@ -1,11 +1,19 @@
 <?php
     include '../../connection/connection.php';
     include('../classes/student.php');
+    
+    //header('Content-Type: application/json');
+    //$data = json_decode(file_get_contents("php://input"),true);
 
     $action = $_POST["action"];
-
     if($action == "get"){
         echo json_encode(Student::Get());
+    } else if ($action == "getEdit"){
+        $id = $_POST['id'];
+        $student = Student::GetById($id);
+        echo json_encode($student);
+        /*$student = new Student($id);
+        echo json_encode($student->GetById());*/
     } else if ($action == "add") {
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -51,7 +59,7 @@
 
         $student = new Student($id, $lastName, $firstName, $middleName, $birthDay, $gender, $phone, $education, $department_Id, $group, $funding, $admissionYear, $graduationYear, $isExpelled, $expulsionDate, $parent_info, $penalties);
 
-        $result = $student->Edit();
+        $result = $student->Update();
         
     } else if ($action == "delete"){
         $id = $_POST['id'];
