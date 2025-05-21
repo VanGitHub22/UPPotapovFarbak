@@ -82,13 +82,33 @@ public static function Get() {
         return $students;  
     }
     
-    public static function Update(){
+    /* нужно ли запихивать данные в   сам upd */
+
+    public function Update(){
         global $mysqli;
-        $query = "UPDATE `Students` SET `lastName`='$this->LastName', `firstName`='$this->FirstName', `middleName`='$this->MiddleName', `birthDate`='$this->BirthDate', `gender`='$this->Gender', `phone`='$this->Phone', `education`='$this->Education', `department_id`=$this->Department_id, `group`='$this->Group', `funding`='$this->Funding', `admissionYear`='$this->AdmissionYear', `graduationYear`='$this->GraduationYear', `isExpelled`='$this->IsExpelled', `explusionDate`='$this->ExplusionDate', `parent_Info`='$this->Parent_info', `penalties`='$this->Penalties', `notes`='$this->Notes' WHERE `id`=$this->Id";
+        $query = "UPDATE `Students` 
+            SET `lastName`='$this->LastName', 
+                `firstName`='$this->FirstName', 
+                `middleName`='$this->MiddleName', 
+                `birthDate`='$this->BirthDate', 
+                `gender`='$this->Gender', 
+                `phone`='$this->Phone', 
+                `education`='$this->Education', 
+                `department_id`=$this->Department_id, 
+                `group`='$this->Group', 
+                `funding`='$this->Funding', 
+                `admissionYear`='$this->AdmissionYear', 
+                `graduationYear`='$this->GraduationYear', 
+                `isExpelled`='$this->IsExpelled', 
+                `explusionDate`='$this->ExplusionDate', 
+                `parent_Info`='$this->Parent_info', 
+                `penalties`='$this->Penalties', 
+                `notes`='$this->Notes' 
+            WHERE `id`=$this->Id";
         $mysqli->query($query);
     } 
     
-    public static function Delete(){
+    public static function Delete(){ /*??? может ли он быть стратичным? */
         global $mysqli;
         $query = "DELETE FROM `Students` WHERE `id`=$this->Id";
         $mysqli->query($query);
