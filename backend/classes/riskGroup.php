@@ -11,24 +11,24 @@ Class RiskGroup{
     public $Notes;
     
     public _construct($params){
-        if(isset($params->id)) $this->$Id = $params->id 
-        else $this ->$Id = NULL;
-        if(isset($params->student_id)) $this->$Student_Id = $params->student_id 
-        else $this ->$Student_Id = NULL;
-        if(isset($params->orderNum)) $this->$OrderNum = $params->orderNum 
-        else $this ->$OrderNum = NULL;
-        if(isset($params->type)) $this->$Type = $params->type 
-        else $this ->$Type = NULL;
-        if(isset($params->registrationDate)) $this->$RegistrationDate = $params->registrationDate 
-        else $this ->$RegistrationDate = NULL;
-        if(isset($params->removalDate)) $this-> $RemovalDate = $params->removalDate 
-        else $this ->$RemovalDate = NULL;
-        if(isset($params->reason)) $this-> $Reason = $params->reason 
-        else $this ->$Reason = NULL;
-        if(isset($params->removalReason)) $this-> $RemovalReason = $params->removalReason 
-        else $this ->$RemovalReason = NULL;
-        if(isset($params->notes)) $this-> $Notes = $params->notes 
-        else $this ->$Notes = NULL;
+        if(isset($params->id)) $this->Id = $params->id 
+        else $this ->Id = NULL;
+        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
+        else $this ->Student_Id = NULL;
+        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum 
+        else $this ->OrderNum = NULL;
+        if(isset($params->type)) $this->Type = $params->type 
+        else $this ->Type = NULL;
+        if(isset($params->registrationDate)) $this->RegistrationDate = $params->registrationDate 
+        else $this ->RegistrationDate = NULL;
+        if(isset($params->removalDate)) $this-> RemovalDate = $params->removalDate 
+        else $this ->RemovalDate = NULL;
+        if(isset($params->reason)) $this-> Reason = $params->reason 
+        else $this ->Reason = NULL;
+        if(isset($params->removalReason)) $this-> RemovalReason = $params->removalReason 
+        else $this ->RemovalReason = NULL;
+        if(isset($params->notes)) $this-> Notes = $params->notes 
+        else $this ->Notes = NULL;
     }
 
     public static function Get(){
@@ -43,21 +43,21 @@ Class RiskGroup{
         }
     }
 
-    public static function Update(){
+    public function Update(){
         global $mysqli;
-        $query = "UPDATE `RiskGroup` SET `student_id`='$this->$Student_Id',`orderNum`='$this->$OrderNum', `type`='$this->$Type', `registrationDate`='$this->$RegistrationDate',`removalDate`='$this->$RemovalDate',`reason`='$this->$Reason', `removalReason`='$this->$RemovalReason', `notes`='$this->$Notes'";
+        $query = "UPDATE `RiskGroup` SET `student_id`='$this->Student_Id',`orderNum`='$this->OrderNum', `type`='$this->Type', `registrationDate`='$this->RegistrationDate',`removalDate`='$this->RemovalDate',`reason`='$this->Reason', `removalReason`='$this->RemovalReason', `notes`='$this->Notes'";
         $mysqli->query($query);
     }
 
-    public static function Delete(){
+    public function Delete(){
         global $mysqli;
-        $query = "DELETE FROM `RiskGroup` WHERE `id`=$this->$Id";
+        $query = "DELETE FROM `RiskGroup` WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 
-    public static function Insert(){
+    public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `RiskGroup`(`student_id`,`orderNum`,`type`,`registrationDate`,`removalDate`,`reason`, `removalReason`,`notes`) VALUES('$this->$Student_Id','$this->$OrderNum','$this->$Type','$this->$RegistrationDate','$this->$RemovalDate','$this->$Reason', '$this->$RemovalReason', '$this->$Notes') WHERE `id`=$this->$Id";
+        $query = "INSERT INTO `RiskGroup`(`student_id`,`orderNum`,`type`,`registrationDate`,`removalDate`,`reason`, `removalReason`,`notes`) VALUES('$this->Student_Id','$this->OrderNum','$this->Type','$this->RegistrationDate','$this->RemovalDate','$this->Reason', '$this->RemovalReason', '$this->Notes') WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 }
