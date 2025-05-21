@@ -40,7 +40,7 @@ Class OVZS{
         $mysqli->query($query);
 }
 
-public function Delete(){
+    public function Delete(){
         global $mysqli;
         $query = "DELETE FROM `OVZS` WHERE `id`=$this->Id";
         $mysqli->query($query);
