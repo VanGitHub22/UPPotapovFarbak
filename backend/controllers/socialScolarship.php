@@ -7,13 +7,8 @@
     if($action == "get"){
         echo json_encode(SocialScolarship::Get());
     } else if ($action == "add") {
-        $id = $_POST['id'];
-        $student_id = $_POST['student_id'];
-        $orderNum = $_POST['orderNum'];
-        $startDate = $_POST['startDate'];
-        $endDate = $_POST['endDate'];
 
-        $scolar = new SocialScolarship($id, $student_id, $orderNum, $type, $startDate, $endDate);
+        $scolar = new SocialScolarship((object)$_POST);
 
         $result = $scolar->Insert();
     } else if ($action == "delete"){
