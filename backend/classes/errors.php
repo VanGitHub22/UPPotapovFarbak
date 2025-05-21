@@ -1,10 +1,10 @@
 <?php
 
 class Errors{
-    public Id;
-    public ErrorMessage;
-    public TimeError;
-    public Details;
+    public $Id;
+    public $ErrorMessage;
+    public $TimeError;
+    public $Details;
     
     public __construct($params){
         if(isset($params->id)) $this->Id = $params->id;
