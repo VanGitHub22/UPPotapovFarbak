@@ -49,7 +49,7 @@
             }
             ?>
         </a>
-        <p>Добавить студента</p>
+        <p>Добавить<br> студента</p>
     </div>
 
     <a href="./addSt.php" class="nav_link"><img src="./img/department_white.png" alt=""></a>
