@@ -1,13 +1,13 @@
 <?php
 
 class Department{
-    public Id;
-    public Name;
+    public $Id;
+    public $Name;
     
     public __construct($params){
-        if(isset($params->id)) $this->Id = $params->id;
-        if(isset($params->name)) $this->Name = $params->name;
-        else $this->Name = NULL;
+        if(isset($params->id)) $this->$Id = $params->id;
+        if(isset($params->name)) $this->$Name = $params->name;
+        else $this->$Name = NULL;
     }
     
     public static function Get(){
@@ -25,19 +25,19 @@ class Department{
     
     public static function Update(){
         global $mysqli;
-        $query = "UPDATE `Departments` SET `Name`='$this->Name' WHERE `id`=$this->Id";
+        $query = "UPDATE `Departments` SET `Name`='$this->$Name' WHERE `id`=$this->$Id";
         $mysqli->query($query);
     } 
     
     public static function Delete(){
         global $mysqli;
-        $query = "DELETE FROM `Departments` WHERE `id`=$this->Id";
+        $query = "DELETE FROM `Departments` WHERE `id`=$this->$Id";
         $mysqli->query($query);
     }
     
     public static function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Departments`(`Name`) VALUES('$this->Name')";
+        $query = "INSERT INTO `Departments`(`Name`) VALUES('$this->$Name')";
         $mysqli->query($query);
     }
     
