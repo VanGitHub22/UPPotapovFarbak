@@ -1,9 +1,9 @@
 <?php
 
 class Rooms{
-    public Id;
-    public Name;
-    public Capacity;
+    public $Id;
+    public $Name;
+    public $Capacity;
     
     public __construct($params){
         if(isset($params->id)) $this->Id = $params->id;
