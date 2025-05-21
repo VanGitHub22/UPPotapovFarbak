@@ -37,21 +37,21 @@ Class Dormitory{
         }
     }
 
-    public static function Update(){
+    public function Update(){
         global $mysqli;
-        $query = "UPDATE `Dormitory` SET `id`='$this->$Id', `student_id`='$this->$Student_Id', `room_id`='$this->$Room_Id', `orderNum`='$this->$OrderNum', `checkInDate`='$this->$CheckInDate',`checkOutDate`='$this->$CheckOutDate', `notes`='$this->$Notes'";
+        $query = "UPDATE `Dormitory` SET `id`='$this->Id', `student_id`='$this->Student_Id', `room_id`='$this->Room_Id', `orderNum`='$this->OrderNum', `checkInDate`='$this->CheckInDate',`checkOutDate`='$this->CheckOutDate', `notes`='$this->Notes'";
         $mysqli->query($query);
     }
 
-    public static function Delete(){
+    public function Delete(){
         global $mysqli;
-        $query = "DELETE FROM `Dormitory` WHERE `id`=$this->$Id";
+        $query = "DELETE FROM `Dormitory` WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 
-    public static function Insert(){
+    public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Dormitory`(`student_id`,`room_id`,`orderNum`,`checkInDate`,`checkOutDate`, `notes`) VALUES('$this->$Student_Id','$this->$Room_Id','$this->$OrderNum','$this->$CheckInDate','$this->$CheckOutDate','$this->$Notes') WHERE `id`=$this->$Id";
+        $query = "INSERT INTO `Dormitory`(`student_id`,`room_id`,`orderNum`,`checkInDate`,`checkOutDate`, `notes`) VALUES('$this->Student_Id','$this->Room_Id','$this->OrderNum','$this->CheckInDate','$this->CheckOutDate','$this->Notes') WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 }
