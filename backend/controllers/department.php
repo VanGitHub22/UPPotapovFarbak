@@ -7,23 +7,20 @@
     if($action == "get"){
         echo json_encode(Department::Get());
     } else if ($action == "add") {
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-
-        $department = new Department($id, $name);
+        $department = new Department((object)$_POST);
 
         $result = $department->Insert();
     } else if ($action == "edit"){
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-
-        $department = new Department($id, $name);
+        $department = new Department((object)$_POST);
 
         $result = $department->Update();
+        echo json_encode($result);
         
     } else if ($action == "delete"){
         $id = $_POST['id'];
-        $department = new Department($id);
+        $department = new Department((object)$_POST);
+        
         $result = $department->Delete();
+        echo json_encode($result);
     }
 ?>
