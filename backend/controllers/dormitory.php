@@ -16,10 +16,13 @@
         $dorm = new Dormitory((object)$_POST);
 
         $result = $dorm->Update();
+        echo json_encode($result);
         
     } else if ($action == "delete"){
         $id = $_POST['id'];
-        $dorm = new Dormitory($id);
+        $dorm = new Dormitory((object)$_POST);
+        
         $result = $dorm->Delete();
+        echo json_encode($result);
     }
 ?>

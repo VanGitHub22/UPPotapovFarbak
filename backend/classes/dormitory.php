@@ -8,7 +8,7 @@ Class Dormitory{
     public $CheckOutDate;
     public $Notes;
     
-    public _construct($params){
+    public __construct($params){
         if(isset($params->id)) $this->Id = $params->id 
         else $this ->Id = NULL;
         if(isset($params->student_id)) $this->Student_Id = $params->student_id 
@@ -35,6 +35,8 @@ Class Dormitory{
             $newDorms = new Dormitory((object) $row);
             array_push($dorms, $newDorms);
         }
+
+        return $dorms;
     }
 
     public function Update(){
