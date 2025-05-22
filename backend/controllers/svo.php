@@ -7,13 +7,8 @@
     if($action == "get"){
         echo json_encode(Svo::Get());
     } else if ($action == "add") {
-        $id = $_POST['id'];
-        $student_id = $_POST['student_id'];
-        $orderNum = $_POST['orderNum'];
-        $startDate = $_POST['startDate'];
-        $endDate = $_POST['endDate'];
 
-        $svos = new Svo($id, $student_id, $orderNum, $startDate, $endDate);
+        $svos = new Svo((object)$_POST);
 
         $result = $svos->Insert();
     } else if ($action == "delete"){

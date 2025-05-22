@@ -8,15 +8,15 @@ class Svo{
     public $EndDate;
     
     public __construct($params){
-        if(isset($params->id)) $this->$Id = $params->id;
-        if(isset($params->student_id)) $this->$Student_id = $params->student_id;
-        else $this->$Student_id = NULL;
-        if(isset($params->orderNum)) $this->$OrderNum = $params->orderNum;
-        else $this->$OrderNum = NULL;
-        if(isset($params->startDate)) $this->$StartDate = $params->startDate;
-        else $this->$StartDate = NULL;
-        if(isset($params->endDate)) $this->$EndDate = $params->endDate;
-        else $this->$EndDate = NULL;
+        if(isset($params->id)) $this->Id = $params->id;
+        if(isset($params->student_id)) $this->Student_id = $params->student_id;
+        else $this->Student_id = NULL;
+        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum;
+        else $this->OrderNum = NULL;
+        if(isset($params->startDate)) $this->StartDate = $params->startDate;
+        else $this->StartDate = NULL;
+        if(isset($params->endDate)) $this->EndDate = $params->endDate;
+        else $this->EndDate = NULL;
     }
     
     public static function Get(){
@@ -32,21 +32,21 @@ class Svo{
         
     }
     
-    public static function Update(){
+    public function Update(){
         global $mysqli;
-        $query = "UPDATE `SVO` SET `student_id`='$this->$Student_id', `orderNum`=$this->$OrderNum, `startDate`='$this->$StartDate', `endDate`='$this->$EndDate' WHERE `id`=$this->$Id";
+        $query = "UPDATE `SVO` SET `student_id`='$this->Student_id', `orderNum`=$this->OrderNum, `startDate`='$this->StartDate', `endDate`='$this->EndDate' WHERE `id`=$this->Id";
         $mysqli->query($query);
     } 
     
-    public static function Delete(){
+    public function Delete(){
         global $mysqli;
-        $query = "DELETE FROM `SVO` WHERE `id`=$this->$Id";
+        $query = "DELETE FROM `SVO` WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
     
-    public static function Insert(){
+    public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `SVO`(`student_id`, `orderNum`, `startDate`, `endDate`) VALUES('$this->$Student_id', '$this->$OrderNum', '$this->$StartDate', '$this->$EndDate')";
+        $query = "INSERT INTO `SVO`(`student_id`, `orderNum`, `startDate`, `endDate`) VALUES('$this->Student_id', $this->OrderNum', '$this->StartDate', '$this->EndDate')";
         $mysqli->query($query);
     }
     

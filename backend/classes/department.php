@@ -5,8 +5,8 @@ class Department{
     public $Name;
     
     public __construct($params){
-        if(isset($params->id)) $this->$Id = $params->id;
-        if(isset($params->name)) $this->$Name = $params->name;
+        if(isset($params->id)) $this->Id = $params->id;
+        if(isset($params->name)) $this->Name = $params->name;
         else $this->$Name = NULL;
     }
     
@@ -20,24 +20,23 @@ class Department{
             $newDep = new Department((object)$row);
             array_push($departments, $newDep);
         }
-        
     }
     
-    public static function Update(){
+    public function Update(){
         global $mysqli;
-        $query = "UPDATE `Departments` SET `Name`='$this->$Name' WHERE `id`=$this->$Id";
+        $query = "UPDATE `Departments` SET `Name`='$this->Name' WHERE `id`=$this->Id "; 
         $mysqli->query($query);
     } 
     
-    public static function Delete(){
+    public function Delete(){
         global $mysqli;
-        $query = "DELETE FROM `Departments` WHERE `id`=$this->$Id";
+        $query = "DELETE FROM `Departments` WHERE `id`= $this->Id";
         $mysqli->query($query);
     }
     
-    public static function Insert(){
+    public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Departments`(`Name`) VALUES('$this->$Name')";
+        $query = "INSERT INTO `Departments`(`Name`) VALUES('$this->Name') WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
     

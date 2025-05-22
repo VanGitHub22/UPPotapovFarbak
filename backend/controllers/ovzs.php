@@ -7,14 +7,8 @@
     if($action == "get"){
         echo json_encode(OVZS::Get());
     } else if ($action == "add") {
-        $id = $_POST['id'];
-        $student_id = $_POST['student_id'];
-        $orderNum = $_POST['orderNum'];
-        $startDate = $_POST['startDate'];
-        $endDate = $_POST['endDate'];
-        $notes = $_POST['notes'];
 
-        $ovz = new OVZS($id, $student_id, $orderNum, $startDate, $endDate, $notes);
+        $ovz = new OVZS((object)$_POST);
 
         $result = $ovz->Insert();
     } else if ($action == "delete"){

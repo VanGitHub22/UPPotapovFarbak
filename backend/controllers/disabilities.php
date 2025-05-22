@@ -8,7 +8,7 @@
         echo json_encode(DisabledSt::Get());
     } else if ($action == "add") {
 
-        $dis = new DisabledSt($_POST);
+        $dis = new DisabledSt((object)$_POST);
 
         $result = $dis->Insert();
     } else if ($action == "delete"){
