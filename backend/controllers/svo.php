@@ -5,7 +5,8 @@
     $action = $_POST["action"];
 
     if($action == "get"){
-        echo json_encode(Svo::Get());
+        $id = $_POST['id'];
+        echo json_encode(Svo::Get($id));
     } else if ($action == "add") {
 
         $svos = new Svo((object)$_POST);

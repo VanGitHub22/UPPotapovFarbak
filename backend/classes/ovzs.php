@@ -7,31 +7,32 @@ Class OVZS{
     public $EndDate;
     public $Notes;
     
-    public _construct($params){
-        if(isset($params->id)) $this->Id = $params->id 
-        else $this ->Id = NULL;
-        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
-        else $this ->Student_Id = NULL;
-        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum 
-        else $this ->OrderNum = NULL;
-        if(isset($params->startDate)) $this->StartDate = $params->startDate 
-        else $this ->StartDate = NULL;
-        if(isset($params->endDate)) $this-> EndDate = $params->endDate 
-        else $this ->EndDate = NULL;
-        if(isset($params->notes)) $this-> Notes = $params->notes 
-        else $this ->Notes = NULL;
+    function _construct($params){
+        if(isset($params->id)) $this->Id = $params->id;
+        else $this->Id = NULL;
+        if(isset($params->student_id)) $this->Student_Id = $params->student_id;
+        else $this->Student_Id = NULL;
+        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum;
+        else $this->OrderNum = NULL;
+        if(isset($params->startDate)) $this->StartDate = $params->startDate;
+        else $this->StartDate = NULL;
+        if(isset($params->endDate)) $this->EndDate = $params->endDate;
+        else $this->EndDate = NULL;
+        if(isset($params->notes)) $this->Notes = $params->notes;
+        else $this->Notes = NULL;
     }
 
-    public static function Get(){
+    public static function Get($st_id){
         global $mysqli;
-        $files = [];
+        $ovzs = [];
 
-        $query = "SELECT * FROM `OVZS`";
+        $query = "SELECT * FROM `OVZS` WHERE `student_id`=$st_id";
         $res = $mysqli ->query($query);
         while($row = mysqli_fetch_array($res)){
-            $newFiles = new OVZS((object) $row);
-            array_push($files, $newFiles);
+            $newFiles = new OVZS((object)$row);
+            array_push($ovzs, $newFiles);
         }
+        return $ovzs;
     }
 
     public function Update(){

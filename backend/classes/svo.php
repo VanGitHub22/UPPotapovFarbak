@@ -7,8 +7,8 @@ class Svo{
     public $StartDate;
     public $EndDate;
     
-    public __construct($params){
-        if(isset($params->id)) $this->Id = $params->id;
+    function __construct($params){
+        if(isset($params->Id)) $this->Id = $params->Id;
         if(isset($params->student_id)) $this->Student_id = $params->student_id;
         else $this->Student_id = NULL;
         if(isset($params->orderNum)) $this->OrderNum = $params->orderNum;
@@ -19,17 +19,17 @@ class Svo{
         else $this->EndDate = NULL;
     }
     
-    public static function Get(){
+    public static function Get($st_id){
         global $mysqli;
         $svo = [];
         
-        $query = "SELECT * FROM `SVO`";
+        $query = "SELECT * FROM `SVO` WHERE `student_id`=$st_id";
         $res = $mysqli->query($query);
         while($row = mysqli_fetch_array($res)){
             $newSvo = new Svo((object)$row);
             array_push($svo, $newSvo);
         }
-        
+        return $svo;
     }
     
     public function Update(){

@@ -3,7 +3,7 @@
 class SPPP{
     public $Id;
     public $Student_id;
-    public $OrderNum
+    public $OrderNum;
     public $DateSppp;
     public $Reason;
     public $AttendedStaff;
@@ -11,13 +11,13 @@ class SPPP{
     public $Decision;
     public $Notes;
     
-    public __construct($params){
+    function __construct($params){
         if(isset($params->id)) $this->Id = $params->id;
         if(isset($params->student_id)) $this->Student_id = $params->student_id;
         else $this->Student_id = NULL;
         if(isset($params->orderNum)) $this->OrderNum = $params->orderNum;
         else $this->OrderNum = NULL;
-        if(issetS($params->dateSppp)) $this->DateSppp = $params->dateSppp;
+        if(isset($params->dateSppp)) $this->DateSppp = $params->dateSppp;
         else $this->DateSppp = NULL;
         if(isset($params->reason)) $this->Reason = $params->reason;
         else $this->Reason = NULL;
@@ -31,17 +31,17 @@ class SPPP{
         else $this->Notes = NULL;
     }
     
-    public static function Get(){
+    public static function Get($st_id){
         global $mysqli;
         $sppp = [];
         
-        $query = "SELECT * FROM `SPPP`";
+        $query = "SELECT * FROM `SPPP` WHERE `student_id`=$st_id";
         $res = $mysqli->query($query);
         while($row = mysqli_fetch_array($res)){
             $newSppp = new SPPP((object)$row);
             array_push($sppp, $newSppp);
         }
-        
+        return $sppp;
     }
     
     public function Update(){

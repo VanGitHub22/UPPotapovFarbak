@@ -98,6 +98,13 @@ main h1 {
   background: #0060ac;
   padding: 5px;
   border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+}
+
+.statuses{
+  margin-top: 20px;
 }
 
 .data{
@@ -111,6 +118,9 @@ main h1 {
   background: #aa0000;
   padding: 5px;
   border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
 }
 
 .nav_link {

@@ -5,7 +5,8 @@
     $action = $_POST["action"];
 
     if($action == "get"){
-        echo json_encode(OVZS::Get());
+        $id = $_POST['id'];
+        echo json_encode(OVZS::Get($id));
     } else if ($action == "add") {
 
         $ovz = new OVZS((object)$_POST);

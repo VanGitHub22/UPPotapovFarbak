@@ -2,10 +2,11 @@
     include '../../connection/connection.php';
     include('../classes/sppp.php');
 
-    $action = $_POST["action"];
+    $action = $_POST["actionSppp"];
 
     if($action == "get"){
-        echo json_encode(SPPP::Get());
+        $id = $_POST['idSppp'];
+        echo json_encode(SPPP::Get($id));
     } else if ($action == "add") {
 
         $sppp = new SPPP((object)$_POST);
