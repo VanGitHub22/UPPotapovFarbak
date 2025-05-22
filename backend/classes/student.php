@@ -82,6 +82,18 @@ class Student{
         return $students;  
     }
     
+    public static function GetByLastName(){
+        global $mysqli;
+        $students = [];
+        $query = "SELECT * FROM `Students` ORDER BY ''";
+        $res = $mysqli->query($query);
+        while($row = mysqli_fetch_array($res)){
+            $newStudent = new Student((object)$row);
+            array_push($students, $newStudent);
+        }
+        return $students;  
+    }
+
     public function Update(){
         global $mysqli;
 

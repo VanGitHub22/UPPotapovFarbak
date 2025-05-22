@@ -12,8 +12,10 @@
         $id = $_POST['id'];
         $student = Student::GetById($id);
         echo json_encode($student);
-        /*$student = new Student($id);
-        echo json_encode($student->GetById());*/
+    } else if ($action == "getByLastname"){
+        $lastName = $_POST['lastName'];
+        $student = Student::GetByLastname();
+        echo json_encode($student);
     } else if ($action == "add") {
         $student = new Student((object)$_POST);
         $result = $student->Insert();
