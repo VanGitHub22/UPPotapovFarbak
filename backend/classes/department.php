@@ -4,10 +4,10 @@ class Department{
     public $Id;
     public $Name;
     
-    public __construct($params){
+    function __construct($params){
         if(isset($params->id)) $this->Id = $params->id;
         if(isset($params->name)) $this->Name = $params->name;
-        else $this->$Name = NULL;
+        else $this->Name = NULL;
     }
     
     public static function Get(){
@@ -20,6 +20,7 @@ class Department{
             $newDep = new Department((object)$row);
             array_push($departments, $newDep);
         }
+        return $departments;
     }
     
     public function Update(){

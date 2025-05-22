@@ -1,5 +1,3 @@
-LoadDepa();
-
 function LoadDepa(){
     let params = new FormData();
     params.append("action", "get");
@@ -31,8 +29,10 @@ function LoadDepa(){
                 $("tbody").append(`
                     <tr>
                         <td><input type='text' value='${Depa.Name}'></td>
-                        <td><a class='edit_pencil' href='#'><img src='./img/pencil.png'></a></td>
-                        <td><a class='trash_backet' href='#'><img src='./img/trash.png'></a></td>
+                        <td>
+                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
+                        </td>
                     </tr>
                 `);
                 $(".edit_pencil").on("click", function() { EditDepa(Depa.Id); });
@@ -40,7 +40,7 @@ function LoadDepa(){
             });
         },
         error: function(error){
-            console.log("Ошибка запроса");
+            console.log(`Ошибка запроса ${error}`);
         }
     });
 }
@@ -96,4 +96,6 @@ function DeleteDepa(id){
     $(".data").empty();
     $(".h1").empty();
     LoadDepa();
-}
+} 
+
+export default LoadDepa;

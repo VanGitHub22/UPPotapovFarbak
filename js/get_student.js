@@ -1,4 +1,3 @@
-LoadStudents();
 function LoadStudents() {
     let params = new FormData();
     params.append("action", "get");
@@ -249,7 +248,7 @@ function DeleteStudent(id){
         LoadStudents();
 }
 
-
+export default LoadStudents;
 
 
 

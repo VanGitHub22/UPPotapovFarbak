@@ -2,8 +2,10 @@
     include '../../connection/connection.php';
     include('../classes/department.php');
 
-    $action = $_POST["action"];
 
+
+    
+    $action = $_POST["action"];
     if($action == "get"){
         echo json_encode(Department::Get());
     } else if ($action == "add") {
