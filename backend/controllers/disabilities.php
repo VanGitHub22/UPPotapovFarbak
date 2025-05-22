@@ -5,7 +5,8 @@
     $action = $_POST["action"];
 
     if($action == "get"){
-        echo json_encode(DisabledSt::Get());
+        $id = $_POST['id'];
+        echo json_encode(DisabledSt::Get($id));
     } else if ($action == "add") {
 
         $dis = new DisabledSt((object)$_POST);

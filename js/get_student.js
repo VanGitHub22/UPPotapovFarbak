@@ -151,6 +151,8 @@ function LoadStudentById(id) {
                 getSPPPStatus(Studnet.Id);
                 getSVOStatus(Studnet.Id);
                 getOVZStatus(Studnet.Id);
+                getDisStatus(Studnet.Id);
+                getOrhapsStatus(Studnet.Id);
             });
 
         },
@@ -256,8 +258,8 @@ export default LoadStudents;
 function getSPPPStatus(st_id){
 
     let params = new FormData();
-    params.append("actionSppp", "get");
-    params.append("idSppp", st_id);
+    params.append("action", "get");
+    params.append("id", st_id);
 
     $.ajax({
         url: "./backend/controllers/sppp.php",
@@ -267,7 +269,7 @@ function getSPPPStatus(st_id){
         processData: false,
         contentType: false,
         success: function(_data) {
-            console.log(_data);
+            //console.log(_data);
             let sppps = JSON.parse(_data);
             $(".all_statuses").append(`
                 <h3>СППП</h3>
@@ -331,7 +333,7 @@ function getSVOStatus(st_id){
         processData: false,
         contentType: false,
         success: function(_data) {
-            console.log(_data);
+            //console.log(_data);
             let sppps = JSON.parse(_data);
             $(".all_statuses").append(`
                 <h3>СВО</h3>
@@ -387,7 +389,7 @@ function getOVZStatus(st_id){
         processData: false,
         contentType: false,
         success: function(_data) {
-            console.log(_data);
+            //console.log(_data);
             let sppps = JSON.parse(_data);
             $(".all_statuses").append(`
                 <h3>ОВЗ</h3>
@@ -425,7 +427,125 @@ function getOVZStatus(st_id){
 
         },
         error: function(error) {
-            console.log("Ошибка запроса");
+            console.log(`Ошибка запроса ${error}`);
+        }
+
+    });
+}
+
+function getDisStatus(st_id){
+
+    let params = new FormData();
+    params.append("action", "get");
+    params.append("id", st_id);
+
+    $.ajax({
+        url: "./backend/controllers/disabilities.php",
+        type: "POST",
+        data: params,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(_data) {
+            //console.log(_data);
+            let sppps = JSON.parse(_data);
+            $(".all_statuses").append(`
+                <h3>Инвалидность</h3>
+                <table class='disab'>
+                    <thead>
+                        <tr>
+                            <td>Номер</td>
+                            <td>Дата получения</td>
+                            <td>Дата завершения</td>
+                            <td>Тип инвалидности</td>
+                            <td>Заметки</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+                <hr>
+            `)
+            sppps.forEach((sppp) => {
+                $(".disab tbody").append(`
+                    <tr>
+                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateSppp' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reason' value='${sppp.EndDate}'></td>
+                        <td><input type="text" name='reason' value='${sppp.disabilityType}'></td>
+                        <td><input type="text" name='notes' value='${sppp.Notes}'></td>
+                        <td>
+                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
+                        </td>
+                    </tr>
+                `);
+                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
+                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
+            });
+
+        },
+        error: function(error) {
+            console.log(`Ошибка запроса ${error}`);
+        }
+
+    });
+}
+
+function getOrhapsStatus(st_id){
+
+    let params = new FormData();
+    params.append("action", "get");
+    params.append("id", st_id);
+
+    $.ajax({
+        url: "./backend/controllers/get_orhaps.php",
+        type: "POST",
+        data: params,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(_data) {
+            //console.log(_data);
+            let sppps = JSON.parse(_data);
+            $(".all_statuses").append(`
+                <h3>Сирота</h3>
+                <table class='orh'>
+                    <thead>
+                        <tr>
+                            <td>Номер</td>
+                            <td>Дата получения</td>
+                            <td>Дата завершения</td>
+                            <td>Заметки</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+                <hr>
+            `)
+            sppps.forEach((sppp) => {
+                $(".orh tbody").append(`
+                    <tr>
+                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateSppp' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reason' value='${sppp.EndDate}'></td>
+                        <td><input type="text" name='notes' value='${sppp.Notes}'></td>
+                        <td>
+                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
+                        </td>
+                    </tr>
+                `);
+                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
+                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
+            });
+
+        },
+        error: function(error) {
+            console.log(`Ошибка запроса ${error}`);
         }
 
     });

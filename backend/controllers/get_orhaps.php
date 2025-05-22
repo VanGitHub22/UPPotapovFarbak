@@ -1,20 +1,20 @@
 <?php
     include '../../connection/connection.php';
-    include('../classes/sppp.php');
+    include('../classes/orhaps.php');
 
     $action = $_POST["action"];
 
     if($action == "get"){
         $id = $_POST['id'];
-        echo json_encode(SPPP::Get($id));
+        echo json_encode(Orhaps::Get($id));
     } else if ($action == "add") {
 
-        $sppp = new SPPP((object)$_POST);
+        $svos = new Orhaps((object)$_POST);
 
-        $result = $sppp->Insert();
+        $result = $svos->Insert();
     } else if ($action == "delete"){
         $id = $_POST['id'];
-        $sppp = new SPPP($id);
-        $result = $sppp->Delete();
+        $svos = new Orhapso($id);
+        $result = $svos->Delete();
     }
 ?>
