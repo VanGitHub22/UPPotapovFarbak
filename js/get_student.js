@@ -368,10 +368,10 @@ function getSVOStatus(st_id) {
                     </tr>
                 `)
         $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+          EditSvo(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
+          DeleteSvo(sppp.Id, st_id)
         })
       })
     },
@@ -788,6 +788,61 @@ function DeleteSppp(id, st_id) {
 
   $.ajax({
     url: './backend/controllers/sppp.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      const entries = Array.from(params.entries())
+      console.log(_data)
+      console.log(`${entries}`)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+function EditSvo(id) {
+  let orderNumSvo = document.getElementsByName('orderNumSvo')[0].value
+  let dateSvo = document.getElementsByName('dateSvo')[0].value
+  let reasonSvo = document.getElementsByName('reasonSvo')[0].value
+
+  let params = new FormData()
+  params.append('action', 'edit')
+  params.append('id', id)
+  params.append('orderNum', orderNumSvo)
+  params.append('startDate', dateSvo)
+  params.append('endDate', reasonSvo)
+
+  $.ajax({
+    url: './backend/controllers/svo.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      const entries = Array.from(params.entries())
+      console.log(_data)
+      console.log(`${entries}`)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+}
+
+function DeleteSppp(id, st_id) {
+  let params = new FormData()
+  params.append('action', 'delete')
+  params.append('id', id)
+
+  $.ajax({
+    url: './backend/controllers/svo.php',
     type: 'POST',
     data: params,
     cache: false,
