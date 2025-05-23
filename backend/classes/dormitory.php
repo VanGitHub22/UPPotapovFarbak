@@ -8,7 +8,7 @@ Class Dormitory{
     public $CheckOutDate;
     public $Notes;
     
-    public __construct($params){
+    function __construct($params){
         if(isset($params->id)) $this->Id = $params->id 
         else $this ->Id = NULL;
         if(isset($params->student_id)) $this->Student_Id = $params->student_id 
