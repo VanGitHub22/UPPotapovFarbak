@@ -1,34 +1,35 @@
 <?php
 Class SocialScolarship{
     public $Id;
-    public $Student_Id;
+    public $Student_id;
     public $OrderNum;
     public $StartDate;
     public $EndDate;
     
-    public _construct($params){
-        if(isset($params->id)) $this->Id = $params->id 
-        else $this ->Id = NULL;
-        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
-        else $this ->$tudent_Id = NULL;
-        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum 
-        else $this ->OrderNum = NULL;
-        if(isset($params->startDate)) $this->StartDate = $params->startDate 
-        else $this ->StartDate = NULL;
-        if(isset($params->endDate)) $this-> EndDate = $params->endDate 
-        else $this ->EndDate = NULL;
+    function __construct($params){
+        if(isset($params->id)) $this->Id = $params->id; 
+        else $this->Id = NULL;
+        if(isset($params->student_id)) $this->Student_id = $params->student_id; 
+        else $this->$Student_id = NULL;
+        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum; 
+        else $this->OrderNum = NULL;
+        if(isset($params->startDate)) $this->StartDate = $params->startDate; 
+        else $this->StartDate = NULL;
+        if(isset($params->endDate)) $this->EndDate = $params->endDate; 
+        else $this->EndDate = NULL;
     }
 
-    public static function Get(){
+    public static function Get($id){
         global $mysqli;
         $ships = [];
 
-        $query = "SELECT * FROM `SocialScolarship`";
+        $query = "SELECT * FROM `SocialScolarship` WHERE `student_id`=$id";
         $res = $mysqli ->query($query);
         while($row = mysqli_fetch_array($res)){
             $newships = new SocialScolarship((object) $row);
             array_push($ships, $newships);
         }
+        return $ships;
     }
 
     public function Update(){

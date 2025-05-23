@@ -5,7 +5,8 @@
     $action = $_POST["action"];
 
     if($action == "get"){
-        echo json_encode(SocialScolarship::Get());
+        $id = $_POST['id'];
+        echo json_encode(SocialScolarship::Get($id));
     } else if ($action == "add") {
 
         $scolar = new SocialScolarship((object)$_POST);
