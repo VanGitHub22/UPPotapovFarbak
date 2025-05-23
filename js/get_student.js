@@ -314,7 +314,7 @@ function getSPPPStatus(st_id) {
           EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
+          DeleteSppp(sppp.Id, st_id)
         })
       })
     },
@@ -777,6 +777,31 @@ function EditSppp(id) {
     },
     error: function (error) {
       alert(`Ошибка запроса ${error}`)
-    }
+    },
   })
+}
+
+function DeleteSppp(id, st_id) {
+  let params = new FormData()
+  params.append('action', 'delete')
+  params.append('id', id)
+
+  $.ajax({
+    url: './backend/controllers/sppp.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      const entries = Array.from(params.entries())
+      console.log(_data)
+      console.log(`${entries}`)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
 }
