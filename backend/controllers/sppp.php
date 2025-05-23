@@ -16,5 +16,11 @@
         $id = $_POST['id'];
         $sppp = new SPPP($id);
         $result = $sppp->Delete();
+        echo json_encode($result);
+    }else if($action == "edit"){
+        
+        $sppp = new SPPP((object)$_POST);
+        $result = $sppp->Update();
+        echo json_encode($result);
     }
 ?>

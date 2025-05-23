@@ -311,7 +311,7 @@ function getSPPPStatus(st_id) {
                     </tr>
                 `)
         $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+          EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
           DeleteSppp(Studnet.Id)
@@ -740,5 +740,43 @@ function getDormStatus(st_id) {
     error: function (error) {
       console.log(`Ошибка запроса ${error}`)
     },
+  })
+}
+
+function EditSppp(id) {
+  let orderNumSppp = document.getElementsByName('orderNumSppp')[0].value
+  let dateSppp = document.getElementsByName('dateSppp')[0].value
+  let reasonSppp = document.getElementsByName('reasonSppp')[0].value
+  let attendedStaffSppp =
+    document.getElementsByName('attendedStaffSppp')[0].value
+  let attendedRepresSppp =
+    document.getElementsByName('attendedRepresSppp')[0].value
+  let notesSppp = document.getElementsByName('notesSppp')[0].value
+
+  let params = new FormData()
+  params.append('action', 'edit')
+  params.append('id', id)
+  params.append('orderNum', orderNumSppp)
+  params.append('dateSppp', dateSppp)
+  params.append('reason', reasonSppp)
+  params.append('attendedStaff', attendedStaffSppp)
+  params.append('attendedRepres', attendedRepresSppp)
+  params.append('notes', notesSppp)
+
+  $.ajax({
+    url: './backend/controllers/sppp.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      const entries = Array.from(params.entries())
+      console.log(_data)
+      console.log(`${entries}`)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    }
   })
 }
