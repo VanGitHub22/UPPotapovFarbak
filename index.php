@@ -110,6 +110,7 @@
         </div>
     </main>
 </body>
+<script type="module" src="./js/get_dorm.js"></script> 
 <script type="module" src="./js/get_depa.js"></script> 
 <script type="module" src="./js/get_student.js"></script> 
 <script type="module" src="./js/get_all.js"></script> 

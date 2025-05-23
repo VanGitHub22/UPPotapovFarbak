@@ -6,7 +6,10 @@
 
     if($action == "get"){
         echo json_encode(Dormitory::Get());
-    } else if ($action == "add") {
+    } else if ($action == "getById") {
+        $id = $_POST['id'];
+        echo json_encode(Dormitory::GetById($id));
+    }else if ($action == "add") {
 
         $dorm = new Dormitory((object)$_POST);
 

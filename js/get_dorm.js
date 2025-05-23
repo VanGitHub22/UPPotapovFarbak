@@ -33,8 +33,8 @@ function LoadDorm(){
             Dorm.forEach((dorm) => {
                 $("tbody").append(`
                     <tr>
-                        <td><input type='text' value='${dorm.Student_id}'></td>
-                        <td><input type='text' value='${dorm.Room_id}'></td>
+                        <td><input type='text' value='${dorm.Student_Id}'></td>
+                        <td><input type='text' value='${dorm.Room_Id}'></td>
                         <td><input type='text' value='${dorm.OrderNum}'></td>
                         <td><input type='text' value='${dorm.CheckInDate}'></td>
                         <td><input type='text' value='${dorm.CheckOutDate}'></td>

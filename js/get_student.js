@@ -155,6 +155,7 @@ function LoadStudentById(id) {
                 getOrhapsStatus(Studnet.Id);
                 getSocStatStatus(Studnet.Id);
                 geRiskStatStatus(Studnet.Id);
+                getDormStatus(Studnet.Id);
             });
 
         },
@@ -649,11 +650,71 @@ function geRiskStatStatus(st_id){
                 $(".risk tbody").append(`
                     <tr>
                         <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.Type}'></td>
+                        <td><input type='text' name='Type' value='${sppp.Type}'></td>
                         <td><input type='text' name='dateSppp' value='${sppp.RegistrationDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.RemovalDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.Reason}'></td>
-                        <td><input type="text" name='reason' value='${sppp.RemovalReason}'></td>
+                        <td><input type="text" name='RemovalDate' value='${sppp.RemovalDate}'></td>
+                        <td><input type="text" name='Reason' value='${sppp.Reason}'></td>
+                        <td><input type="text" name='RemovalReason' value='${sppp.RemovalReason}'></td>
+                        <td><input type="text" name='Notes' value='${sppp.Notes}'></td>
+                        <td>
+                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
+                        </td>
+                    </tr>
+                `);
+                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
+                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
+            });
+
+        },
+        error: function(error) {
+            console.log(`Ошибка запроса ${error}`);
+        }
+
+    });
+}
+
+function getDormStatus(st_id){
+
+    let params = new FormData();
+    params.append("action", "getById");
+    params.append("id", st_id);
+
+    $.ajax({
+        url: "./backend/controllers/dormitory.php",
+        type: "POST",
+        data: params,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(_data) {
+            //console.log(_data);
+            let sppps = JSON.parse(_data);
+            $(".all_statuses").append(`
+                <h3>Общежитие</h3>
+                <table class='dorm'>
+                    <thead>
+                        <tr>
+                            <td>Комната</td>
+                            <td>Номер</td>
+                            <td>Дата заселения</td>
+                            <td>Дата выселения</td>
+                            <td>Заметки</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+                <hr>
+            `)
+            sppps.forEach((sppp) => {
+                $(".dorm tbody").append(`
+                    <tr>
+                    <td><input type='text' name='dateSppp' value='${sppp.Room_Id}'></td>
+                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateSppp' value='${sppp.CheckInDate}'></td>
+                        <td><input type="text" name='reason' value='${sppp.CheckOutDate}'></td>
                         <td><input type="text" name='reason' value='${sppp.Notes}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
