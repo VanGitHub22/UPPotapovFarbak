@@ -1,4 +1,5 @@
 <form action="" method="POST">
+    <input type="number" name="student_id" placeholder="id студента">
     <input type="number" name="room_id" placeholder="id комнаты">
     <input type="file" name="orderNum" placeholder="Документ">
     <input type="date" name="checkInDate" placeholder="Дата заселения">
