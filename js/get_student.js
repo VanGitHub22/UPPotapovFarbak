@@ -1,21 +1,21 @@
 function LoadStudents() {
-    let params = new FormData();
-    params.append("action", "get");
+  let params = new FormData()
+  params.append('action', 'get')
 
-    $.ajax({
-        url: "./backend/controllers/get_student.php",
-        type: "POST",
-        data: params,
-        cache : false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            document.title = "Студенты"
-            let Students = JSON.parse(_data);
-            $(".h1").append(`
+  $.ajax({
+    url: './backend/controllers/get_student.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      document.title = 'Студенты'
+      let Students = JSON.parse(_data)
+      $('.h1').append(`
                 <h1>Студенты</h1>    
             `)
-            $(".data").append(`
+      $('.data').append(`
                 <table>
                     <thead>
                         <tr>
@@ -40,8 +40,8 @@ function LoadStudents() {
                     </tbody>
                 </table>
             `)
-            Students.forEach((Studnet) => {
-                $("tbody").append(`
+      Students.forEach((Studnet) => {
+        $('tbody').append(`
                     <tr>
                         <td><input type='text' value='${Studnet.LastName} ${Studnet.FirstName} ${Studnet.MiddleName}' readonly></td>
                         <td><input type='text' value='${Studnet.BirthDate}' readonly></td>
@@ -63,40 +63,44 @@ function LoadStudents() {
                             <div class="dot"></div>
                         </div></td>
                     </tr>
-                `);
+                `)
 
-                $("tbody").children("tr:last()").find(".vert_dots").on("click", function() { LoadStudentById(Studnet.Id); });
-            });
-        },
-        error: function(error) {
-            console.log("Ошибка запроса", error);
-        }
-
-    });
+        $('tbody')
+          .children('tr:last()')
+          .find('.vert_dots')
+          .on('click', function () {
+            LoadStudentById(Studnet.Id)
+          })
+      })
+    },
+    error: function (error) {
+      console.log('Ошибка запроса', error)
+    },
+  })
 }
 
 function LoadStudentById(id) {
-    $(".data").empty();
-    $(".h1").empty();
+  $('.data').empty()
+  $('.h1').empty()
 
-    let params = new FormData();
-    params.append("action", "getEdit");
-    params.append("id", id);
+  let params = new FormData()
+  params.append('action', 'getEdit')
+  params.append('id', id)
 
-    $.ajax({
-        url: "./backend/controllers/get_student.php",
-        type: "POST",
-        data: params,
-        cache : false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            document.title = "Изменить студента"
-            let Students = JSON.parse(_data);
-            $(".h1").append(`
+  $.ajax({
+    url: './backend/controllers/get_student.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      document.title = 'Изменить студента'
+      let Students = JSON.parse(_data)
+      $('.h1').append(`
                 <h1>Изменить студента</h1>    
             `)
-            $(".data").append(`
+      $('.data').append(`
                 <table>
                     <thead>
                         <tr>
@@ -125,8 +129,8 @@ function LoadStudentById(id) {
                     <div class='all_statuses'></div>
                 </div>
             `)
-            Students.forEach((Studnet) => {
-                $(".data table tbody").append(`
+      Students.forEach((Studnet) => {
+        $('.data table tbody').append(`
                     <tr>
                         <td><input type='text' name='FIO' value='${Studnet.LastName} ${Studnet.FirstName} ${Studnet.MiddleName}'></td>
                         <td><input type='text' name='birthDate' value='${Studnet.BirthDate}'></td>
@@ -145,136 +149,132 @@ function LoadStudentById(id) {
                         <td><a class='edit_pencil' href='#'><img src='./img/pencil.png'></a></td>
                         <td><a class='trash_backet' href='#'><img src='./img/trash.png'></a></td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditStudent(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteStudent(Studnet.Id); });
-                getSPPPStatus(Studnet.Id);
-                getSVOStatus(Studnet.Id);
-                getOVZStatus(Studnet.Id);
-                getDisStatus(Studnet.Id);
-                getOrhapsStatus(Studnet.Id);
-                getSocStatStatus(Studnet.Id);
-                geRiskStatStatus(Studnet.Id);
-                getDormStatus(Studnet.Id);
-            });
-
-        },
-        error: function(error) {
-            console.log("Ошибка запроса");
-        }
-
-    });
-
-    
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditStudent(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteStudent(Studnet.Id)
+        })
+        getSPPPStatus(Studnet.Id)
+        getSVOStatus(Studnet.Id)
+        getOVZStatus(Studnet.Id)
+        getDisStatus(Studnet.Id)
+        getOrhapsStatus(Studnet.Id)
+        getSocStatStatus(Studnet.Id)
+        geRiskStatStatus(Studnet.Id)
+        getDormStatus(Studnet.Id)
+      })
+    },
+    error: function (error) {
+      console.log('Ошибка запроса')
+    },
+  })
 }
 
 function EditStudent(id) {
-    let FIO = document.getElementsByName('FIO')[0].value;
-    let FIOMas = FIO.split(" ");
+  let FIO = document.getElementsByName('FIO')[0].value
+  let FIOMas = FIO.split(' ')
 
-    let lastName = FIOMas[0];
-    let firstName = FIOMas[1];
-    let middleName = FIOMas[2];
-    let birthDate = document.getElementsByName('birthDate')[0].value;
-    let gender = document.getElementsByName('gender')[0].value;
-    let phone = document.getElementsByName('phone')[0].value;
-    let education = document.getElementsByName('education')[0].value;
-    let department_id = document.getElementsByName('department_id')[0].value;
-    let group = document.getElementsByName('group')[0].value;
-    let funding = document.getElementsByName('funding')[0].value;
-    let admissionYear = document.getElementsByName('admissionYear')[0].value;
-    let graduationYear = document.getElementsByName('graduationYear')[0].value;
-    let isExpelled = document.getElementsByName('isExpelled')[0].value;
-    let expulsionDate = document.getElementsByName('expulsionDate')[0].value;
-    let parent_info = document.getElementsByName('parent_info')[0].value;
-    let penalties = document.getElementsByName('penalties')[0].value;
+  let lastName = FIOMas[0]
+  let firstName = FIOMas[1]
+  let middleName = FIOMas[2]
+  let birthDate = document.getElementsByName('birthDate')[0].value
+  let gender = document.getElementsByName('gender')[0].value
+  let phone = document.getElementsByName('phone')[0].value
+  let education = document.getElementsByName('education')[0].value
+  let department_id = document.getElementsByName('department_id')[0].value
+  let group = document.getElementsByName('group')[0].value
+  let funding = document.getElementsByName('funding')[0].value
+  let admissionYear = document.getElementsByName('admissionYear')[0].value
+  let graduationYear = document.getElementsByName('graduationYear')[0].value
+  let isExpelled = document.getElementsByName('isExpelled')[0].value
+  let expulsionDate = document.getElementsByName('expulsionDate')[0].value
+  let parent_info = document.getElementsByName('parent_info')[0].value
+  let penalties = document.getElementsByName('penalties')[0].value
 
-    let params = new FormData();
-    params.append("action", "edit");
-    params.append("id", id);
-    params.append("lastName", lastName);
-    params.append("firstName", firstName);
-    params.append("middleName", middleName);
-    params.append("birthDate", birthDate);
-    params.append("gender", gender);
-    params.append("phone", phone);
-    params.append("education", education);
-    params.append("department_Id", department_id);
-    params.append("group", group);
-    params.append("funding", funding);
-    params.append("admissionYear", admissionYear);
-    params.append("graduationYear", graduationYear);
-    params.append("isExpelled", isExpelled);
-    params.append("expulsionDate", expulsionDate);
-    params.append("parent_info", parent_info);
-    params.append("penalties", penalties);
+  let params = new FormData()
+  params.append('action', 'edit')
+  params.append('id', id)
+  params.append('lastName', lastName)
+  params.append('firstName', firstName)
+  params.append('middleName', middleName)
+  params.append('birthDate', birthDate)
+  params.append('gender', gender)
+  params.append('phone', phone)
+  params.append('education', education)
+  params.append('department_Id', department_id)
+  params.append('group', group)
+  params.append('funding', funding)
+  params.append('admissionYear', admissionYear)
+  params.append('graduationYear', graduationYear)
+  params.append('isExpelled', isExpelled)
+  params.append('expulsionDate', expulsionDate)
+  params.append('parent_info', parent_info)
+  params.append('penalties', penalties)
 
-    $.ajax({
-        url: "./backend/controllers/get_student.php",
-        type: "POST",
-        data:   params,
-        cache : false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            const entries = Array.from(params.entries());
-            console.log(_data);
-            console.log(`${entries}`);
-        },
-        error: function(error) {
-            alert(`Ошибка запроса ${error}`);
-        }
-    })
+  $.ajax({
+    url: './backend/controllers/get_student.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      const entries = Array.from(params.entries())
+      console.log(_data)
+      console.log(`${entries}`)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
 }
 
-function DeleteStudent(id){
-    let params = new FormData();
-    params.append("action", "delete");
-    params.append("id", id);
+function DeleteStudent(id) {
+  let params = new FormData()
+  params.append('action', 'delete')
+  params.append('id', id)
 
-    $.ajax({
-        url: "./backend/controllers/get_student.php",
-        type: "POST",
-        data:   params,
-        cache : false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            const entries = Array.from(params.entries());
-            console.log(_data);
-            console.log(`${entries}`);
-        },
-        error: function(error) {
-            alert(`Ошибка запроса ${error}`);
-        }
-    })
-        $(".data").empty();
-        $(".h1").empty();
-        LoadStudents();
+  $.ajax({
+    url: './backend/controllers/get_student.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      const entries = Array.from(params.entries())
+      console.log(_data)
+      console.log(`${entries}`)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  $('.h1').empty()
+  LoadStudents()
 }
 
-export default LoadStudents;
+export default LoadStudents
 
+function getSPPPStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'get')
+  params.append('id', st_id)
 
-
-
-function getSPPPStatus(st_id){
-
-    let params = new FormData();
-    params.append("action", "get");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/sppp.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/sppp.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>СППП</h3>
                 <table class='sppp'>
                     <thead>
@@ -294,51 +294,52 @@ function getSPPPStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".sppp tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.sppp tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='orderNumSppp' value='${sppp.OrderNum}'></td>
                         <td><input type='text' name='dateSppp' value='${sppp.DateSppp}'></td>
-                        <td><input type="text" name='reason' value='${sppp.Reason}'></td>
-                        <td><input type="text" name='attendedStaff' value='${sppp.AttendedStaff}'></td>
-                        <td><input type="text" name='attendedRepres' value='${sppp.AttendedRepres}'></td>
-                        <td><input type="text" name='decision' value='${sppp.Decision}'></td>
-                        <td><input type="text" name='notes' value='${sppp.Notes}'></td>
+                        <td><input type="text" name='reasonSppp' value='${sppp.Reason}'></td>
+                        <td><input type="text" name='attendedStaffSppp' value='${sppp.AttendedStaff}'></td>
+                        <td><input type="text" name='attendedRepresSppp' value='${sppp.AttendedRepres}'></td>
+                        <td><input type="text" name='decisionSppp' value='${sppp.Decision}'></td>
+                        <td><input type="text" name='notesSppp' value='${sppp.Notes}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log("Ошибка запроса");
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log('Ошибка запроса')
+    },
+  })
 }
 
-function getSVOStatus(st_id){
+function getSVOStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'get')
+  params.append('id', st_id)
 
-    let params = new FormData();
-    params.append("action", "get");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/svo.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/svo.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>СВО</h3>
                 <table class='svo'>
                     <thead>
@@ -354,47 +355,48 @@ function getSVOStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".svo tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.svo tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.EndDate}'></td>
+                        <td><input type='text' name='orderNumSvo' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateSvo' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reasonSvo' value='${sppp.EndDate}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log("Ошибка запроса");
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log('Ошибка запроса')
+    },
+  })
 }
 
-function getOVZStatus(st_id){
+function getOVZStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'get')
+  params.append('id', st_id)
 
-    let params = new FormData();
-    params.append("action", "get");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/ovzs.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/ovzs.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>ОВЗ</h3>
                 <table class='ovz'>
                     <thead>
@@ -411,48 +413,49 @@ function getOVZStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".ovz tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.ovz tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='notes' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumOvz' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateOvz' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reasonOvz' value='${sppp.EndDate}'></td>
+                        <td><input type="text" name='notesOvz' value='${sppp.Notes}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log(`Ошибка запроса ${error}`);
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log(`Ошибка запроса ${error}`)
+    },
+  })
 }
 
-function getDisStatus(st_id){
+function getDisStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'get')
+  params.append('id', st_id)
 
-    let params = new FormData();
-    params.append("action", "get");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/disabilities.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/disabilities.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>Инвалидность</h3>
                 <table class='disab'>
                     <thead>
@@ -470,49 +473,50 @@ function getDisStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".disab tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.disab tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.disabilityType}'></td>
-                        <td><input type="text" name='notes' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumDis' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateDis' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reasonDis' value='${sppp.EndDate}'></td>
+                        <td><input type="text" name='reasonDis' value='${sppp.disabilityType}'></td>
+                        <td><input type="text" name='notesDis' value='${sppp.Notes}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log(`Ошибка запроса ${error}`);
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log(`Ошибка запроса ${error}`)
+    },
+  })
 }
 
-function getOrhapsStatus(st_id){
+function getOrhapsStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'get')
+  params.append('id', st_id)
 
-    let params = new FormData();
-    params.append("action", "get");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/get_orhaps.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/get_orhaps.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>Сирота</h3>
                 <table class='orh'>
                     <thead>
@@ -529,48 +533,49 @@ function getOrhapsStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".orh tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.orh tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='notes' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumOrh' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateOrh' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reasonOrh' value='${sppp.EndDate}'></td>
+                        <td><input type="text" name='notesOrh' value='${sppp.Notes}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log(`Ошибка запроса ${error}`);
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log(`Ошибка запроса ${error}`)
+    },
+  })
 }
 
-function getSocStatStatus(st_id){
+function getSocStatStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'get')
+  params.append('id', st_id)
 
-    let params = new FormData();
-    params.append("action", "get");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/socialScolarship.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/socialScolarship.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>Социальная стипендия</h3>
                 <table class='scol'>
                     <thead>
@@ -586,47 +591,48 @@ function getSocStatStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".scol tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.scol tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.EndDate}'></td>
+                        <td><input type='text' name='orderNumSoc' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateSoc' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reasonSoc' value='${sppp.EndDate}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log(`Ошибка запроса ${error}`);
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log(`Ошибка запроса ${error}`)
+    },
+  })
 }
 
-function geRiskStatStatus(st_id){
+function geRiskStatStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'get')
+  params.append('id', st_id)
 
-    let params = new FormData();
-    params.append("action", "get");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/riskGroup.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/riskGroup.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>Группа риска</h3>
                 <table class='risk'>
                     <thead>
@@ -646,51 +652,52 @@ function geRiskStatStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".risk tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.risk tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='Type' value='${sppp.Type}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.RegistrationDate}'></td>
-                        <td><input type="text" name='RemovalDate' value='${sppp.RemovalDate}'></td>
-                        <td><input type="text" name='Reason' value='${sppp.Reason}'></td>
-                        <td><input type="text" name='RemovalReason' value='${sppp.RemovalReason}'></td>
-                        <td><input type="text" name='Notes' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumRisk' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='TypeRisk' value='${sppp.Type}'></td>
+                        <td><input type='text' name='dateRisk' value='${sppp.RegistrationDate}'></td>
+                        <td><input type="text" name='RemovalDateRisk' value='${sppp.RemovalDate}'></td>
+                        <td><input type="text" name='ReasonRisk' value='${sppp.Reason}'></td>
+                        <td><input type="text" name='RemovalReasonRisk' value='${sppp.RemovalReason}'></td>
+                        <td><input type="text" name='NotesRisk' value='${sppp.Notes}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log(`Ошибка запроса ${error}`);
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log(`Ошибка запроса ${error}`)
+    },
+  })
 }
 
-function getDormStatus(st_id){
+function getDormStatus(st_id) {
+  let params = new FormData()
+  params.append('action', 'getById')
+  params.append('id', st_id)
 
-    let params = new FormData();
-    params.append("action", "getById");
-    params.append("id", st_id);
-
-    $.ajax({
-        url: "./backend/controllers/dormitory.php",
-        type: "POST",
-        data: params,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(_data) {
-            //console.log(_data);
-            let sppps = JSON.parse(_data);
-            $(".all_statuses").append(`
+  $.ajax({
+    url: './backend/controllers/dormitory.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      //console.log(_data);
+      let sppps = JSON.parse(_data)
+      $('.all_statuses').append(`
                 <h3>Общежитие</h3>
                 <table class='dorm'>
                     <thead>
@@ -708,28 +715,30 @@ function getDormStatus(st_id){
                 </table>
                 <hr>
             `)
-            sppps.forEach((sppp) => {
-                $(".dorm tbody").append(`
+      sppps.forEach((sppp) => {
+        $('.dorm tbody').append(`
                     <tr>
-                    <td><input type='text' name='dateSppp' value='${sppp.Room_Id}'></td>
-                        <td><input type='text' name='orderNum' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.CheckInDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.CheckOutDate}'></td>
-                        <td><input type="text" name='reason' value='${sppp.Notes}'></td>
+                    <td><input type='text' name='dateDorm' value='${sppp.Room_Id}'></td>
+                        <td><input type='text' name='orderNumDorm' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateDorm' value='${sppp.CheckInDate}'></td>
+                        <td><input type="text" name='reasonDorm' value='${sppp.CheckOutDate}'></td>
+                        <td><input type="text" name='reasonDorm' value='${sppp.Notes}'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
-                `);
-                $(".edit_pencil").on("click", function() { EditSppp(Studnet.Id); });
-                $(".trash_backet").on("click", function() { DeleteSppp(Studnet.Id); });
-            });
-
-        },
-        error: function(error) {
-            console.log(`Ошибка запроса ${error}`);
-        }
-
-    });
+                `)
+        $('.edit_pencil').on('click', function () {
+          EditSppp(Studnet.Id)
+        })
+        $('.trash_backet').on('click', function () {
+          DeleteSppp(Studnet.Id)
+        })
+      })
+    },
+    error: function (error) {
+      console.log(`Ошибка запроса ${error}`)
+    },
+  })
 }
