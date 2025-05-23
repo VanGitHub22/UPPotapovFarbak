@@ -10,37 +10,38 @@ Class RiskGroup{
     public $RemovalReason;
     public $Notes;
     
-    public _construct($params){
-        if(isset($params->id)) $this->Id = $params->id 
-        else $this ->Id = NULL;
-        if(isset($params->student_id)) $this->Student_Id = $params->student_id 
-        else $this ->Student_Id = NULL;
-        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum 
-        else $this ->OrderNum = NULL;
-        if(isset($params->type)) $this->Type = $params->type 
-        else $this ->Type = NULL;
-        if(isset($params->registrationDate)) $this->RegistrationDate = $params->registrationDate 
-        else $this ->RegistrationDate = NULL;
-        if(isset($params->removalDate)) $this-> RemovalDate = $params->removalDate 
-        else $this ->RemovalDate = NULL;
-        if(isset($params->reason)) $this-> Reason = $params->reason 
-        else $this ->Reason = NULL;
-        if(isset($params->removalReason)) $this-> RemovalReason = $params->removalReason 
-        else $this ->RemovalReason = NULL;
-        if(isset($params->notes)) $this-> Notes = $params->notes 
-        else $this ->Notes = NULL;
+    function __construct($params){
+        if(isset($params->id)) $this->Id = $params->id; 
+        else $this->Id = NULL;
+        if(isset($params->student_id)) $this->Student_Id = $params->student_id; 
+        else $this->Student_Id = NULL;
+        if(isset($params->orderNum)) $this->OrderNum = $params->orderNum; 
+        else $this->OrderNum = NULL;
+        if(isset($params->type)) $this->Type = $params->type; 
+        else $this->Type = NULL;
+        if(isset($params->registrationDate)) $this->RegistrationDate = $params->registrationDate; 
+        else $this->RegistrationDate = NULL;
+        if(isset($params->removalDate)) $this-> RemovalDate = $params->removalDate; 
+        else $this->RemovalDate = NULL;
+        if(isset($params->reason)) $this-> Reason = $params->reason; 
+        else $this->Reason = NULL;
+        if(isset($params->removalReason)) $this-> RemovalReason = $params->removalReason; 
+        else $this->RemovalReason = NULL;
+        if(isset($params->notes)) $this-> Notes = $params->notes; 
+        else $this->Notes = NULL;
     }
 
-    public static function Get(){
+    public static function Get($id){
         global $mysqli;
         $risks = [];
 
-        $query = "SELECT * FROM `RiskGroup`";
+        $query = "SELECT * FROM `RiskGroup` WHERE `student_id`=$id";
         $res = $mysqli ->query($query);
         while($row = mysqli_fetch_array($res)){
             $newRisk = new RiskGroup((object) $row);
-            array_push($risks, $newRIsk);
+            array_push($risks, $newRisk);
         }
+        return $risks;
     }
 
     public function Update(){

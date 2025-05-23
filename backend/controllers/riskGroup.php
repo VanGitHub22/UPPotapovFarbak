@@ -5,7 +5,8 @@
     $action = $_POST["action"];
 
     if($action == "get"){
-        echo json_encode(RiskGroup::Get());
+        $id = $_POST['id'];
+        echo json_encode(RiskGroup::Get($id));
     } else if ($action == "add") {
 
         $risk = new RiskGroup((object)$_POST);
