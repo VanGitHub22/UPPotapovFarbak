@@ -7,14 +7,17 @@
     if($action == "get"){
         $id = $_POST['id'];
         echo json_encode(SocialScolarship::Get($id));
-    } else if ($action == "add") {
-
-        $scolar = new SocialScolarship((object)$_POST);
-
-        $result = $scolar->Insert();
+    } else if ($action == "insert") {
+        $scol = new SocialScolarship((object)$_POST);
+        $result = $scol->Insert();
+        echo json_encode($result);
     } else if ($action == "delete"){
-        $id = $_POST['id'];
-        $scolar = new SocialScolarship($id);
-        $result = $scolar->Delete();
+        $scol = new SocialScolarship((object)$_POST);
+        $result = $scol->Delete();
+        echo json_encode($result);
+    }else if($action == "edit"){
+        $scol = new SocialScolarship((object)$_POST);
+        $result = $scol->Update();
+        echo json_encode($result);
     }
 ?>

@@ -10,7 +10,7 @@ Class SocialScolarship{
         if(isset($params->id)) $this->Id = $params->id; 
         else $this->Id = NULL;
         if(isset($params->student_id)) $this->Student_id = $params->student_id; 
-        else $this->$Student_id = NULL;
+        else $this->Student_id = NULL;
         if(isset($params->orderNum)) $this->OrderNum = $params->orderNum; 
         else $this->OrderNum = NULL;
         if(isset($params->startDate)) $this->StartDate = $params->startDate; 
@@ -34,7 +34,7 @@ Class SocialScolarship{
 
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `SocialScolarship` SET `id`='$this->Id', `student_id`='$this->Student_Id', `orderNum`='$this->OrderNum', `startDate`='$this->StartDate',`endDate`='$this->EndDate'";
+        $query = "UPDATE `SocialScolarship` SET `orderNum`='$this->OrderNum', `startDate`='$this->StartDate',`endDate`='$this->EndDate'  WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 
@@ -46,7 +46,7 @@ Class SocialScolarship{
 
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `SocialScolarship`(`student_id`,`orderNum`,`startDate`,`endDate`) VALUES('$this->Student_Id','$this->OrderNum','$this->StartDate','$this->EndDate') WHERE `id`=$this->Id";
+        $query = "INSERT INTO `SocialScolarship`(`student_id`, `orderNum`, `startDate`, `endDate`) VALUES ('$this->Student_id','$this->OrderNum','$this->StartDate','$this->EndDate')";
         $mysqli->query($query);
     }
 }

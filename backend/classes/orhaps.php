@@ -37,19 +37,19 @@ class Orhaps{
     
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `SVO` SET `student_id`='$this->Student_id', `orderNum`=$this->OrderNum, `startDate`='$this->StartDate', `endDate`='$this->EndDate' WHERE `id`=$this->Id";
+        $query = "UPDATE `Orhaps` SET `orderNum`='$this->OrderNum', `startDate`='$this->StartDate', `endDate`='$this->EndDate', `notes`='$this->Notes' WHERE `id`=$this->Id";
         $mysqli->query($query);
     } 
     
     public function Delete(){
         global $mysqli;
-        $query = "DELETE FROM `SVO` WHERE `id`=$this->Id";
+        $query = "DELETE FROM `Orhaps` WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
     
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `SVO`(`student_id`, `orderNum`, `startDate`, `endDate`) VALUES('$this->Student_id', $this->OrderNum', '$this->StartDate', '$this->EndDate')";
+        $query = "INSERT INTO `Orhaps`(`student_id`, `orderNum`, `startDate`, `endDate`, `notes`) VALUES('$this->Student_id', '$this->OrderNum', '$this->StartDate', '$this->EndDate', '$this->Notes')";
         $mysqli->query($query);
     }
     

@@ -574,30 +574,41 @@ function getOrhapsStatus(st_id) {
                         </tr>
                     </thead>
                     <tbody>
-                    
+                      <tr>
+                        <td><input type='text' name='orderNumOrh' value=''></td>
+                        <td><input type='text' name='startDateOrh' value=''></td>
+                        <td><input type="text" name='endDateOrh' value=''></td>
+                        <td><input type="text" name='notesOrh' value=''></td>
+                        <td>
+                            <a class='plus orh_p' href='#'><img src='./img/plus_white.png'></a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <hr>
             `)
+      $(`.plus.orh_p`).on('click', function () {  
+          AddOrh(st_id)
+      })  
       sppps.forEach((sppp) => {
         $('.orh tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumOrh' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateOrh' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reasonOrh' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='notesOrh' value='${sppp.Notes}'></td>
-                        <!--<td>
-                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
-                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>-->
+                        <td><input type='text' name='orderNumOrh${sppp.Id}' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='startDateOrh${sppp.Id}' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='endDateOrh${sppp.Id}' value='${sppp.EndDate}'></td>
+                        <td><input type="text" name='notesOrh${sppp.Id}' value='${sppp.Notes}'></td>
+                        <td>
+                            <a class='edit_pencil orh_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet orh_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
+                        </td>
                     </tr>
                 `)
-        /*$('.edit_pencil').on('click', function () {
-          EditSppp(sppp.Id)
+        $(`.edit_pencil.orh_p${sppp.Id}`).on('click', function () {
+          EditOrh(sppp.Id)
         })
-        $('.trash_backet').on('click', function () {
-          DeleteSppp(sppp.Id)
-        })*/
+        $(`.trash_backet.orh_t${sppp.Id}`).on('click', function () {
+          DeleteOrh(sppp.Id, st_id)
+        })
       })
     },
     error: function (error) {
@@ -632,29 +643,39 @@ function getSocStatStatus(st_id) {
                         </tr>
                     </thead>
                     <tbody>
-                    
+                      <tr>
+                          <td><input type='text' name='orderNumSoc' value=''></td>
+                          <td><input type='text' name='startDateSoc' value=''></td>
+                          <td><input type="text" name='endDateSoc' value=''></td>
+                          <td>
+                            <a class='plus scol_p' href='#'><img src='./img/plus_white.png'></a>
+                        </td>
+                      </tr>
                     </tbody>
                 </table>
                 <hr>
             `)
+      $(`.plus.scol_p`).on('click', function () {  
+          AddScol(st_id)
+      })  
       sppps.forEach((sppp) => {
         $('.scol tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumSoc' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSoc' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reasonSoc' value='${sppp.EndDate}'></td>
-                        <!--<td>
-                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
-                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>-->
+                        <td><input type='text' name='orderNumSoc${sppp.Id}' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='startDateSoc${sppp.Id}' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='endDateSoc${sppp.Id}' value='${sppp.EndDate}'></td>
+                        <td>
+                            <a class='edit_pencil scol_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet scol_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
+                        </td>
                     </tr>
                 `)
-        /*$('.edit_pencil').on('click', function () {
-          EditSppp(sppp.Id)
+        $(`.edit_pencil.scol_p${sppp.Id}`).on('click', function () {
+          EditScol(sppp.Id)
         })
-        $('.trash_backet').on('click', function () {
-          DeleteSppp(sppp.Id)
-        })*/
+        $(`.trash_backet.scol_t${sppp.Id}`).on('click', function () {
+          DeleteScol(sppp.Id, st_id)
+        })
       })
     },
     error: function (error) {
@@ -1152,6 +1173,184 @@ function AddDis(st_id) {
 
   $.ajax({
     url: './backend/controllers/disabilities.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+/*Сироты*/
+
+function EditOrh(id) {
+  let orderNumOrh = document.getElementsByName(`orderNumOrh${id}`)[0].value
+  let startDateOrh = document.getElementsByName(`startDateOrh${id}`)[0].value
+  let endDateOrh = document.getElementsByName(`endDateOrh${id}`)[0].value
+  let notesOrh = document.getElementsByName(`notesOrh${id}`)[0].value
+
+  let params = new FormData()
+  params.append('action', 'edit')
+  params.append('id', id)
+  params.append('orderNum', orderNumOrh)
+  params.append('startDate', startDateOrh)
+  params.append('endDate', endDateOrh)
+  params.append('notes', notesOrh)
+  const entries = Array.from(params.entries())
+  console.log(`${entries}`)
+
+  $.ajax({
+    url: './backend/controllers/get_orhaps.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+}
+
+function DeleteOrh(id, st_id) {
+  let params = new FormData()
+  params.append('action', 'delete')
+  params.append('id', id)
+
+  $.ajax({
+    url: './backend/controllers/get_orhaps.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+function AddOrh(st_id) {
+  let orderNumOrh = document.getElementsByName(`orderNumOrh`)[0].value
+  let startDateOrh = document.getElementsByName(`startDateOrh`)[0].value
+  let endDateOrh = document.getElementsByName(`endDateOrh`)[0].value
+  let notesOrh = document.getElementsByName(`notesOrh`)[0].value
+
+  let params = new FormData()
+  params.append('action', 'insert')
+  params.append('student_id', st_id)
+  params.append('orderNum', orderNumOrh)
+  params.append('startDate', startDateOrh)
+  params.append('endDate', endDateOrh)
+  params.append('notes', notesOrh)
+  /*const entries = Array.from(params.entries())
+  console.log(`${entries}`)*/
+
+  $.ajax({
+    url: './backend/controllers/get_orhaps.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+/*Степуха*/
+
+function EditScol(id) {
+  let orderNumScol = document.getElementsByName(`orderNumSoc${id}`)[0].value
+  let startDateScol = document.getElementsByName(`startDateSoc${id}`)[0].value
+  let endDateScol = document.getElementsByName(`endDateSoc${id}`)[0].value
+
+  let params = new FormData()
+  params.append('action', 'edit')
+  params.append('id', id)
+  params.append('orderNum', orderNumScol)
+  params.append('startDate', startDateScol)
+  params.append('endDate', endDateScol)
+  const entries = Array.from(params.entries())
+  console.log(`${entries}`)
+
+  $.ajax({
+    url: './backend/controllers/socialScolarship.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+}
+
+function DeleteScol(id, st_id) {
+  let params = new FormData()
+  params.append('action', 'delete')
+  params.append('id', id)
+
+  $.ajax({
+    url: './backend/controllers/socialScolarship.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+function AddScol(st_id) {
+  let orderNumScol = document.getElementsByName(`orderNumSoc`)[0].value
+  let startDateScol = document.getElementsByName(`startDateSoc`)[0].value
+  let endDateScol = document.getElementsByName(`endDateSoc`)[0].value
+
+  let params = new FormData()
+  params.append('action', 'insert')
+  params.append('student_id', st_id)
+  params.append('orderNum', orderNumScol)
+  params.append('startDate', startDateScol)
+  params.append('endDate', endDateScol)
+  /*const entries = Array.from(params.entries())
+  console.log(`${entries}`)*/
+
+  $.ajax({
+    url: './backend/controllers/socialScolarship.php',
     type: 'POST',
     data: params,
     cache: false,

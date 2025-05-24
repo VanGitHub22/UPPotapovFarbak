@@ -7,14 +7,17 @@
     if($action == "get"){
         $id = $_POST['id'];
         echo json_encode(Orhaps::Get($id));
-    } else if ($action == "add") {
-
-        $svos = new Orhaps((object)$_POST);
-
-        $result = $svos->Insert();
+    } else if ($action == "insert") {
+        $orh = new Orhaps((object)$_POST);
+        $result = $orh->Insert();
+        echo json_encode($result);
     } else if ($action == "delete"){
-        $id = $_POST['id'];
-        $svos = new Orhapso($id);
-        $result = $svos->Delete();
+        $orh = new Orhaps((object)$_POST);
+        $result = $orh->Delete();
+        echo json_encode($result);
+    }else if($action == "edit"){
+        $orh = new Orhaps((object)$_POST);
+        $result = $orh->Update();
+        echo json_encode($result);
     }
 ?>
