@@ -40,19 +40,19 @@ Class DisabledSt{
 
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `DisabledSt` SET `student_id`='$this->$Student_Id', `orderNum`='$this->$OrderNum', `startDate`='$this->$StartDate',`endDate`='$this->$EndDate',`disabilityType`='$this->$DisabilityType', `notes`='$this->$Notes'";
+        $query = "UPDATE `DisabledSt` SET `orderNum`='$this->OrderNum', `startDate`='$this->StartDate',`endDate`='$this->EndDate',`disabilityType`='$this->DisabilityType', `notes`='$this->Notes' WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 
     public function Delete(){
         global $mysqli;
-        $query = "DELETE FROM `DisabledSt` WHERE `id`=$this->$Id";
+        $query = "DELETE FROM `DisabledSt` WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `DisabledSt`(`student_id`,`orderNum`,`startDate`,`endDate`,`disabilityType`, `notes`) VALUES ('$this->$Student_Id','$this->$OrderNum','$this->$StartDate','$this->$EndDate','$this->$DisabilityType','$this->$Notes') WHERE `id`=$this->$Id";
+        $query = "INSERT INTO `DisabledSt`(`student_id`,`orderNum`,`startDate`,`endDate`,`disabilityType`, `notes`) VALUES ('$this->Student_Id','$this->OrderNum','$this->StartDate','$this->EndDate','$this->DisabilityType','$this->Notes')";
         $mysqli->query($query);
     }
 }

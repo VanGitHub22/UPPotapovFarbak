@@ -8,7 +8,7 @@ class Svo{
     public $EndDate;
     
     function __construct($params){
-        if(isset($params->Id)) $this->Id = $params->Id;
+        if(isset($params->id)) $this->Id = $params->id;
         if(isset($params->student_id)) $this->Student_id = $params->student_id;
         else $this->Student_id = NULL;
         if(isset($params->orderNum)) $this->OrderNum = $params->orderNum;
@@ -34,7 +34,7 @@ class Svo{
     
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `SVO` SET `student_id`='$this->Student_id', `orderNum`=$this->OrderNum, `startDate`='$this->StartDate', `endDate`='$this->EndDate' WHERE `id`=$this->Id";
+        $query = "UPDATE `SVO` SET `orderNum`='$this->OrderNum',`startDate`='$this->StartDate',`endDate`='$this->EndDate' WHERE `id`=$this->Id";
         $mysqli->query($query);
     } 
     
@@ -46,7 +46,7 @@ class Svo{
     
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `SVO`(`student_id`, `orderNum`, `startDate`, `endDate`) VALUES('$this->Student_id', $this->OrderNum', '$this->StartDate', '$this->EndDate')";
+        $query = "INSERT INTO `SVO`(`student_id`, `orderNum`, `startDate`, `endDate`) VALUES('$this->Student_id', '$this->OrderNum', '$this->StartDate', '$this->EndDate')";
         $mysqli->query($query);
     }
     

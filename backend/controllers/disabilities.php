@@ -7,14 +7,17 @@
     if($action == "get"){
         $id = $_POST['id'];
         echo json_encode(DisabledSt::Get($id));
-    } else if ($action == "add") {
-
-        $dis = new DisabledSt((object)$_POST);
-
-        $result = $dis->Insert();
+    } else if ($action == "insert") {
+        $disabledSt = new DisabledSt((object)$_POST);
+        $result = $disabledSt->Insert();
+        echo json_encode($result);
     } else if ($action == "delete"){
-        $id = $_POST['id'];
-        $dis = new DisabledSt($id);
-        $result = $dis->Delete();
+        $disabledSt = new DisabledSt((object)$_POST);
+        $result = $disabledSt->Delete();
+        echo json_encode($result);
+    }else if($action == "edit"){
+        $disabledSt = new DisabledSt((object)$_POST);
+        $result = $disabledSt->Update();
+        echo json_encode($result);
     }
 ?>

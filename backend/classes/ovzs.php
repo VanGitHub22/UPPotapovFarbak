@@ -38,7 +38,7 @@ Class OVZS{
 
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `OVZS` SET `student_id`='$this->Student_Id', `orderNum`='$this->OrderNum', `startDate`='$this->StartDate',`endDate`='$this->EndDate',`notes`='$this->Notes'";
+        $query = "UPDATE `OVZS` SET `orderNum`='$this->OrderNum', `startDate`='$this->StartDate',`endDate`='$this->EndDate',`notes`='$this->Notes' WHERE `id`=$this->Id";
         $mysqli->query($query);
 }
 
@@ -50,7 +50,7 @@ Class OVZS{
 
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `OVZS`(`student_id`,`orderNum`,`startDate`,`endDate`,`notes`) VALUES('$this->Student_Id','$this->OrderNum','$this->StartDate','$this->EndDate','$this->Notes') WHERE `id`=$this->Id";
+        $query = "INSERT INTO `OVZS`(`student_id`,`orderNum`,`startDate`,`endDate`,`notes`) VALUES('$this->Student_Id','$this->OrderNum','$this->StartDate','$this->EndDate','$this->Notes')";
         $mysqli->query($query);
     }
 }
