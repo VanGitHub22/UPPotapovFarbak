@@ -289,33 +289,45 @@ function getSPPPStatus(st_id) {
                         </tr>
                     </thead>
                     <tbody>
-                    
+                      <tr>
+                        <td><input type='text' name='orderNumSppp' value=''></td>
+                        <td><input type='text' name='dateSppp' value=''></td>
+                        <td><input type="text" name='reasonSppp' value=''></td>
+                        <td><input type="text" name='attendedStaffSppp' value=''></td>
+                        <td><input type="text" name='attendedRepresSppp' value=''></td>
+                        <td><input type="text" name='decisionSppp' value=''></td>
+                        <td><input type="text" name='notesSppp' value=''></td>
+                        <td>
+                            <a class='plus sppp_p' href='#'><img src='./img/plus_white.png'></a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <hr>
             `)
-            let count = 0;
+      $(`.plus.sppp_p`).on('click', function () {  
+          AddSppp(st_id)
+      })      
       sppps.forEach((sppp) => {
-        count++;
         $('.sppp tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumSppp' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp' value='${sppp.DateSppp}'></td>
-                        <td><input type="text" name='reasonSppp' value='${sppp.Reason}'></td>
-                        <td><input type="text" name='attendedStaffSppp' value='${sppp.AttendedStaff}'></td>
-                        <td><input type="text" name='attendedRepresSppp' value='${sppp.AttendedRepres}'></td>
-                        <td><input type="text" name='decisionSppp' value='${sppp.Decision}'></td>
-                        <td><input type="text" name='notesSppp' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumSppp${sppp.Id}' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateSppp${sppp.Id}' value='${sppp.DateSppp}'></td>
+                        <td><input type="text" name='reasonSppp${sppp.Id}' value='${sppp.Reason}'></td>
+                        <td><input type="text" name='attendedStaffSppp${sppp.Id}' value='${sppp.AttendedStaff}'></td>
+                        <td><input type="text" name='attendedRepresSppp${sppp.Id}' value='${sppp.AttendedRepres}'></td>
+                        <td><input type="text" name='decisionSppp${sppp.Id}' value='${sppp.Decision}'></td>
+                        <td><input type="text" name='notesSppp${sppp.Id}' value='${sppp.Notes}'></td>
                         <td>
-                            <a class='edit_pencil sppp_p${count}' href='#'><img src='./img/pencil.png'></a>
-                            <a class='trash_backet sppp_t' href='#'><img src='./img/trash.png'></a>
+                            <a class='edit_pencil sppp_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet sppp_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
                 `)
-        $(`.edit_pencil.sppp_p${count}`).on('click', function () {
-          EditSppp(sppp.Id, count)
+        $(`.edit_pencil.sppp_p${sppp.Id}`).on('click', function () {  
+          EditSppp(sppp.Id)
         })
-        $('.trash_backet.sppp_t').on('click', function () {
+        $(`.trash_backet.sppp_t${sppp.Id}`).on('click', function () {
           DeleteSppp(sppp.Id, st_id)
         })
       })
@@ -360,9 +372,9 @@ function getSVOStatus(st_id) {
       sppps.forEach((sppp) => {
         $('.svo tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumSvo' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSvo' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='reasonSvo' value='${sppp.EndDate}'></td>
+                        <td><input type='text' name='orderNumSvo${sppp.Id}' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateSvo${sppp.Id}' value='${sppp.StartDate}'></td>
+                        <td><input type="text" name='reasonSvo${sppp.Id}' value='${sppp.EndDate}'></td>
                         <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
@@ -481,7 +493,7 @@ function getDisStatus(st_id) {
                         <td><input type='text' name='orderNumDis' value='${sppp.OrderNum}'></td>
                         <td><input type='text' name='dateDis' value='${sppp.StartDate}'></td>
                         <td><input type="text" name='reasonDis' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='reasonDis' value='${sppp.disabilityType}'></td>
+                        <td><input type="text" name='reasonDis' value='${sppp.DisabilityType}'></td>
                         <td><input type="text" name='notesDis' value='${sppp.Notes}'></td>
                         <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
@@ -745,17 +757,18 @@ function getDormStatus(st_id) {
   })
 }
 
-function EditSppp(id, count) {
-  let orderNumSppp = document.getElementsByName('orderNumSppp')[0].value
-  let dateSppp = document.getElementsByName('dateSppp')[0].value
-  let reasonSppp = document.getElementsByName('reasonSppp')[0].value
+function EditSppp(id) {
+  let orderNumSppp = document.getElementsByName(`orderNumSppp${id}`)[0].value
+  let dateSppp = document.getElementsByName(`dateSppp${id}`)[0].value
+  let reasonSppp = document.getElementsByName(`reasonSppp${id}`)[0].value
   let attendedStaffSppp =
-    document.getElementsByName('attendedStaffSppp')[0].value
+    document.getElementsByName(`attendedStaffSppp${id}`)[0].value
   let attendedRepresSppp =
-    document.getElementsByName('attendedRepresSppp')[0].value
-  let notesSppp = document.getElementsByName('notesSppp')[0].value
-  alert(`${id} ${count}`)
-  /*let params = new FormData()
+    document.getElementsByName(`attendedRepresSppp${id}`)[0].value
+  let decisionSppp = document.getElementsByName(`decisionSppp${id}`)[0].value
+  let notesSppp = document.getElementsByName(`notesSppp${id}`)[0].value
+  console.log(id);
+  let params = new FormData()
   params.append('action', 'edit')
   params.append('id', id)
   params.append('orderNum', orderNumSppp)
@@ -763,11 +776,12 @@ function EditSppp(id, count) {
   params.append('reason', reasonSppp)
   params.append('attendedStaff', attendedStaffSppp)
   params.append('attendedRepres', attendedRepresSppp)
-  params.append('notes', notesSppp)*/
+  params.append('decision', decisionSppp)
+  params.append('notes', notesSppp)
   const entries = Array.from(params.entries())
   console.log(`${entries}`)
 
-  /*$.ajax({
+  $.ajax({
     url: './backend/controllers/sppp.php',
     type: 'POST',
     data: params,
@@ -775,12 +789,12 @@ function EditSppp(id, count) {
     processData: false,
     contentType: false,
     success: function (_data) {
-      //console.log(_data)
+      console.log(_data)
     },
     error: function (error) {
       alert(`Ошибка запроса ${error}`)
     },
-  })*/
+  })
 }
 
 function DeleteSppp(id, st_id) {
@@ -796,9 +810,48 @@ function DeleteSppp(id, st_id) {
     processData: false,
     contentType: false,
     success: function (_data) {
-      const entries = Array.from(params.entries())
       console.log(_data)
-      console.log(`${entries}`)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+function AddSppp(st_id) {
+  let orderNumSppp = document.getElementsByName(`orderNumSppp`)[0].value
+  let dateSppp = document.getElementsByName(`dateSppp`)[0].value
+  let reasonSppp = document.getElementsByName(`reasonSppp`)[0].value
+  let attendedStaffSppp =
+    document.getElementsByName(`attendedStaffSppp`)[0].value
+  let attendedRepresSppp =
+    document.getElementsByName(`attendedRepresSppp`)[0].value
+  let decisionSppp = document.getElementsByName(`decisionSppp`)[0].value
+  let notesSppp = document.getElementsByName(`notesSppp`)[0].value
+  let params = new FormData()
+  params.append('action', 'insert')
+  params.append('student_id', st_id)
+  params.append('orderNum', orderNumSppp)
+  params.append('dateSppp', dateSppp)
+  params.append('reason', reasonSppp)
+  params.append('attendedStaff', attendedStaffSppp)
+  params.append('attendedRepres', attendedRepresSppp)
+  params.append('decision', decisionSppp)
+  params.append('notes', notesSppp)
+  const entries = Array.from(params.entries())
+  console.log(`${entries}`)
+
+  $.ajax({
+    url: './backend/controllers/sppp.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
     },
     error: function (error) {
       alert(`Ошибка запроса ${error}`)
@@ -809,28 +862,38 @@ function DeleteSppp(id, st_id) {
 }
 
 function EditSvo(id) {
-  let orderNumSvo = document.getElementsByName('orderNumSvo')[0].value
-  let dateSvo = document.getElementsByName('dateSvo')[0].value
-  let reasonSvo = document.getElementsByName('reasonSvo')[0].value
-
+  let orderNumSppp = document.getElementsByName(`orderNumSppp${id}`)[0].value
+  let dateSppp = document.getElementsByName(`dateSppp${id}`)[0].value
+  let reasonSppp = document.getElementsByName(`reasonSppp${id}`)[0].value
+  let attendedStaffSppp =
+    document.getElementsByName(`attendedStaffSppp${id}`)[0].value
+  let attendedRepresSppp =
+    document.getElementsByName(`attendedRepresSppp${id}`)[0].value
+  let decisionSppp = document.getElementsByName(`decisionSppp${id}`)[0].value
+  let notesSppp = document.getElementsByName(`notesSppp${id}`)[0].value
+  console.log(id);
   let params = new FormData()
   params.append('action', 'edit')
   params.append('id', id)
-  params.append('orderNum', orderNumSvo)
-  params.append('startDate', dateSvo)
-  params.append('endDate', reasonSvo)
+  params.append('orderNum', orderNumSppp)
+  params.append('dateSppp', dateSppp)
+  params.append('reason', reasonSppp)
+  params.append('attendedStaff', attendedStaffSppp)
+  params.append('attendedRepres', attendedRepresSppp)
+  params.append('decision', decisionSppp)
+  params.append('notes', notesSppp)
+  const entries = Array.from(params.entries())
+  console.log(`${entries}`)
 
   $.ajax({
-    url: './backend/controllers/svo.php',
+    url: './backend/controllers/sppp.php',
     type: 'POST',
     data: params,
     cache: false,
     processData: false,
     contentType: false,
     success: function (_data) {
-      const entries = Array.from(params.entries())
       console.log(_data)
-      console.log(`${entries}`)
     },
     error: function (error) {
       alert(`Ошибка запроса ${error}`)

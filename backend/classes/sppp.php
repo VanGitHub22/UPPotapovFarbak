@@ -46,7 +46,7 @@ class SPPP{
     
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `SPPP` SET `dateSppp`=$this->DateSppp, `reason`='$this->Reason', `attendedStaff`='$this->AttendedStaff', `attendedRepres`='$this->AttendedRepres', `decision`='$this->Decision', `notes`='$this->Notes' WHERE `id`=$this->Id";
+        $query = "UPDATE `SPPP` SET `orderNum`='$this->OrderNum', `dateSppp`='$this->DateSppp', `reason`='$this->Reason', `attendedStaff`='$this->AttendedStaff', `attendedRepres`='$this->AttendedRepres', `decision`='$this->Decision', `notes`='$this->Notes' WHERE `id`=$this->Id";
         $mysqli->query($query);
     } 
     
@@ -58,7 +58,7 @@ class SPPP{
     
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Errors`(`student_id`, `dateSppp`, `reason`, `attendedStaff`, `attendedRepres`, `decision`, `notes`) VALUES('$this->Student_id', '$this->DateSppp', '$this->Reason', '$this->AttendedStaff', '$this->AttendedRepres', '$this->Decision', '$this->Notes')";
+        $query = "INSERT INTO `SPPP`(`student_id`, `orderNum`, `dateSppp`, `reason`, `attendedStaff`, `attendedRepres`, `decision`, `notes`) VALUES('$this->Student_id', '$this->OrderNum', '$this->DateSppp', '$this->Reason', '$this->AttendedStaff', '$this->AttendedRepres', '$this->Decision', '$this->Notes')";
         $mysqli->query($query);
     }
     

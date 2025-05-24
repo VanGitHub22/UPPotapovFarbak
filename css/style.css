@@ -93,7 +93,7 @@ main h1 {
 
 
 
-.edit_pencil{
+.edit_pencil, .plus{
   display: flex;
   align-items: center;
   justify-content: center;

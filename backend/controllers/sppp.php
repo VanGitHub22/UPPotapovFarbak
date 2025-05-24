@@ -7,14 +7,12 @@
     if($action == "get"){
         $id = $_POST['id'];
         echo json_encode(SPPP::Get($id));
-    } else if ($action == "add") {
-
+    } else if ($action == "insert") {
         $sppp = new SPPP((object)$_POST);
-
         $result = $sppp->Insert();
+        echo json_encode($result);
     } else if ($action == "delete"){
-        $id = $_POST['id'];
-        $sppp = new SPPP($id);
+        $sppp = new SPPP((object)$_POST);
         $result = $sppp->Delete();
         echo json_encode($result);
     }else if($action == "edit"){
