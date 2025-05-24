@@ -294,7 +294,9 @@ function getSPPPStatus(st_id) {
                 </table>
                 <hr>
             `)
+            let count = 0;
       sppps.forEach((sppp) => {
+        count++;
         $('.sppp tbody').append(`
                     <tr>
                         <td><input type='text' name='orderNumSppp' value='${sppp.OrderNum}'></td>
@@ -305,15 +307,15 @@ function getSPPPStatus(st_id) {
                         <td><input type="text" name='decisionSppp' value='${sppp.Decision}'></td>
                         <td><input type="text" name='notesSppp' value='${sppp.Notes}'></td>
                         <td>
-                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
-                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
+                            <a class='edit_pencil sppp_p${count}' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet sppp_t' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
-          EditSppp(sppp.Id)
+        $(`.edit_pencil.sppp_p${count}`).on('click', function () {
+          EditSppp(sppp.Id, count)
         })
-        $('.trash_backet').on('click', function () {
+        $('.trash_backet.sppp_t').on('click', function () {
           DeleteSppp(sppp.Id, st_id)
         })
       })
@@ -361,18 +363,18 @@ function getSVOStatus(st_id) {
                         <td><input type='text' name='orderNumSvo' value='${sppp.OrderNum}'></td>
                         <td><input type='text' name='dateSvo' value='${sppp.StartDate}'></td>
                         <td><input type="text" name='reasonSvo' value='${sppp.EndDate}'></td>
-                        <td>
+                        <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>
+                        </td>-->
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
+        /*$('.edit_pencil').on('click', function () {
           EditSvo(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
           DeleteSvo(sppp.Id, st_id)
-        })
+        })*/
       })
     },
     error: function (error) {
@@ -420,18 +422,18 @@ function getOVZStatus(st_id) {
                         <td><input type='text' name='dateOvz' value='${sppp.StartDate}'></td>
                         <td><input type="text" name='reasonOvz' value='${sppp.EndDate}'></td>
                         <td><input type="text" name='notesOvz' value='${sppp.Notes}'></td>
-                        <td>
+                        <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>
+                        </td>-->
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+        /*$('.edit_pencil').on('click', function () {
+          EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
-        })
+          DeleteSppp(sppp.Id)
+        })*/
       })
     },
     error: function (error) {
@@ -481,18 +483,18 @@ function getDisStatus(st_id) {
                         <td><input type="text" name='reasonDis' value='${sppp.EndDate}'></td>
                         <td><input type="text" name='reasonDis' value='${sppp.disabilityType}'></td>
                         <td><input type="text" name='notesDis' value='${sppp.Notes}'></td>
-                        <td>
+                        <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>
+                        </td>-->
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+        /*$('.edit_pencil').on('click', function () {
+          EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
-        })
+          DeleteSppp(sppp.Id)
+        })*/
       })
     },
     error: function (error) {
@@ -540,18 +542,18 @@ function getOrhapsStatus(st_id) {
                         <td><input type='text' name='dateOrh' value='${sppp.StartDate}'></td>
                         <td><input type="text" name='reasonOrh' value='${sppp.EndDate}'></td>
                         <td><input type="text" name='notesOrh' value='${sppp.Notes}'></td>
-                        <td>
+                        <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>
+                        </td>-->
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+        /*$('.edit_pencil').on('click', function () {
+          EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
-        })
+          DeleteSppp(sppp.Id)
+        })*/
       })
     },
     error: function (error) {
@@ -597,18 +599,18 @@ function getSocStatStatus(st_id) {
                         <td><input type='text' name='orderNumSoc' value='${sppp.OrderNum}'></td>
                         <td><input type='text' name='dateSoc' value='${sppp.StartDate}'></td>
                         <td><input type="text" name='reasonSoc' value='${sppp.EndDate}'></td>
-                        <td>
+                        <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>
+                        </td>-->
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+        /*$('.edit_pencil').on('click', function () {
+          EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
-        })
+          DeleteSppp(sppp.Id)
+        })*/
       })
     },
     error: function (error) {
@@ -662,18 +664,18 @@ function geRiskStatStatus(st_id) {
                         <td><input type="text" name='ReasonRisk' value='${sppp.Reason}'></td>
                         <td><input type="text" name='RemovalReasonRisk' value='${sppp.RemovalReason}'></td>
                         <td><input type="text" name='NotesRisk' value='${sppp.Notes}'></td>
-                        <td>
+                        <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>
+                        </td>-->
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+        /*$('.edit_pencil').on('click', function () {
+          EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
-        })
+          DeleteSppp(sppp.Id)
+        })*/
       })
     },
     error: function (error) {
@@ -723,18 +725,18 @@ function getDormStatus(st_id) {
                         <td><input type='text' name='dateDorm' value='${sppp.CheckInDate}'></td>
                         <td><input type="text" name='reasonDorm' value='${sppp.CheckOutDate}'></td>
                         <td><input type="text" name='reasonDorm' value='${sppp.Notes}'></td>
-                        <td>
+                        <!--<td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>
+                        </td>-->
                     </tr>
                 `)
-        $('.edit_pencil').on('click', function () {
-          EditSppp(Studnet.Id)
+        /*$('.edit_pencil').on('click', function () {
+          EditSppp(sppp.Id)
         })
         $('.trash_backet').on('click', function () {
-          DeleteSppp(Studnet.Id)
-        })
+          DeleteSppp(sppp.Id)
+        })*/
       })
     },
     error: function (error) {
@@ -743,7 +745,7 @@ function getDormStatus(st_id) {
   })
 }
 
-function EditSppp(id) {
+function EditSppp(id, count) {
   let orderNumSppp = document.getElementsByName('orderNumSppp')[0].value
   let dateSppp = document.getElementsByName('dateSppp')[0].value
   let reasonSppp = document.getElementsByName('reasonSppp')[0].value
@@ -752,8 +754,8 @@ function EditSppp(id) {
   let attendedRepresSppp =
     document.getElementsByName('attendedRepresSppp')[0].value
   let notesSppp = document.getElementsByName('notesSppp')[0].value
-
-  let params = new FormData()
+  alert(`${id} ${count}`)
+  /*let params = new FormData()
   params.append('action', 'edit')
   params.append('id', id)
   params.append('orderNum', orderNumSppp)
@@ -761,9 +763,11 @@ function EditSppp(id) {
   params.append('reason', reasonSppp)
   params.append('attendedStaff', attendedStaffSppp)
   params.append('attendedRepres', attendedRepresSppp)
-  params.append('notes', notesSppp)
+  params.append('notes', notesSppp)*/
+  const entries = Array.from(params.entries())
+  console.log(`${entries}`)
 
-  $.ajax({
+  /*$.ajax({
     url: './backend/controllers/sppp.php',
     type: 'POST',
     data: params,
@@ -771,14 +775,12 @@ function EditSppp(id) {
     processData: false,
     contentType: false,
     success: function (_data) {
-      const entries = Array.from(params.entries())
-      console.log(_data)
-      console.log(`${entries}`)
+      //console.log(_data)
     },
     error: function (error) {
       alert(`Ошибка запроса ${error}`)
     },
-  })
+  })*/
 }
 
 function DeleteSppp(id, st_id) {
@@ -836,7 +838,7 @@ function EditSvo(id) {
   })
 }
 
-function DeleteSppp(id, st_id) {
+function DeleteSvo(id, st_id) {
   let params = new FormData()
   params.append('action', 'delete')
   params.append('id', id)

@@ -46,7 +46,7 @@ class SPPP{
     
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `SPPP` SET `student_id`='$this->Student_id', `dateSppp`=$this->DateSppp, `reason`='$this->Reason', `attendedStaff`='$this->AttendedStaff', `attendedRepres`='$this->AttendedRepres', `decision`='$this->Decision', `notes`='$this->Notes' WHERE `id`=$this->Id";
+        $query = "UPDATE `SPPP` SET `dateSppp`=$this->DateSppp, `reason`='$this->Reason', `attendedStaff`='$this->AttendedStaff', `attendedRepres`='$this->AttendedRepres', `decision`='$this->Decision', `notes`='$this->Notes' WHERE `id`=$this->Id";
         $mysqli->query($query);
     } 
     
