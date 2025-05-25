@@ -290,13 +290,13 @@ function getSPPPStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type='text' name='orderNumSppp' value=''></td>
-                        <td><input type='text' name='dateSppp' value=''></td>
-                        <td><input type="text" name='reasonSppp' value=''></td>
-                        <td><input type="text" name='attendedStaffSppp' value=''></td>
-                        <td><input type="text" name='attendedRepresSppp' value=''></td>
-                        <td><input type="text" name='decisionSppp' value=''></td>
-                        <td><input type="text" name='notesSppp' value=''></td>
+                        <td><input type='text' name='orderNumSppp' value='' placeholder='документ'></td>
+                        <td><input type='text' name='dateSppp' value='' placeholder='дата заседания'></td>
+                        <td><input type="text" name='reasonSppp' value='' placeholder='причина'></td>
+                        <td><input type="text" name='attendedStaffSppp' value='' placeholder='учавствовашвие сотрудники'></td>
+                        <td><input type="text" name='attendedRepresSppp' value='' placeholder='участвовавшие представители'></td>
+                        <td><input type="text" name='decisionSppp' value='' placeholder='решение'></td>
+                        <td><input type="text" name='notesSppp' value='' placeholder='дополнительно'></td>
                         <td>
                             <a class='plus sppp_p' href='#'><img src='./img/plus_white.png'></a>
                         </td>
@@ -305,26 +305,26 @@ function getSPPPStatus(st_id) {
                 </table>
                 <hr>
             `)
-      $(`.plus.sppp_p`).on('click', function () {  
-          AddSppp(st_id)
-      })      
+      $(`.plus.sppp_p`).on('click', function () {
+        AddSppp(st_id)
+      })
       sppps.forEach((sppp) => {
         $('.sppp tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumSppp${sppp.Id}' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateSppp${sppp.Id}' value='${sppp.DateSppp}'></td>
-                        <td><input type="text" name='reasonSppp${sppp.Id}' value='${sppp.Reason}'></td>
-                        <td><input type="text" name='attendedStaffSppp${sppp.Id}' value='${sppp.AttendedStaff}'></td>
-                        <td><input type="text" name='attendedRepresSppp${sppp.Id}' value='${sppp.AttendedRepres}'></td>
-                        <td><input type="text" name='decisionSppp${sppp.Id}' value='${sppp.Decision}'></td>
-                        <td><input type="text" name='notesSppp${sppp.Id}' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumSppp${sppp.Id}' value='${sppp.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' name='dateSppp${sppp.Id}' value='${sppp.DateSppp}' placeholder='дата заседания'></td>
+                        <td><input type="text" name='reasonSppp${sppp.Id}' value='${sppp.Reason}' placeholder='причина'></td>
+                        <td><input type="text" name='attendedStaffSppp${sppp.Id}' value='${sppp.AttendedStaff}' placeholder='учавствовашвие сотрудники'></td>
+                        <td><input type="text" name='attendedRepresSppp${sppp.Id}' value='${sppp.AttendedRepres}' placeholder='участвовавшие представители'></td>
+                        <td><input type="text" name='decisionSppp${sppp.Id}' value='${sppp.Decision}' placeholder='решение'></td>
+                        <td><input type="text" name='notesSppp${sppp.Id}' value='${sppp.Notes}' placeholder='дополнительно'></td>
                         <td>
                             <a class='edit_pencil sppp_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet sppp_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
                         </td>
                     </tr>
                 `)
-        $(`.edit_pencil.sppp_p${sppp.Id}`).on('click', function () {  
+        $(`.edit_pencil.sppp_p${sppp.Id}`).on('click', function () {
           EditSppp(sppp.Id)
         })
         $(`.trash_backet.sppp_t${sppp.Id}`).on('click', function () {
@@ -366,9 +366,9 @@ function getSVOStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type='text' name='orderNumSvo' value=''></td>
-                        <td><input type='text' name='startDateSvo' value=''></td>
-                        <td><input type="text" name='endDateSvo' value=''></td>
+                        <td><input type='text' name='orderNumSvo' value='' placeholder='документ'></td>
+                        <td><input type='text' name='startDateSvo' value='' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateSvo' value='' placeholder='дата конца'></td>
                         <td>
                             <a class='plus svo_p' href='#'><img src='./img/plus_white.png'></a>
                         </td>
@@ -377,15 +377,15 @@ function getSVOStatus(st_id) {
                 </table>
                 <hr>
             `)
-      $(`.plus.svo_p`).on('click', function () {  
-          AddSvo(st_id)
-      })   
+      $(`.plus.svo_p`).on('click', function () {
+        AddSvo(st_id)
+      })
       sppps.forEach((sppp) => {
         $('.svo tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumSvo${sppp.Id}' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='startDateSvo${sppp.Id}' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='endDateSvo${sppp.Id}' value='${sppp.EndDate}'></td>
+                        <td><input type='text' name='orderNumSvo${sppp.Id}' value='${sppp.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' name='startDateSvo${sppp.Id}' value='${sppp.StartDate}' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateSvo${sppp.Id}' value='${sppp.EndDate}' placeholder='дата конца'></td>
                         <td>
                             <a class='edit_pencil svo_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet svo_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
@@ -433,10 +433,10 @@ function getOVZStatus(st_id) {
                         </tr>
                     </thead>
                     <tbody>
-                      <td><input type='text' name='orderNumOvz' value=''></td>
-                        <td><input type='text' name='startDateOvz' value=''></td>
-                        <td><input type="text" name='endDateOvz' value=''></td>
-                        <td><input type="text" name='notesOvz' value=''></td>
+                      <td><input type='text' name='orderNumOvz' value='' placeholder='документ'></td>
+                        <td><input type='text' name='startDateOvz' value='' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateOvz' value='' placeholder='дата конца'></td>
+                        <td><input type="text" name='notesOvz' value='' placeholder='дополнительно'></td>
                         <td>
                             <a class='plus ovz_p' href='#'><img src='./img/plus_white.png'></a>
                         </td>
@@ -444,16 +444,16 @@ function getOVZStatus(st_id) {
                 </table>
                 <hr>
             `)
-      $(`.plus.ovz_p`).on('click', function () {  
-          AddOvz(st_id)
-      })  
+      $(`.plus.ovz_p`).on('click', function () {
+        AddOvz(st_id)
+      })
       sppps.forEach((sppp) => {
         $('.ovz tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumOvz${sppp.Id}' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='startDateOvz${sppp.Id}' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='endDateOvz${sppp.Id}' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='notesOvz${sppp.Id}' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumOvz${sppp.Id}' value='${sppp.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' name='startDateOvz${sppp.Id}' value='${sppp.StartDate}' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateOvz${sppp.Id}' value='${sppp.EndDate}' placeholder='дата конца'></td>
+                        <td><input type="text" name='notesOvz${sppp.Id}' value='${sppp.Notes}' placeholder='дополнительно'></td>
                         <td>
                             <a class='edit_pencil ovz_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet ovz_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
@@ -503,11 +503,11 @@ function getDisStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type='text' name='orderNumDis' value=''></td>
-                        <td><input type='text' name='startDateDis' value=''></td>
-                        <td><input type="text" name='endDateDis' value=''></td>
-                        <td><input type="text" name='disabilityTypeDis' value=''></td>
-                        <td><input type="text" name='notesDis' value=''></td>
+                        <td><input type='text' name='orderNumDis' value='' placeholder='документ'></td>
+                        <td><input type='text' name='startDateDis' value='' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateDis' value='' placeholder='дата конца'></td>
+                        <td><input type="text" name='disabilityTypeDis' value='' placeholder='тип инвалидности'></td>
+                        <td><input type="text" name='notesDis' value='' placeholder='дополнительно'></td>
                         <td>
                             <a class='plus dis_p' href='#'><img src='./img/plus_white.png'></a>
                         </td>
@@ -516,17 +516,17 @@ function getDisStatus(st_id) {
                 </table>
                 <hr>
             `)
-      $(`.plus.dis_p`).on('click', function () {  
-          AddDis(st_id)
-      })  
+      $(`.plus.dis_p`).on('click', function () {
+        AddDis(st_id)
+      })
       sppps.forEach((sppp) => {
         $('.disab tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumDis${sppp.Id}' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='startDateDis${sppp.Id}' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='endDateDis${sppp.Id}' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='disabilityTypeDis${sppp.Id}' value='${sppp.DisabilityType}'></td>
-                        <td><input type="text" name='notesDis${sppp.Id}' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumDis${sppp.Id}' value='${sppp.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' name='startDateDis${sppp.Id}' value='${sppp.StartDate}' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateDis${sppp.Id}' value='${sppp.EndDate}' placeholder='дата конца'></td>
+                        <td><input type="text" name='disabilityTypeDis${sppp.Id}' value='${sppp.DisabilityType}' placeholder='тип инвалидности'></td>
+                        <td><input type="text" name='notesDis${sppp.Id}' value='${sppp.Notes}' placeholder='дополнительно'></td>
                         <td>
                             <a class='edit_pencil dis_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet dis_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
@@ -575,10 +575,10 @@ function getOrhapsStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type='text' name='orderNumOrh' value=''></td>
-                        <td><input type='text' name='startDateOrh' value=''></td>
-                        <td><input type="text" name='endDateOrh' value=''></td>
-                        <td><input type="text" name='notesOrh' value=''></td>
+                        <td><input type='text' name='orderNumOrh' value='' placeholder='документ'></td>
+                        <td><input type='text' name='startDateOrh' value='' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateOrh' value='' placeholder='дата конца'></td>
+                        <td><input type="text" name='notesOrh' value='' placeholder='дополнительно' ></td>
                         <td>
                             <a class='plus orh_p' href='#'><img src='./img/plus_white.png'></a>
                         </td>
@@ -587,16 +587,16 @@ function getOrhapsStatus(st_id) {
                 </table>
                 <hr>
             `)
-      $(`.plus.orh_p`).on('click', function () {  
-          AddOrh(st_id)
-      })  
+      $(`.plus.orh_p`).on('click', function () {
+        AddOrh(st_id)
+      })
       sppps.forEach((sppp) => {
         $('.orh tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumOrh${sppp.Id}' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='startDateOrh${sppp.Id}' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='endDateOrh${sppp.Id}' value='${sppp.EndDate}'></td>
-                        <td><input type="text" name='notesOrh${sppp.Id}' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumOrh${sppp.Id}' value='${sppp.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' name='startDateOrh${sppp.Id}' value='${sppp.StartDate}' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateOrh${sppp.Id}' value='${sppp.EndDate}' placeholder='дата конца'></td>
+                        <td><input type="text" name='notesOrh${sppp.Id}' value='${sppp.Notes}' placeholder='дополнительно'></td>
                         <td>
                             <a class='edit_pencil orh_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet orh_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
@@ -644,9 +644,9 @@ function getSocStatStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type='text' name='orderNumSoc' value=''></td>
-                        <td><input type='text' name='startDateSoc' value=''></td>
-                        <td><input type="text" name='endDateSoc' value=''></td>
+                        <td><input type='text' name='orderNumSoc' value='' placeholder='документ'></td>
+                        <td><input type='text' name='startDateSoc' value='' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateSoc' value='' placeholder='дата конца'></td>
                         <td>
                           <a class='plus scol_p' href='#'><img src='./img/plus_white.png'></a>
                         </td>
@@ -655,15 +655,15 @@ function getSocStatStatus(st_id) {
                 </table>
                 <hr>
             `)
-      $(`.plus.scol_p`).on('click', function () {  
-          AddScol(st_id)
-      })  
+      $(`.plus.scol_p`).on('click', function () {
+        AddScol(st_id)
+      })
       sppps.forEach((sppp) => {
         $('.scol tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumSoc${sppp.Id}' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='startDateSoc${sppp.Id}' value='${sppp.StartDate}'></td>
-                        <td><input type="text" name='endDateSoc${sppp.Id}' value='${sppp.EndDate}'></td>
+                        <td><input type='text' name='orderNumSoc${sppp.Id}' value='${sppp.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' name='startDateSoc${sppp.Id}' value='${sppp.StartDate}' placeholder='дата начала'></td>
+                        <td><input type="text" name='endDateSoc${sppp.Id}' value='${sppp.EndDate}' placeholder='дата конца'></td>
                         <td>
                             <a class='edit_pencil scol_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet scol_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
@@ -715,13 +715,13 @@ function geRiskStatStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                          <td><input type='text' name='orderNumRisk' value=''></td>
-                          <td><input type='text' name='typeRisk' value=''></td>
-                          <td><input type='text' name='registrationDateRisk' value=''></td>
-                          <td><input type="text" name='removalDateRisk' value=''></td>
-                          <td><input type="text" name='reasonRisk' value=''></td>
-                          <td><input type="text" name='removalReasonRisk' value=''></td>
-                          <td><input type="text" name='notesRisk' value=''></td>
+                          <td><input type='text' name='orderNumRisk' value='' placeholder='документ'></td>
+                          <td><input type='text' name='typeRisk' value='' placeholder='группа риска'></td>
+                          <td><input type='text' name='registrationDateRisk' value='' placeholder='дата регистраци статуса'></td>
+                          <td><input type="text" name='removalDateRisk' value='' placeholder='дата снятия'></td>
+                          <td><input type="text" name='reasonRisk' value='' placeholder='причина постановки'></td>
+                          <td><input type="text" name='removalReasonRisk' value='' placeholder='дата снятия статуса'></td>
+                          <td><input type="text" name='notesRisk' value='' placeholder='дополнительно'></td>
                           <td>
                             <a class='plus risk_p' href='#'><img src='./img/plus_white.png'></a>
                           </td>
@@ -730,19 +730,19 @@ function geRiskStatStatus(st_id) {
                 </table>
                 <hr>
             `)
-      $(`.plus.risk_p`).on('click', function () {  
-          AddRisk(st_id)
-      })  
+      $(`.plus.risk_p`).on('click', function () {
+        AddRisk(st_id)
+      })
       sppps.forEach((sppp) => {
         $('.risk tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumRisk${sppp.Id}' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='typeRisk${sppp.Id}' value='${sppp.Type}'></td>
-                        <td><input type='text' name='registrationDateRisk${sppp.Id}' value='${sppp.RegistrationDate}'></td>
-                        <td><input type="text" name='removalDateRisk${sppp.Id}' value='${sppp.RemovalDate}'></td>
-                        <td><input type="text" name='reasonRisk${sppp.Id}' value='${sppp.Reason}'></td>
-                        <td><input type="text" name='removalReasonRisk${sppp.Id}' value='${sppp.RemovalReason}'></td>
-                        <td><input type="text" name='notesRisk${sppp.Id}' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='orderNumRisk${sppp.Id}' value='${sppp.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' name='typeRisk${sppp.Id}' value='${sppp.Type}' placeholder='группа риска'></td>
+                        <td><input type='text' name='registrationDateRisk${sppp.Id}' value='${sppp.RegistrationDate}' placeholder='дата регистраци статуса'></td>
+                        <td><input type="text" name='removalDateRisk${sppp.Id}' value='${sppp.RemovalDate}' placeholder='дата снятия'></td>
+                        <td><input type="text" name='reasonRisk${sppp.Id}' value='${sppp.Reason}' placeholder='причина постановки'></td>
+                        <td><input type="text" name='removalReasonRisk${sppp.Id}' value='${sppp.RemovalReason}' placeholder='дата снятия статуса'></td>
+                        <td><input type="text" name='notesRisk${sppp.Id}' value='${sppp.Notes}' placeholder='дополнительно'></td>
                         <td>
                             <a class='edit_pencil risk_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet risk_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
@@ -792,7 +792,7 @@ function getDormStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type='text' name='dateDorm' value='></td>
+                        <td><input type='text' name='dateDorm' value=''></td>
                         <td><input type='text' name='orderNumDorm' value=''></td>
                         <td><input type='text' name='dateDorm' value=''></td>
                         <td><input type="text" name='reasonDorm' value=''></td>
@@ -807,7 +807,7 @@ function getDormStatus(st_id) {
             `)
       /*$(`.plus.dorm_p`).on('click', function () {  
           AddDorm(st_id)
-      })*/ 
+      })*/
       sppps.forEach((sppp) => {
         $('.dorm tbody').append(`
                     <tr>
@@ -842,13 +842,15 @@ function EditSppp(id) {
   let orderNumSppp = document.getElementsByName(`orderNumSppp${id}`)[0].value
   let dateSppp = document.getElementsByName(`dateSppp${id}`)[0].value
   let reasonSppp = document.getElementsByName(`reasonSppp${id}`)[0].value
-  let attendedStaffSppp =
-    document.getElementsByName(`attendedStaffSppp${id}`)[0].value
-  let attendedRepresSppp =
-    document.getElementsByName(`attendedRepresSppp${id}`)[0].value
+  let attendedStaffSppp = document.getElementsByName(
+    `attendedStaffSppp${id}`
+  )[0].value
+  let attendedRepresSppp = document.getElementsByName(
+    `attendedRepresSppp${id}`
+  )[0].value
   let decisionSppp = document.getElementsByName(`decisionSppp${id}`)[0].value
   let notesSppp = document.getElementsByName(`notesSppp${id}`)[0].value
-  console.log(id);
+  console.log(id)
   let params = new FormData()
   params.append('action', 'edit')
   params.append('id', id)
@@ -1126,7 +1128,9 @@ function EditDis(id) {
   let orderNumDis = document.getElementsByName(`orderNumDis${id}`)[0].value
   let startDateDis = document.getElementsByName(`startDateDis${id}`)[0].value
   let endDateDis = document.getElementsByName(`endDateDis${id}`)[0].value
-  let disabilityTypeDis = document.getElementsByName(`disabilityTypeDis${id}`)[0].value
+  let disabilityTypeDis = document.getElementsByName(
+    `disabilityTypeDis${id}`
+  )[0].value
   let notesDis = document.getElementsByName(`notesDis${id}`)[0].value
 
   let params = new FormData()
@@ -1183,7 +1187,8 @@ function AddDis(st_id) {
   let orderNumDis = document.getElementsByName(`orderNumDis`)[0].value
   let startDateDis = document.getElementsByName(`startDateDis`)[0].value
   let endDateDis = document.getElementsByName(`endDateDis`)[0].value
-  let disabilityTypeDis = document.getElementsByName(`disabilityTypeDis`)[0].value
+  let disabilityTypeDis =
+    document.getElementsByName(`disabilityTypeDis`)[0].value
   let notesDis = document.getElementsByName(`notesDis`)[0].value
 
   let params = new FormData()
@@ -1398,10 +1403,14 @@ function AddScol(st_id) {
 function EditRisk(id) {
   let orderNumRisk = document.getElementsByName(`orderNumRisk${id}`)[0].value
   let typeRisk = document.getElementsByName(`typeRisk${id}`)[0].value
-  let startDateRisk = document.getElementsByName(`registrationDateRisk${id}`)[0].value
-  let removalDateRisk = document.getElementsByName(`removalDateRisk${id}`)[0].value
+  let startDateRisk = document.getElementsByName(`registrationDateRisk${id}`)[0]
+    .value
+  let removalDateRisk = document.getElementsByName(`removalDateRisk${id}`)[0]
+    .value
   let reasonRisk = document.getElementsByName(`reasonRisk${id}`)[0].value
-  let removalReasonRisk = document.getElementsByName(`removalReasonRisk${id}`)[0].value
+  let removalReasonRisk = document.getElementsByName(
+    `removalReasonRisk${id}`
+  )[0].value
   let notesRisk = document.getElementsByName(`notesRisk${id}`)[0].value
 
   let params = new FormData()
@@ -1459,10 +1468,12 @@ function DeleteRisk(id, st_id) {
 function AddRisk(st_id) {
   let orderNumRisk = document.getElementsByName(`orderNumRisk`)[0].value
   let typeRisk = document.getElementsByName(`typeRisk`)[0].value
-  let startDateRisk = document.getElementsByName(`registrationDateRisk`)[0].value
+  let startDateRisk =
+    document.getElementsByName(`registrationDateRisk`)[0].value
   let removalDateRisk = document.getElementsByName(`removalDateRisk`)[0].value
   let reasonRisk = document.getElementsByName(`reasonRisk`)[0].value
-  let removalReasonRisk = document.getElementsByName(`removalReasonRisk`)[0].value
+  let removalReasonRisk =
+    document.getElementsByName(`removalReasonRisk`)[0].value
   let notesRisk = document.getElementsByName(`notesRisk`)[0].value
 
   let params = new FormData()
