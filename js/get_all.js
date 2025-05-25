@@ -1,7 +1,7 @@
 import LoadStudents from './get_student.js';
 import LoadDepa from './get_depa.js';
 import LoadDorm from './get_dorm.js';
-import LoadAddSt from './get_dorm.js';
+import LoadAddSt from './get_addSt.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 const paramss = {};
@@ -17,5 +17,5 @@ if(!paramss['page']){
 } else if(paramss.page == "dorm"){
     LoadDorm();
 } else if(paramss.page == "addSt"){
-    LoadDorm();
+    LoadAddSt();
 }
