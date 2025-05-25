@@ -33,12 +33,12 @@ function LoadDorm() {
       Dorm.forEach((dorm) => {
         $('tbody').append(`
                     <tr>
-                        <td><input type='text' value='${dorm.Student_Id}'></td>
-                        <td><input type='text' value='${dorm.Room_Id}'></td>
-                        <td><input type='text' value='${dorm.OrderNum}'></td>
-                        <td><input type='text' value='${dorm.CheckInDate}'></td>
-                        <td><input type='text' value='${dorm.CheckOutDate}'></td>
-                        <td><input type='text' value='${dorm.Notes}'></td>
+                        <td><input type='text' value='${dorm.Student_Id}' placeholder='id студента'></td>
+                        <td><input type='text' value='${dorm.Room_Id}' placeholder='id комнаты'></td>
+                        <td><input type='text' value='${dorm.OrderNum}' placeholder='документ'></td>
+                        <td><input type='text' value='${dorm.CheckInDate}' placeholder='дата заселения'></td>
+                        <td><input type='text' value='${dorm.CheckOutDate}' placeholder='дата выселения'></td>
+                        <td><input type='text' value='${dorm.Notes}' placeholder='дополнительно'></td>
                         <td>
                             <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
                             <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
