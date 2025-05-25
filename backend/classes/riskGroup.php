@@ -21,13 +21,13 @@ Class RiskGroup{
         else $this->Type = NULL;
         if(isset($params->registrationDate)) $this->RegistrationDate = $params->registrationDate; 
         else $this->RegistrationDate = NULL;
-        if(isset($params->removalDate)) $this-> RemovalDate = $params->removalDate; 
+        if(isset($params->removalDate)) $this->RemovalDate = $params->removalDate; 
         else $this->RemovalDate = NULL;
-        if(isset($params->reason)) $this-> Reason = $params->reason; 
+        if(isset($params->reason)) $this->Reason = $params->reason; 
         else $this->Reason = NULL;
-        if(isset($params->removalReason)) $this-> RemovalReason = $params->removalReason; 
+        if(isset($params->removalReason)) $this->RemovalReason = $params->removalReason; 
         else $this->RemovalReason = NULL;
-        if(isset($params->notes)) $this-> Notes = $params->notes; 
+        if(isset($params->notes)) $this->Notes = $params->notes; 
         else $this->Notes = NULL;
     }
 
@@ -46,7 +46,7 @@ Class RiskGroup{
 
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `RiskGroup` SET `student_id`='$this->Student_Id',`orderNum`='$this->OrderNum', `type`='$this->Type', `registrationDate`='$this->RegistrationDate',`removalDate`='$this->RemovalDate',`reason`='$this->Reason', `removalReason`='$this->RemovalReason', `notes`='$this->Notes'";
+        $query = "UPDATE `RiskGroup` SET `orderNum`='$this->OrderNum', `type`='$this->Type', `registrationDate`='$this->RegistrationDate',`removalDate`='$this->RemovalDate',`reason`='$this->Reason', `removalReason`='$this->RemovalReason', `notes`='$this->Notes'  WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
 
@@ -58,7 +58,7 @@ Class RiskGroup{
 
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `RiskGroup`(`student_id`,`orderNum`,`type`,`registrationDate`,`removalDate`,`reason`, `removalReason`,`notes`) VALUES('$this->Student_Id','$this->OrderNum','$this->Type','$this->RegistrationDate','$this->RemovalDate','$this->Reason', '$this->RemovalReason', '$this->Notes') WHERE `id`=$this->Id";
+        $query = "INSERT INTO `RiskGroup`(`student_id`,`orderNum`,`type`,`registrationDate`,`removalDate`,`reason`, `removalReason`,`notes`) VALUES('$this->Student_Id','$this->OrderNum','$this->Type','$this->RegistrationDate','$this->RemovalDate','$this->Reason', '$this->RemovalReason', '$this->Notes')";
         $mysqli->query($query);
     }
 }

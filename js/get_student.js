@@ -644,11 +644,11 @@ function getSocStatStatus(st_id) {
                     </thead>
                     <tbody>
                       <tr>
-                          <td><input type='text' name='orderNumSoc' value=''></td>
-                          <td><input type='text' name='startDateSoc' value=''></td>
-                          <td><input type="text" name='endDateSoc' value=''></td>
-                          <td>
-                            <a class='plus scol_p' href='#'><img src='./img/plus_white.png'></a>
+                        <td><input type='text' name='orderNumSoc' value=''></td>
+                        <td><input type='text' name='startDateSoc' value=''></td>
+                        <td><input type="text" name='endDateSoc' value=''></td>
+                        <td>
+                          <a class='plus scol_p' href='#'><img src='./img/plus_white.png'></a>
                         </td>
                       </tr>
                     </tbody>
@@ -714,33 +714,47 @@ function geRiskStatStatus(st_id) {
                         </tr>
                     </thead>
                     <tbody>
-                    
+                      <tr>
+                          <td><input type='text' name='orderNumRisk' value=''></td>
+                          <td><input type='text' name='typeRisk' value=''></td>
+                          <td><input type='text' name='registrationDateRisk' value=''></td>
+                          <td><input type="text" name='removalDateRisk' value=''></td>
+                          <td><input type="text" name='reasonRisk' value=''></td>
+                          <td><input type="text" name='removalReasonRisk' value=''></td>
+                          <td><input type="text" name='notesRisk' value=''></td>
+                          <td>
+                            <a class='plus risk_p' href='#'><img src='./img/plus_white.png'></a>
+                          </td>
+                      </tr>
                     </tbody>
                 </table>
                 <hr>
             `)
+      $(`.plus.risk_p`).on('click', function () {  
+          AddRisk(st_id)
+      })  
       sppps.forEach((sppp) => {
         $('.risk tbody').append(`
                     <tr>
-                        <td><input type='text' name='orderNumRisk' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='TypeRisk' value='${sppp.Type}'></td>
-                        <td><input type='text' name='dateRisk' value='${sppp.RegistrationDate}'></td>
-                        <td><input type="text" name='RemovalDateRisk' value='${sppp.RemovalDate}'></td>
-                        <td><input type="text" name='ReasonRisk' value='${sppp.Reason}'></td>
-                        <td><input type="text" name='RemovalReasonRisk' value='${sppp.RemovalReason}'></td>
-                        <td><input type="text" name='NotesRisk' value='${sppp.Notes}'></td>
-                        <!--<td>
-                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
-                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
-                        </td>-->
+                        <td><input type='text' name='orderNumRisk${sppp.Id}' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='typeRisk${sppp.Id}' value='${sppp.Type}'></td>
+                        <td><input type='text' name='registrationDateRisk${sppp.Id}' value='${sppp.RegistrationDate}'></td>
+                        <td><input type="text" name='removalDateRisk${sppp.Id}' value='${sppp.RemovalDate}'></td>
+                        <td><input type="text" name='reasonRisk${sppp.Id}' value='${sppp.Reason}'></td>
+                        <td><input type="text" name='removalReasonRisk${sppp.Id}' value='${sppp.RemovalReason}'></td>
+                        <td><input type="text" name='notesRisk${sppp.Id}' value='${sppp.Notes}'></td>
+                        <td>
+                            <a class='edit_pencil risk_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet risk_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
+                        </td>
                     </tr>
                 `)
-        /*$('.edit_pencil').on('click', function () {
-          EditSppp(sppp.Id)
+        $(`.edit_pencil.risk_p${sppp.Id}`).on('click', function () {
+          EditRisk(sppp.Id)
         })
-        $('.trash_backet').on('click', function () {
-          DeleteSppp(sppp.Id)
-        })*/
+        $(`.trash_backet.risk_t${sppp.Id}`).on('click', function () {
+          DeleteRisk(sppp.Id, st_id)
+        })
       })
     },
     error: function (error) {
@@ -777,30 +791,42 @@ function getDormStatus(st_id) {
                         </tr>
                     </thead>
                     <tbody>
-                    
+                      <tr>
+                        <td><input type='text' name='dateDorm' value='></td>
+                        <td><input type='text' name='orderNumDorm' value=''></td>
+                        <td><input type='text' name='dateDorm' value=''></td>
+                        <td><input type="text" name='reasonDorm' value=''></td>
+                        <td><input type="text" name='reasonDorm' value=''></td>
+                        <!--<td>
+                          <a class='plus dorm_p' href='#'><img src='./img/plus_white.png'></a>
+                        </td>-->
+                    </tr>
                     </tbody>
                 </table>
                 <hr>
             `)
+      /*$(`.plus.dorm_p`).on('click', function () {  
+          AddDorm(st_id)
+      })*/ 
       sppps.forEach((sppp) => {
         $('.dorm tbody').append(`
                     <tr>
-                    <td><input type='text' name='dateDorm' value='${sppp.Room_Id}'></td>
-                        <td><input type='text' name='orderNumDorm' value='${sppp.OrderNum}'></td>
-                        <td><input type='text' name='dateDorm' value='${sppp.CheckInDate}'></td>
-                        <td><input type="text" name='reasonDorm' value='${sppp.CheckOutDate}'></td>
-                        <td><input type="text" name='reasonDorm' value='${sppp.Notes}'></td>
+                        <td><input type='text' name='dateDorm${sppp.Id}' value='${sppp.Room_Id}'></td>
+                        <td><input type='text' name='orderNumDorm${sppp.Id}' value='${sppp.OrderNum}'></td>
+                        <td><input type='text' name='dateDorm${sppp.Id}' value='${sppp.CheckInDate}'></td>
+                        <td><input type="text" name='reasonDorm${sppp.Id}' value='${sppp.CheckOutDate}'></td>
+                        <td><input type="text" name='reasonDorm${sppp.Id}' value='${sppp.Notes}'></td>
                         <!--<td>
-                            <a class='edit_pencil' href='#'><img src='./img/pencil.png'></a>
-                            <a class='trash_backet' href='#'><img src='./img/trash.png'></a>
+                            <a class='edit_pencil dorm_p${sppp.Id}' href='#'><img src='./img/pencil.png'></a>
+                            <a class='trash_backet dorm_t${sppp.Id}' href='#'><img src='./img/trash.png'></a>
                         </td>-->
                     </tr>
                 `)
-        /*$('.edit_pencil').on('click', function () {
-          EditSppp(sppp.Id)
+        /*$(`.edit_pencil.dorm_p${sppp.Id}`).on('click', function () {
+          EditDorm(sppp.Id)
         })
-        $('.trash_backet').on('click', function () {
-          DeleteSppp(sppp.Id)
+        $(`.trash_backet.dorm_t${sppp.Id}`).on('click', function () {
+          DeleteDorm(sppp.Id, st_id)
         })*/
       })
     },
@@ -1351,6 +1377,109 @@ function AddScol(st_id) {
 
   $.ajax({
     url: './backend/controllers/socialScolarship.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+/*группа риска*/
+
+function EditRisk(id) {
+  let orderNumRisk = document.getElementsByName(`orderNumRisk${id}`)[0].value
+  let typeRisk = document.getElementsByName(`typeRisk${id}`)[0].value
+  let startDateRisk = document.getElementsByName(`registrationDateRisk${id}`)[0].value
+  let removalDateRisk = document.getElementsByName(`removalDateRisk${id}`)[0].value
+  let reasonRisk = document.getElementsByName(`reasonRisk${id}`)[0].value
+  let removalReasonRisk = document.getElementsByName(`removalReasonRisk${id}`)[0].value
+  let notesRisk = document.getElementsByName(`notesRisk${id}`)[0].value
+
+  let params = new FormData()
+  params.append('action', 'edit')
+  params.append('id', id)
+  params.append('orderNum', orderNumRisk)
+  params.append('type', typeRisk)
+  params.append('registrationDate', startDateRisk)
+  params.append('removalDate', removalDateRisk)
+  params.append('reason', reasonRisk)
+  params.append('removalReason', removalReasonRisk)
+  params.append('notes', notesRisk)
+  const entries = Array.from(params.entries())
+  console.log(`${entries}`)
+
+  $.ajax({
+    url: './backend/controllers/riskGroup.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+}
+
+function DeleteRisk(id, st_id) {
+  let params = new FormData()
+  params.append('action', 'delete')
+  params.append('id', id)
+
+  $.ajax({
+    url: './backend/controllers/riskGroup.php',
+    type: 'POST',
+    data: params,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (_data) {
+      console.log(_data)
+    },
+    error: function (error) {
+      alert(`Ошибка запроса ${error}`)
+    },
+  })
+  $('.data').empty()
+  LoadStudentById(st_id)
+}
+
+function AddRisk(st_id) {
+  let orderNumRisk = document.getElementsByName(`orderNumRisk`)[0].value
+  let typeRisk = document.getElementsByName(`typeRisk`)[0].value
+  let startDateRisk = document.getElementsByName(`registrationDateRisk`)[0].value
+  let removalDateRisk = document.getElementsByName(`removalDateRisk`)[0].value
+  let reasonRisk = document.getElementsByName(`reasonRisk`)[0].value
+  let removalReasonRisk = document.getElementsByName(`removalReasonRisk`)[0].value
+  let notesRisk = document.getElementsByName(`notesRisk`)[0].value
+
+  let params = new FormData()
+  params.append('action', 'insert')
+  params.append('student_id', st_id)
+  params.append('orderNum', orderNumRisk)
+  params.append('type', typeRisk)
+  params.append('registrationDate', startDateRisk)
+  params.append('removalDate', removalDateRisk)
+  params.append('reason', reasonRisk)
+  params.append('removalReason', removalReasonRisk)
+  params.append('notes', notesRisk)
+  /*const entries = Array.from(params.entries())
+  console.log(`${entries}`)*/
+
+  $.ajax({
+    url: './backend/controllers/riskGroup.php',
     type: 'POST',
     data: params,
     cache: false,
