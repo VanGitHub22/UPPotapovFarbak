@@ -9,22 +9,16 @@
     } else if ($action == "getById") {
         $id = $_POST['id'];
         echo json_encode(Dormitory::GetById($id));
-    }else if ($action == "add") {
-
+    }else if ($action == "insert") {
         $dorm = new Dormitory((object)$_POST);
-
         $result = $dorm->Insert();
+        echo json_encode($result);
     } else if ($action == "edit"){
-
         $dorm = new Dormitory((object)$_POST);
-
         $result = $dorm->Update();
         echo json_encode($result);
-        
     } else if ($action == "delete"){
-        $id = $_POST['id'];
         $dorm = new Dormitory((object)$_POST);
-        
         $result = $dorm->Delete();
         echo json_encode($result);
     }

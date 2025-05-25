@@ -25,7 +25,7 @@ class Department{
     
     public function Update(){
         global $mysqli;
-        $query = "UPDATE `Departments` SET `Name`='$this->Name' WHERE `id`=$this->Id "; 
+        $query = "UPDATE `Departments` SET `name`='$this->Name' WHERE `id`=$this->Id "; 
         $mysqli->query($query);
     } 
     
@@ -37,7 +37,7 @@ class Department{
     
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Departments`(`Name`) VALUES('$this->Name') WHERE `id`=$this->Id";
+        $query = "INSERT INTO `Departments`(`name`) VALUES('$this->Name')";
         $mysqli->query($query);
     }
     
