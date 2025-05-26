@@ -16,10 +16,10 @@
         $lastName = $_POST['lastName'];
         $student = Student::GetByLastname();
         echo json_encode($student);
-    } else if ($action == "add") {
+    } else if ($action == "insert") {
         $student = new Student((object)$_POST);
         $result = $student->Insert();
-
+        echo json_encode($result);
     } else if ($action == "edit"){
         $student = new Student((object)$_POST);
         $result = $student->Update();

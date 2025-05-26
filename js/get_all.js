@@ -8,7 +8,7 @@ const paramss = {};
 for (const [key, value] of urlParams.entries()) {
     paramss[key] = value;
 }
-console.log(paramss.page);
+//console.log(paramss.page);
 
 if(!paramss['page']){
    LoadStudents();

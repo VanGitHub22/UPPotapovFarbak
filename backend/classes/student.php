@@ -15,7 +15,7 @@ class Student{
     public $AdmissinYear;
     public $GraduationYear;
     public $IsExpelled;
-    public $ExplusionDate;
+    public $ExpulsionDate;
     public $Parent_info;
     public $Penalties;
     public $Notes;
@@ -81,18 +81,6 @@ class Student{
         }
         return $students;  
     }
-    
-    public static function GetByLastName(){
-        global $mysqli;
-        $students = [];
-        $query = "SELECT * FROM `Students` ORDER BY ''";
-        $res = $mysqli->query($query);
-        while($row = mysqli_fetch_array($res)){
-            $newStudent = new Student((object)$row);
-            array_push($students, $newStudent);
-        }
-        return $students;  
-    }
 
     public function Update(){
         global $mysqli;
@@ -129,7 +117,7 @@ class Student{
     
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Students`(`lastName`, `firstName`, `middleName`, `birthDate`, `gender`, `phone`, `education`, `department_id`, `group`, `funding`, `admissionYear`, `graduationYear`, `isExpelled`, `explusionDate`, `parent_Info`, `penalties`, `notes`) VALUES('$this->LastName', '$this->FirstName', '$this->MiddleName', '$this->BirthDate', '$this->Gender', '$this->Phone', '$this->Education', '$this->department_id', '$this->Group', '$this->Funding', '$this->AdmissionYear', '$this->GraduationYear', '$this->IsExplelled', '$this->ExplusionDate', '$this->Parent_info', '$this->Penalties', '$this->Notes')";
+        $query = "INSERT INTO `Students`(`lastName`, `firstName`, `middleName`, `birthDate`, `gender`, `phone`, `education`, `department_id`, `group`, `funding`, `admissionYear`, `graduationYear`, `isExpelled`, `expulsionDate`, `parent_Info`, `penalties`, `notes`) VALUES('$this->LastName', '$this->FirstName', '$this->MiddleName', '$this->BirthDate', '$this->Gender', '$this->Phone', '$this->Education', '$this->Department_Id', '$this->Group', '$this->Funding', '$this->AdmissionYear', $this->GraduationYear, '$this->IsExpelled', $this->ExpulsionDate, '$this->Parent_info', '$this->Penalties', '$this->Notes')";
         $mysqli->query($query);
     }
 }

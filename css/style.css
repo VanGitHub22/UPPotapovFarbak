@@ -51,6 +51,41 @@ header {
   margin-bottom: 5px;
 }
 
+.addSt_block{
+  width: 98%;
+  display: flex;
+  justify-content: center;
+}
+
+.addSt{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 30%;
+  gap: 5px;
+}
+
+.addSt input, .addSt select{
+  outline: none;
+  padding: 5px;
+  border-radius: 3px;
+  border: #9ea1a2 1px solid;
+}
+
+.add_st_btn{
+  text-decoration: none;
+  padding: 10px;
+  background: #0060ac;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  transition: .1s;
+}
+
+.add_st_btn:hover{
+  transform: scale(1.01);
+}
+
 .name_role h3 {
   font-size: 20px;
 }
