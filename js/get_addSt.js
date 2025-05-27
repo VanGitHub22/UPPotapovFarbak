@@ -1,5 +1,4 @@
 function LoadAddSt() {
-  
   document.title = 'Добавить студента'
   $('.h1').append(`<h1>Добавить студента</h1>`)
   $('.data').append(`
@@ -64,53 +63,67 @@ function LoadAddSt() {
     error: function (error) {
       console.log(`Ошибка запроса ${error}`)
     },
-  })  
-  
-  
+  })
 }
 export default LoadAddSt
 
 function AddSt() {
-  let begining = true;
+  let begining = true
 
   let lastName = document.getElementsByName('lastName')[0].value
   let firstName = document.getElementsByName('firstName')[0].value
   let middleName = document.getElementsByName('middleName')[0].value
-  !checkFormat(lastName, "[а-яA-Я]", "lastName") ? begining = false : console.log("true")
+  !checkFormat(lastName, '[а-яA-Я]', 'lastName')
+    ? (begining = false)
+    : console.log('true')
   console.log(`begining = ${begining}`)
-  !checkFormat(firstName, "[а-яA-Я]", "firstName") ? begining = false : console.log("true")
+  !checkFormat(firstName, '[а-яA-Я]', 'firstName')
+    ? (begining = false)
+    : console.log('true')
   console.log(`begining = ${begining}`)
-  !checkFormat(middleName, "[а-яA-Я]", "middleName") ? begining = false : console.log("true")
+  !checkFormat(middleName, '[а-яA-Я]', 'middleName')
+    ? (begining = false)
+    : console.log('true')
   console.log(`begining = ${begining}`)
   let birthDate = document.getElementsByName('birthDate')[0].value
-  !checkFormat(birthDate, "/^\d{4}[./-]\d{2}[./-]\d{2}$/", "birthDate") ? begining = false : console.log("true")
+  !checkFormat(birthDate, '/^d{4}[./-]d{2}[./-]d{2}$/', 'birthDate')
+    ? (begining = false)
+    : console.log('true')
   console.log(`begining = ${begining}`)
   let gender = document.getElementsByName('gender')[0].value
   let phone = document.getElementsByName('phone')[0].value
-  !checkFormat(phone, "phone", "phone") ? console.log("false") : console.log("true")
+  !checkFormat(phone, 'phone', 'phone')
+    ? console.log('false')
+    : console.log('true')
   console.log(`begining = ${begining}`)
   let education = document.getElementsByName('education')[0].value
   let department_id = document.getElementsByName('department_id')[0].value
   let group = document.getElementsByName('group')[0].value
-  if(group == ""){
-    alert("Группа обязательна для заполнения")
+  if (group == '') {
+    alert('Группа обязательна для заполнения')
     return
   }
   let funding = document.getElementsByName('funding')[0].value
   let admissionYear = document.getElementsByName('admissionYear')[0].value
-  !checkFormat(admissionYear, "/^\d{4}[./-]\d{2}[./-]\d{2}$/", "admissionYear") ? begining = false : console.log("true")
+  !checkFormat(admissionYear, '/^d{4}[./-]d{2}[./-]d{2}$/', 'admissionYear')
+    ? (begining = false)
+    : console.log('true')
   console.log(`begining = ${begining}`)
   let graduationYear = document.getElementsByName('graduationYear')[0].value
-  !checkFormat(graduationYear, "num", "okonch") ? begining = false : console.log("true")
+  !checkFormat(graduationYear, 'num', 'okonch')
+    ? (begining = false)
+    : console.log('true')
   let isExpelled = document.getElementsByName('isExpelled')[0].value
   let expulsionDate = document.getElementsByName('expulsionDate')[0].value
-  !checkFormat(expulsionDate, "num", "otchi") ? begining = false : console.log("true")
+  !checkFormat(expulsionDate, 'num', 'otchi')
+    ? (begining = false)
+    : console.log('true')
   console.log(`begining = ${begining}`)
   let parent_info = document.getElementsByName('parent_info')[0].value
   let penalties = document.getElementsByName('penalties')[0].value
   let notes = document.getElementsByName('notes')[0].value
   console.log(`begining = ${begining}`)
-  if(begining == false){
+  if (begining == false) {
     return
   }
 
@@ -149,109 +162,109 @@ function AddSt() {
     },
   })
 }
- 
-function checkFormat(input, regular, type){
-  if(regular == "[а-яA-Я]"){
-    if(type == "lastName"){
-      if(input != ""){
-        if(!input.match(/^[а-яА-Я]+$/)){
-          alert('Фамилия должна содержать только русские буквы');
-          return false;
+
+function checkFormat(input, regular, type) {
+  if (regular == '[а-яA-Я]') {
+    if (type == 'lastName') {
+      if (input != '') {
+        if (!input.match(/^[а-яА-Я]+$/)) {
+          alert('Фамилия должна содержать только русские буквы')
+          return false
         } else {
-          return true;
+          return true
         }
       } else {
-        alert('Фамилия обязательна для заполнения');
-        return false;
+        alert('Фамилия обязательна для заполнения')
+        return false
       }
-    } else if(type == "firstName"){
-      if(input != ""){
-        if(!input.match(/^[а-яА-Я]+$/)){
-          alert('Имя должно содержать только русские буквы');
-          return false;
+    } else if (type == 'firstName') {
+      if (input != '') {
+        if (!input.match(/^[а-яА-Я]+$/)) {
+          alert('Имя должно содержать только русские буквы')
+          return false
         } else {
-          return true;
+          return true
         }
       } else {
-        alert('Имя обязательно для заполнения');
-        return false;
+        alert('Имя обязательно для заполнения')
+        return false
       }
-    } else if(type == "middleName"){
-      if(input != ""){
-        if(!input.match(/^[а-яА-Я]+$/)){
-          alert('Отчество должно содержать только русские буквы');
-          return false;
+    } else if (type == 'middleName') {
+      if (input != '') {
+        if (!input.match(/^[а-яА-Я]+$/)) {
+          alert('Отчество должно содержать только русские буквы')
+          return false
         } else {
-          return true;
+          return true
         }
       } else {
-        alert('Отчество обязательно для заполнения');
-        return false;
+        alert('Отчество обязательно для заполнения')
+        return false
       }
-    }   
-  } else if(regular == "/^\d{4}[./-]\d{2}[./-]\d{2}$/"){
-    if(type == "birthDate"){
-      if(input != ""){
-        if(!input.match(/^\d{4}[./-]\d{2}[./-]\d{2}$/)){
-          alert('Дата рождения должна содержать дату в формате XXXX-XX-XX');
-          return false;
-        } else {
-          return true;
-        }
-      } else {
-        alert('Дата рождения обязательна для заполнения');
-        return false;
-      } 
-    } else if(type == "admissionYear"){
-      if(input != ""){
-        if(!input.match(/^\d{4}[./-]\d{2}[./-]\d{2}$/)){
-          alert('Год поступления должен содержать дату в формате XXXX-XX-XX');
-          return false;
-        } else {
-          return true;
-        }
-      } else {
-        alert('Год поступления обязателен для заполнения');
-        return false;
-      } 
     }
-  } else if(regular == "phone"){
-    if(type == "phone"){
-      if(input != ""){
-        if(!input.match(/^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/)){
-          alert('Номер телефона должен содержать формат +7(XXX)-XXX-XX-XX');
-          return false;
+  } else if (regular == '/^d{4}[./-]d{2}[./-]d{2}$/') {
+    if (type == 'birthDate') {
+      if (input != '') {
+        if (!input.match(/^\d{4}[./-]\d{2}[./-]\d{2}$/)) {
+          alert('Дата рождения должна содержать дату в формате XXXX-XX-XX')
+          return false
         } else {
-          return true;
+          return true
         }
       } else {
-        alert('Номер телефона обязателен для заполнения');
-        return false;
-      } 
+        alert('Дата рождения обязательна для заполнения')
+        return false
+      }
+    } else if (type == 'admissionYear') {
+      if (input != '') {
+        if (!input.match(/^\d{4}[./-]\d{2}[./-]\d{2}$/)) {
+          alert('Год поступления должен содержать дату в формате XXXX-XX-XX')
+          return false
+        } else {
+          return true
+        }
+      } else {
+        alert('Год поступления обязателен для заполнения')
+        return false
+      }
     }
-  } else if(regular == "num"){
-    if(type == "okonch"){
-      if(input != ""){
-        if(!input.match(/^\d{4}$/)){
-          alert('Год выпуска должен содержать формат XXXX');
-          return false;
+  } else if (regular == 'phone') {
+    if (type == 'phone') {
+      if (input != '') {
+        if (!input.match(/^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/)) {
+          alert('Номер телефона должен содержать формат +7(XXX)-XXX-XX-XX')
+          return false
         } else {
-          return true;
+          return true
         }
       } else {
-        alert('Год выпуска обязателен для заполнения');
-        return false;
-      } 
-    } else if(type == "otchi"){
-      if(input != ""){
-        if(!input.match(/^\d{4}$/)){
-          alert('Год отчисления должен содержать формат XXXX');
-          return false;
+        alert('Номер телефона обязателен для заполнения')
+        return false
+      }
+    }
+  } else if (regular == 'num') {
+    if (type == 'okonch') {
+      if (input != '') {
+        if (!input.match(/^\d{4}$/)) {
+          alert('Год выпуска должен содержать формат XXXX')
+          return false
         } else {
-          return true;
+          return true
         }
       } else {
-        return true;
+        alert('Год выпуска обязателен для заполнения')
+        return false
+      }
+    } else if (type == 'otchi') {
+      if (input != '') {
+        if (!input.match(/^\d{4}$/)) {
+          alert('Год отчисления должен содержать формат XXXX')
+          return false
+        } else {
+          return true
+        }
+      } else {
+        return true
       }
     }
   }

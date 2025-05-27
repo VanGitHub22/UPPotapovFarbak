@@ -1,5 +1,4 @@
 <?php
-
 class Student{
     public $Id;
     public $LastName;
@@ -117,7 +116,7 @@ class Student{
     
     public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Students`(`lastName`, `firstName`, `middleName`, `birthDate`, `gender`, `phone`, `education`, `department_id`, `group`, `funding`, `admissionYear`, `graduationYear`, `isExpelled`, `expulsionDate`, `parent_Info`, `penalties`, `notes`) VALUES('$this->LastName', '$this->FirstName', '$this->MiddleName', '$this->BirthDate', '$this->Gender', '$this->Phone', '$this->Education', '$this->Department_Id', '$this->Group', '$this->Funding', '$this->AdmissionYear', $this->GraduationYear, '$this->IsExpelled', '$this->ExpulsionDate', '$this->Parent_info', '$this->Penalties', '$this->Notes')";
+        $query = "INSERT INTO `Students`(`lastName`, `firstName`, `middleName`, `birthDate`, `gender`, `phone`, `education`, `department_id`, `group`, `funding`, `admissionYear`, `graduationYear`, `isExpelled`, `expulsionDate`, `parent_Info`, `penalties`, `notes`) VALUES('$this->LastName', '$this->FirstName', '$this->MiddleName', '$this->BirthDate', '$this->Gender', '$this->Phone', '$this->Education', '$this->Department_Id', '$this->Group', '$this->Funding', '$this->AdmissionYear', $this->GraduationYear, '$this->IsExpelled', $this->ExpulsionDate, '$this->Parent_info', '$this->Penalties', '$this->Notes')";
         $mysqli->query($query);
     }
 }
