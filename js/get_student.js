@@ -10,6 +10,7 @@ function LoadStudents() {
     processData: false,
     contentType: false,
     success: function (_data) {
+      $('.h1').empty();
       document.title = 'Студенты'
       let Students = JSON.parse(_data)
       $('.h1').append(`

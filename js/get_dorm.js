@@ -10,6 +10,7 @@ function LoadDorm() {
     processData: false,
     contentType: false,
     success: function (_data) {
+      $('.h1').empty();
       document.title = 'Общежитие'
       let Dorm = JSON.parse(_data)
       $('.h1').append(`<h1>Общежитие</h1>`)

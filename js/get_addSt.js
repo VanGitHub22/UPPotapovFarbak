@@ -1,4 +1,5 @@
 function LoadAddSt() {
+  $('.h1').empty();
   document.title = 'Добавить студента'
   $('.h1').append(`<h1>Добавить студента</h1>`)
   $('.data').append(`

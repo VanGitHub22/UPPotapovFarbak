@@ -10,6 +10,7 @@ function LoadDepa() {
     processData: false,
     contentType: false,
     success: function (_data) {
+      $('.h1').empty();
       document.title = 'Отделения'
       let Department = JSON.parse(_data)
       $('.h1').append(`<h1>Отделения</h1>`)
