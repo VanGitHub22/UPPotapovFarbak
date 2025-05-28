@@ -1,5 +1,4 @@
 <?php
-
 class Student{
     public $Id;
     public $LastName;
