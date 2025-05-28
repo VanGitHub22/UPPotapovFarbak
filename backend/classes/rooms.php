@@ -5,11 +5,11 @@ class Rooms{
     public $Name;
     public $Capacity;
     
-    public __construct($params){
+    function __construct($params){
         if(isset($params->id)) $this->Id = $params->id;
-        if(isset($params->Name)) $this->Name = $params->Name;
+        if(isset($params->name)) $this->Name = $params->name;
         else $this->Name = NULL;
-        if(isset($params->Capacity)) $this->Capacity = $params->Capacity;
+        if(isset($params->capacity)) $this->Capacity = $params->capacity;
         else $this->Capacity = NULL;
     }
     
@@ -23,24 +23,24 @@ class Rooms{
             $newRoom = new Rooms((object)$row);
             array_push($rooms, $newRoom);
         }
-        
+        return $rooms;
     }
     
-    public static function Update(){
+    public function Update(){
         global $mysqli;
         $query = "UPDATE `Rooms` SET `Name`='$this->Name', `Capacity`='$this->Capacity' WHERE `id`=$this->Id";
         $mysqli->query($query);
     } 
     
-    public static function Delete(){
+    public function Delete(){
         global $mysqli;
         $query = "DELETE FROM `Rooms` WHERE `id`=$this->Id";
         $mysqli->query($query);
     }
     
-    public static function Insert(){
+    public function Insert(){
         global $mysqli;
-        $query = "INSERT INTO `Rooms`(`Name`, `Capacity`) VALUES('$this->Name', '$this->Capacity')";
+        $query = "INSERT INTO `Rooms`(`Name`, `Capacity`) VALUES($this->Name, $this->Capacity)";
         $mysqli->query($query);
     }
     

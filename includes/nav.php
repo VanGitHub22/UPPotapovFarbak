@@ -51,4 +51,20 @@
         </a>
         <p>Добавить<br> студента</p>
     </div>
+    <div class="nav_link_text">
+        <a href="./index.php?page=rooms" class="nav_link <?php if(isset($_GET['page']) && ($_GET['page'] == "rooms")){ ?> active <?php }; ?>">
+            <?php 
+            if(isset($_GET['page']) && ($_GET['page'] == "rooms")){ 
+            ?>
+                <img src="./img/door_blue.png" alt=""> 
+            <?php 
+            } else {
+            ?> 
+                <img src="./img/door_white.png" alt="">
+            <?php
+            }
+            ?>
+        </a>
+        <p>Комнаты</p>
+    </div>
 </nav>

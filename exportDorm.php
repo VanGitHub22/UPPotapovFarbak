@@ -7,7 +7,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 // Выбираем данные из БД
-$stmt = $mysqli->query("SELECT `Dormitory`.`id`, `Students`.`lastName`, `Students`.`firstName`, `Students`.`middleName`,  `Dormitory`.`room_id`, `Dormitory`.`orderNum`, `Dormitory`.`checkInDate`, `Dormitory`.`checkOutDate`, `Dormitory`.`notes` FROM `Dormitory`, `Students` WHERE `Students`.`id`=`Dormitory`.`student_id`");
+$stmt = $mysqli->query("SELECT `Dormitory`.`id`, `Students`.`lastName`, `Students`.`firstName`, `Students`.`middleName`,  `Rooms`.`name`, `Dormitory`.`orderNum`, `Dormitory`.`checkInDate`, `Dormitory`.`checkOutDate`, `Dormitory`.`notes` FROM `Dormitory`, `Students`, `Rooms` WHERE `Students`.`id`=`Dormitory`.`student_id` AND `Rooms`.`id`=`Dormitory`.`room_id`");
 
 $users = [];
 while ($row = $stmt->fetch_assoc()) {

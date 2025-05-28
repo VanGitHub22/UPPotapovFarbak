@@ -1,6 +1,7 @@
 function LoadDorm() {
   let params = new FormData()
   params.append('action', 'get')
+  $('.export').empty()
 
   $.ajax({
     url: './backend/controllers/dormitory.php',
@@ -28,8 +29,16 @@ function LoadDorm() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type='text' name='student_id' value='' placeholder='id студента'></td>
-                        <td><input type='text' name='room_id' value='' placeholder='id комнаты'></td>
+                        <td>
+                          <select name="student_id" class="student_id">
+
+                          </select>
+                        </td>
+                        <td>
+                          <select name="room_id" class="room_id">
+
+                          </select>
+                        </td>
                         <td><input type='text' name='orderNum' value='' placeholder='документ'></td>
                         <td><input type='text' name='checkInDate' value='' placeholder='дата заселения'></td>
                         <td><input type='text' name='checkOutDate' value='' placeholder='дата выселения'></td>
@@ -41,10 +50,52 @@ function LoadDorm() {
                     </tbody>
                 </table>
             `)
+      
       $(`.plus.dorm_p`).on('click', function () {
         AddDorm()
       })
-
+      let params2 = new FormData()
+      params2.append('action', 'get')
+      $.ajax({
+        url: './backend/controllers/get_student.php',
+        type: 'POST',
+        data: params2,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function (_data2) {
+          let students = JSON.parse(_data2);
+          students.forEach((student) => {
+            $(".student_id").append(`
+              <option value="${student.Id}">${student.LastName} ${student.FirstName} ${student.MiddleName}</option>
+            `)
+          })
+        },
+        error: function (error) {
+          alert(`Ошибка запроса ${error}`)
+        },
+      })
+      let params3 = new FormData()
+      params3.append('action', 'get')
+      $.ajax({
+        url: './backend/controllers/get_rooms.php',
+        type: 'POST',
+        data: params3,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function (_data3) {
+          let rooms = JSON.parse(_data3);
+          rooms.forEach((room) => {
+            $(".room_id").append(`
+              <option value="${room.Id}">${room.Name}</option>
+            `)
+          })
+        },
+        error: function (error) {
+          alert(`Ошибка запроса ${error}`)
+        },
+      })
       $('.export').append(`
         <a href="#" class="exportExcel">Экспортировать в Excel</a>
       `)
@@ -55,8 +106,18 @@ function LoadDorm() {
       Dorm.forEach((dorm) => {
         $('tbody').append(`
                     <tr>
-                        <td><input type='text' name='student_id${dorm.Id}' value='${dorm.Student_Id}' placeholder='id студента'></td>
-                        <td><input type='text' name='room_id${dorm.Id}' value='${dorm.Room_Id}' placeholder='id комнаты'></td>
+                        <td>
+                          <select name="student_id${dorm.Id}" class="student_id${dorm.Id}">
+
+                          </select>
+                        </td>
+
+                        <td>
+                          <select name="room_id${dorm.Id}" class="room_id${dorm.Id}">
+
+                          </select>
+                        </td>
+
                         <td><input type='text' name='orderNum${dorm.Id}' value='${dorm.OrderNum}' placeholder='документ'></td>
                         <td><input type='text' name='checkInDate${dorm.Id}' value='${dorm.CheckInDate}' placeholder='дата заселения'></td>
                         <td><input type='text' name='checkOutDate${dorm.Id}' value='${dorm.CheckOutDate}' placeholder='дата выселения'></td>
@@ -67,6 +128,65 @@ function LoadDorm() {
                         </td>
                     </tr>
                 `)
+        let params4 = new FormData()
+        params4.append('action', 'get')        
+        $.ajax({
+          url: './backend/controllers/get_rooms.php',
+          type: 'POST',
+          data: params4,
+          cache: false,
+          processData: false,
+          contentType: false,
+          success: function (_data3) {
+          let rooms = JSON.parse(_data3);
+          rooms.forEach((room) => {
+            if(room.Id == dorm.Room_Id){
+              $(`.room_id${dorm.Id}`).append(`
+                <option value="${room.Id}">${room.Name}</option>
+              `)
+            }
+          })
+          rooms.forEach((room) => {
+            if(room.Id != dorm.Room_Id){
+              $(`.room_id${dorm.Id}`).append(`
+                <option value="${room.Id}">${room.Name}</option>
+              `)
+            }
+          })
+          },
+          error: function (error) {
+            alert(`Ошибка запроса ${error}`)
+          },
+        })
+        $.ajax({
+          url: './backend/controllers/get_student.php',
+          type: 'POST',
+          data: params4,
+          cache: false,
+          processData: false,
+          contentType: false,
+          success: function (_data3) {
+          let students = JSON.parse(_data3);
+          students.forEach((student) => {
+            if(student.Id == dorm.Student_Id){
+              $(`.student_id${dorm.Id}`).append(`
+                <option value="${student.Id}">${student.LastName} ${student.FirstName} ${student.MiddleName}</option>
+              `)
+            }
+          })
+          students.forEach((student) => {
+            if(student.Id != dorm.Student_Id){
+              $(`.student_id${dorm.Id}`).append(`
+                <option value="${student.Id}">${student.LastName} ${student.FirstName} ${student.MiddleName}</option>
+              `)
+            }
+          })
+          },
+          error: function (error) {
+            alert(`Ошибка запроса ${error}`)
+          },
+        })
+        $(`.room_id${dorm.Id}`).append(``)
         $(`.edit_pencil.dorm_p${dorm.Id}`).on('click', function () {
           EditDorm(dorm.Id)
         })
