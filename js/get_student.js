@@ -40,6 +40,12 @@ function LoadStudents() {
                     </tbody>
                 </table>
             `)
+      $('.export').append(`
+        <a href="#" class="exportExcel">Экспортировать в Excel</a>
+      `)
+      $('.exportExcel').on('click', function () {
+        window.location.href = 'export.php';
+      })
       Students.forEach((Studnet) => {
         $('tbody').append(`
                     <tr>

@@ -41,6 +41,7 @@
                         <input type="text">
                         <a href="#"><img src="./img/lupa.png" alt=""></a>
                     </div>
+                    <div class="export"></div>
                     <p>*Фильтрация по клику колонки</p>
                 </div>
                 <div class="line"></div>

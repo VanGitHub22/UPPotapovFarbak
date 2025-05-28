@@ -43,6 +43,14 @@ function LoadDorm() {
       $(`.plus.dorm_p`).on('click', function () {
         AddDorm()
       })
+
+      $('.export').append(`
+        <a href="#" class="exportExcel">Экспортировать в Excel</a>
+      `)
+      $('.exportExcel').on('click', function () {
+        window.location.href = 'exportDorm.php';
+      })
+
       Dorm.forEach((dorm) => {
         $('tbody').append(`
                     <tr>
